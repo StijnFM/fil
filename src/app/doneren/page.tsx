@@ -1,130 +1,142 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { DoneerForm } from "./DoneerForm";
 
 export const metadata: Metadata = {
   title: "Doneren — Football is Life",
   description:
-    "Steun het Soweto-project in Mzuzu, Malawi. € 20 = een voetbal voor een kind in Soweto.",
+    "Doneer aan Football is Life. € 10 = 1 jongere, 1 jaar betere begeleiding in Soweto, Mzuzu. ANBI-erkende stichting, donaties fiscaal aftrekbaar.",
 };
 
 export default function DonerenPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-background">
-        {/* ── Hero band ── */}
-        <div className="pt-16">
-          <div
-            className="py-20 px-6 text-center relative overflow-hidden"
-            style={{ background: "var(--surface)" }}
-          >
-            {/* Pitch lines */}
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              viewBox="0 0 120 80"
-              preserveAspectRatio="xMidYMid slice"
-              aria-hidden="true"
-              style={{ opacity: 0.06 }}
+      <main className="bg-background">
+
+        {/* ── Intro ── */}
+        <section className="pt-24 pb-16 px-6" style={{ background: "var(--green)" }}>
+          <div className="max-w-xl mx-auto text-center">
+            <span
+              className="inline-block text-xs font-semibold tracking-widest uppercase mb-5"
+              style={{ color: "rgba(201,107,44,0.80)" }}
             >
-              <g stroke="white" strokeWidth="0.5" fill="none">
-                <rect x="4" y="4" width="112" height="72" />
-                <circle cx="60" cy="40" r="10" />
-                <line x1="60" y1="4" x2="60" y2="76" />
-              </g>
-            </svg>
+              Bijdragen
+            </span>
+            <h1
+              className="font-display font-extrabold leading-tight tracking-tight"
+              style={{
+                fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
+                color: "rgba(246,241,232,0.95)",
+                letterSpacing: "-0.025em",
+              }}
+            >
+              Waar jouw bijdrage aan bouwt.
+            </h1>
+            <p
+              className="mt-4 leading-relaxed"
+              style={{ color: "rgba(246,241,232,0.58)" }}
+            >
+              Jouw donatie gaat rechtstreeks naar coaches, trainingen en life
+              skills voor jongeren in Soweto. Elke euro wordt verantwoord besteed
+              — het bestuur werkt onbezoldigd.
+            </p>
+          </div>
+        </section>
 
-            <div className="relative z-10">
-              <p
-                className="text-xs font-semibold tracking-widest uppercase mb-4"
-                style={{ color: "var(--amber)" }}
-              >
-                Draag bij
-              </p>
-              <h1
-                className="font-display font-black text-foreground leading-none"
-                style={{ fontSize: "clamp(3rem, 10vw, 8rem)" }}
-              >
-                DRAAG BIJ.
-              </h1>
-              <p
-                className="font-display font-black italic mt-2"
-                style={{
-                  fontSize: "clamp(1.4rem, 3vw, 2.5rem)",
-                  color: "rgba(254,249,240,0.45)",
-                }}
-              >
-                Voor het project in Soweto, Malawi.
-              </p>
-
-              {/* Impact line */}
-              <div
-                className="mt-8 inline-flex items-center gap-3 px-6 py-3 rounded-full border"
-                style={{
-                  borderColor: "rgba(245,166,35,0.3)",
-                  background: "rgba(245,166,35,0.08)",
-                }}
-              >
-                <span aria-hidden>⚽</span>
-                <p
-                  className="text-sm font-semibold"
-                  style={{ color: "rgba(254,249,240,0.7)" }}
+        {/* ── Impact context ── */}
+        <section className="py-8 px-6" style={{ background: "var(--green-dark)" }}>
+          <div className="max-w-xl mx-auto">
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { amount: "€ 10", impact: "1 jongere, 1 jaar betere begeleiding" },
+                { amount: "€ 50", impact: "Bijdrage aan coachontwikkeling" },
+                { amount: "€ 100", impact: "Trainingen én life skills" },
+              ].map((tile) => (
+                <div
+                  key={tile.amount}
+                  className="rounded-xl p-4 text-center"
+                  style={{
+                    background: "rgba(246,241,232,0.05)",
+                    border: "1px solid rgba(246,241,232,0.09)",
+                  }}
                 >
-                  € 20 = een voetbal voor een kind in Soweto
-                </p>
-              </div>
+                  <p
+                    className="font-bold text-base leading-none mb-1.5"
+                    style={{ color: "rgba(201,107,44,0.90)" }}
+                  >
+                    {tile.amount}
+                  </p>
+                  <p
+                    className="text-xs leading-snug"
+                    style={{ color: "rgba(246,241,232,0.45)" }}
+                  >
+                    {tile.impact}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
 
         {/* ── Form ── */}
-        <div className="max-w-lg mx-auto px-6 py-16">
-          <DoneerForm />
-        </div>
+        <section className="py-16 px-6 bg-background">
+          <div className="max-w-lg mx-auto">
+            <DoneerForm />
+          </div>
+        </section>
 
         {/* ── Trust strip ── */}
-        <div
-          className="border-t py-12 px-6"
-          style={{
-            background: "var(--surface)",
-            borderColor: "var(--glass-border)",
-          }}
+        <section
+          className="py-12 px-6 border-t"
+          style={{ borderColor: "var(--border)", background: "var(--sand-light)" }}
         >
-          <div className="max-w-2xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
-            {[
-              {
-                icon: "🔒",
-                title: "Veilig betalen",
-                desc: "iDEAL, creditcard of bankoverschrijving",
-              },
-              {
-                icon: "📄",
-                title: "ANBI-erkend",
-                desc: "Donaties zijn fiscaal aftrekbaar",
-              },
-              {
-                icon: "🌍",
-                title: "100% naar het project",
-                desc: "Onbezoldigd bestuur, geen overhead",
-              },
-            ].map((item) => (
-              <div key={item.title}>
-                <span className="text-2xl" aria-hidden>
-                  {item.icon}
-                </span>
-                <p className="font-bold text-foreground text-sm mt-2">
-                  {item.title}
-                </p>
-                <p
-                  className="text-xs mt-1"
-                  style={{ color: "rgba(254,249,240,0.4)" }}
+          <div className="max-w-lg mx-auto">
+            <div className="grid grid-cols-3 gap-6 text-center mb-8">
+              {[
+                { icon: "🔒", label: "Veilig betalen", sub: "iDEAL, creditcard, overschrijving" },
+                { icon: "📄", label: "ANBI-erkend", sub: "Fiscaal aftrekbaar" },
+                { icon: "🌍", label: "100% naar het project", sub: "Onbezoldigd bestuur" },
+              ].map((item) => (
+                <div key={item.label}>
+                  <p className="text-2xl mb-2">{item.icon}</p>
+                  <p className="text-xs font-semibold" style={{ color: "var(--charcoal)" }}>
+                    {item.label}
+                  </p>
+                  <p className="text-xs mt-0.5" style={{ color: "var(--stone)" }}>
+                    {item.sub}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div
+              className="rounded-2xl p-5 text-sm leading-relaxed space-y-2"
+              style={{
+                background: "var(--white)",
+                border: "1px solid var(--border)",
+                color: "var(--stone)",
+              }}
+            >
+              <p>
+                <strong style={{ color: "var(--charcoal)" }}>Na je donatie</strong> ontvang je
+                een bevestiging per e-mail. Je gegevens worden niet gedeeld met
+                derden en enkel gebruikt voor projectupdates als je dit wenst.
+              </p>
+              <p>
+                Voor grotere bijdragen of sponsoring:{" "}
+                <Link
+                  href="/over-ons"
+                  className="font-semibold hover:opacity-70 transition-opacity"
+                  style={{ color: "var(--orange)" }}
                 >
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+                  neem contact op met het bestuur →
+                </Link>
+              </p>
+            </div>
           </div>
-        </div>
+        </section>
       </main>
     </>
   );

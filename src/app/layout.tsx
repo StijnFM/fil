@@ -1,32 +1,33 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, Barlow_Condensed } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { MotionConfig } from "motion/react";
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
 });
 
-const barlow = Barlow_Condensed({
-  variable: "--font-barlow",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["700", "900"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#0c1a0d",
+  themeColor: "#214D3A",
 };
 
 export const metadata: Metadata = {
-  title: "Football is Life — Pass it on!",
+  title: "Football is Life — Coaching voor jongeren in Malawi",
   description:
-    "Stichting Football is Life gebruikt voetbal als middel om communities te bouwen in Soweto, Mzuzu (Malawi). Draag bij aan het project.",
+    "Stichting Football is Life gebruikt voetbal als ingang naar coaching, life skills en toekomstperspectief voor jongeren in Mzuzu, Malawi. ANBI-erkend.",
 };
 
 export default function RootLayout({
@@ -34,7 +35,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="nl">
-      <body className={`${figtree.variable} ${barlow.variable} font-sans antialiased`}>
+      <body
+        className={`${jakarta.variable} ${inter.variable} font-sans antialiased`}
+      >
         <MotionConfig reducedMotion="user">{children}</MotionConfig>
       </body>
     </html>

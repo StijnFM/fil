@@ -2,12 +2,18 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { Navbar as SharedNavbar } from "@/components/Navbar";
+import { Navbar } from "@/components/Navbar";
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-/* ─── Reusable pitch SVG markings ─────────────────── */
-function PitchLines({ opacity = 0.11 }: { opacity?: number }) {
+/* ── Pitch SVG overlay ──────────────────────────────── */
+function PitchDecor({
+  opacity = 0.07,
+  stroke = "white",
+}: {
+  opacity?: number;
+  stroke?: string;
+}) {
   return (
     <svg
       className="absolute inset-0 w-full h-full pointer-events-none select-none"
@@ -15,22 +21,19 @@ function PitchLines({ opacity = 0.11 }: { opacity?: number }) {
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
-      <g stroke="white" strokeWidth="0.5" fill="none" style={{ opacity }}>
+      <g stroke={stroke} strokeWidth="0.5" fill="none" style={{ opacity }}>
         <rect x="4" y="4" width="112" height="72" />
         <line x1="60" y1="4" x2="60" y2="76" />
         <circle cx="60" cy="40" r="10" />
-        <circle cx="60" cy="40" r="0.9" fill="white" stroke="none" />
-        {/* Left penalty area */}
+        <circle cx="60" cy="40" r="0.9" fill={stroke} stroke="none" />
         <rect x="4" y="21" width="18" height="38" />
         <rect x="4" y="29" width="7" height="22" />
-        <circle cx="16" cy="40" r="0.9" fill="white" stroke="none" />
+        <circle cx="16" cy="40" r="0.9" fill={stroke} stroke="none" />
         <path d="M 22 29 A 11 11 0 0 1 22 51" />
-        {/* Right penalty area */}
         <rect x="98" y="21" width="18" height="38" />
         <rect x="109" y="29" width="7" height="22" />
-        <circle cx="104" cy="40" r="0.9" fill="white" stroke="none" />
+        <circle cx="104" cy="40" r="0.9" fill={stroke} stroke="none" />
         <path d="M 98 29 A 11 11 0 0 0 98 51" />
-        {/* Corner arcs */}
         <path d="M 7,4 A 3,3 0 0,1 4,7" />
         <path d="M 113,4 A 3,3 0 0,0 116,7" />
         <path d="M 4,73 A 3,3 0 0,0 7,76" />
@@ -40,145 +43,229 @@ function PitchLines({ opacity = 0.11 }: { opacity?: number }) {
   );
 }
 
-/* ─── Navbar ───────────────────────────────────────── */
-function Navbar() {
-  return <SharedNavbar />;
+/* ── Section label ──────────────────────────────────── */
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <p
+      className="text-xs font-semibold tracking-widest uppercase mb-4"
+      style={{ color: "var(--orange)" }}
+    >
+      {children}
+    </p>
+  );
 }
 
-/* ─── Hero ─────────────────────────────────────────── */
+/* ── Hero ───────────────────────────────────────────── */
 function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background">
-      <PitchLines opacity={0.11} />
-
-      {/* Ambient orbs */}
-      <div
-        className="absolute top-1/3 left-1/4 w-[480px] h-[480px] rounded-full blur-[140px] pointer-events-none"
-        style={{ background: "var(--grass)", opacity: 0.18 }}
-      />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full blur-[100px] pointer-events-none"
-        style={{ background: "var(--amber)", opacity: 0.13 }}
-      />
-
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-6 pt-24 pb-32">
-        {/* Status badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease }}
-          className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 mb-8"
-          style={{
-            borderColor: "rgba(245,166,35,0.3)",
-            background: "rgba(245,166,35,0.08)",
-          }}
-        >
-          <span
-            className="h-1.5 w-1.5 rounded-full animate-pulse-glow"
-            style={{ background: "var(--amber)" }}
-          />
-          <span
-            className="text-sm font-semibold tracking-wide"
-            style={{ color: "var(--amber)" }}
+    <section className="bg-background pt-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-[1fr_420px] lg:grid-cols-[1fr_480px] gap-10 md:gap-16 items-center">
+        {/* Text column */}
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease }}
           >
-            Stichting · Nijmegen · ANBI
-          </span>
-        </motion.div>
+            <span
+              className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase mb-6"
+              style={{ color: "var(--orange)" }}
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ background: "var(--orange)" }}
+              />
+              Stichting · ANBI · Nijmegen
+            </span>
+          </motion.div>
 
-        {/* Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1, ease }}
-        >
-          <h1
-            className="font-display font-black text-foreground leading-[0.85] tracking-tight"
-            style={{ fontSize: "clamp(4.5rem, 18vw, 15rem)" }}
-          >
-            FOOTBALL
-            <br />
-            IS LIFE.
-          </h1>
-          <p
-            className="font-display font-black italic leading-none mt-2"
+          <motion.h1
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.08, ease }}
+            className="font-display font-extrabold leading-[1.0] tracking-tight"
             style={{
-              fontSize: "clamp(2rem, 8vw, 7rem)",
-              color: "var(--amber)",
+              fontSize: "clamp(3rem, 7vw, 5.5rem)",
+              color: "var(--green)",
+              letterSpacing: "-0.02em",
             }}
           >
-            Pass it on.
-          </p>
-        </motion.div>
+            Voetbal als
+            <br />
+            ingang naar
+            <br />
+            ontwikkeling.
+          </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease }}
-        >
-          <p className="text-foreground/60 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mt-8">
-            Elk jaar gaan we naar Afrika met een zak voetballen. Wat er dan
-            gebeurt, is magisch.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.24, ease }}
+            className="mt-6 text-lg leading-relaxed max-w-lg"
+            style={{ color: "var(--stone)" }}
+          >
+            Football is Life geeft jongeren die buiten beeld blijven via lokale
+            coaches toegang tot begeleiding, life skills en nieuwe kansen. In
+            Soweto, Mzuzu — en verder.
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.38, ease }}
+            className="flex flex-wrap gap-3 mt-8"
+          >
             <Link
               href="/doneren"
-              className="px-8 py-4 rounded-full bg-primary text-white font-bold text-base hover:opacity-90 transition-opacity"
-              style={{ boxShadow: "var(--glow-orange)" }}
+              className="px-7 py-3.5 rounded-full font-semibold text-white text-base hover:opacity-85 transition-opacity"
+              style={{ background: "var(--orange)", boxShadow: "var(--glow-orange)" }}
             >
               Doneer nu
             </Link>
             <Link
               href="/project"
-              className="px-8 py-4 rounded-full border text-foreground font-bold text-base hover:bg-glass-bg transition-colors"
-              style={{ borderColor: "var(--glass-border)" }}
+              className="px-7 py-3.5 rounded-full font-semibold text-base border transition-colors"
+              style={{
+                color: "var(--green)",
+                borderColor: "rgba(33,77,58,0.25)",
+                background: "transparent",
+              }}
             >
-              Ons project →
+              Bekijk project →
             </Link>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.55 }}
+            className="mt-5 text-xs"
+            style={{ color: "var(--stone)" }}
+          >
+            ANBI-erkende stichting · Donaties fiscaal aftrekbaar · RSIN 868370873
+          </motion.p>
+        </div>
+
+        {/* Photo placeholder column */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97, y: 16 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.15, ease }}
+        >
+          <div
+            className="relative rounded-3xl overflow-hidden"
+            style={{
+              background: "var(--green)",
+              aspectRatio: "4/5",
+              boxShadow: "var(--shadow-lg)",
+            }}
+          >
+            <PitchDecor opacity={0.1} stroke="white" />
+
+            {/* Ambient gradient */}
+            <div
+              className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(to top, rgba(24,56,40,0.85) 0%, transparent 100%)",
+              }}
+            />
+
+            {/* Content overlay */}
+            <div className="absolute inset-0 flex flex-col justify-between p-6">
+              {/* Top: location */}
+              <div>
+                <span
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold"
+                  style={{
+                    background: "rgba(246,241,232,0.12)",
+                    border: "1px solid rgba(246,241,232,0.20)",
+                    color: "rgba(246,241,232,0.80)",
+                  }}
+                >
+                  <span>📍</span>
+                  Soweto, Mzuzu — Malawi
+                </span>
+              </div>
+
+              {/* Bottom: project info */}
+              <div>
+                <p
+                  className="text-xs font-semibold tracking-widest uppercase mb-2"
+                  style={{ color: "rgba(246,241,232,0.45)" }}
+                >
+                  Partners ter plaatse
+                </p>
+                <div className="flex gap-2">
+                  {["UNGWERU", "St. Patrick"].map((p) => (
+                    <span
+                      key={p}
+                      className="rounded-full px-3 py-1 text-xs font-semibold"
+                      style={{
+                        background: "rgba(201,107,44,0.25)",
+                        border: "1px solid rgba(201,107,44,0.40)",
+                        color: "rgba(246,241,232,0.85)",
+                      }}
+                    >
+                      {p}
+                    </span>
+                  ))}
+                </div>
+                <div
+                  className="mt-4 pt-4 border-t"
+                  style={{ borderColor: "rgba(246,241,232,0.12)" }}
+                >
+                  <p
+                    className="text-2xl font-bold"
+                    style={{ color: "rgba(246,241,232,0.90)" }}
+                  >
+                    € 15.000
+                  </p>
+                  <p
+                    className="text-xs mt-0.5"
+                    style={{ color: "rgba(246,241,232,0.45)" }}
+                  >
+                    doelstelling fase 1
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll pulse */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ opacity: [0.2, 0.7, 0.2] }}
-        transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-      >
-        <div className="w-px h-10 bg-gradient-to-b from-transparent via-foreground/30 to-transparent mx-auto" />
-      </motion.div>
     </section>
   );
 }
 
-/* ─── Marquee ──────────────────────────────────────── */
+/* ── Marquee ─────────────────────────────────────────── */
 function Marquee() {
   const items = [
-    "FOOTBALL IS LIFE",
-    "PASS IT ON",
-    "SOWETO · MALAWI",
+    "Football is Life",
+    "Coaching",
+    "Life Skills",
+    "Soweto · Malawi",
     "UNGWERU",
-    "ST. PATRICK",
-    "COMMUNITY",
-    "STICHTING",
-    "MZUZU",
+    "St. Patrick",
+    "Lokale coaches",
+    "Community",
+    "ANBI-erkend",
+    "Mzuzu",
   ];
   const doubled = [...items, ...items];
-
   return (
     <div
-      className="overflow-hidden py-4"
-      style={{ background: "var(--amber)" }}
+      className="overflow-hidden py-3.5 border-y"
+      style={{ background: "var(--green)", borderColor: "var(--green-dark)" }}
     >
       <div className="animate-marquee flex whitespace-nowrap">
         {doubled.map((item, i) => (
           <span
             key={i}
-            className="font-display font-black text-2xl tracking-widest mx-6"
-            style={{ color: "var(--pitch-dark)" }}
+            className="font-display font-bold text-sm tracking-wider mx-5"
+            style={{ color: "rgba(246,241,232,0.65)" }}
           >
             {item}
-            <span className="mx-6 opacity-40">•</span>
+            <span className="mx-5 opacity-30">·</span>
           </span>
         ))}
       </div>
@@ -186,329 +273,227 @@ function Marquee() {
   );
 }
 
-/* ─── Mission (cream/daylight section) ─────────────── */
-function Mission() {
-  return (
-    <section style={{ background: "var(--cream)" }} className="py-32 px-6">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
-        {/* Pull quote */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease }}
-        >
-          <p
-            className="font-display font-black leading-tight"
-            style={{
-              fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
-              color: "var(--pitch-dark)",
-            }}
-          >
-            "De verbindende kracht van voetbal."
-          </p>
-          <div
-            className="w-14 h-1 mt-6 rounded-full"
-            style={{ background: "var(--primary)" }}
-          />
-          <p
-            className="text-sm mt-3 font-semibold tracking-widest uppercase"
-            style={{ color: "rgba(12,26,13,0.4)" }}
-          >
-            Football is Life — Pass it on
-          </p>
-
-          {/* Bestuur */}
-          <div className="mt-12 pt-8 border-t" style={{ borderColor: "rgba(12,26,13,0.1)" }}>
-            <p
-              className="text-xs font-semibold tracking-widest uppercase mb-4"
-              style={{ color: "rgba(12,26,13,0.4)" }}
-            >
-              Bestuur
-            </p>
-            <ul className="space-y-2 text-sm" style={{ color: "rgba(12,26,13,0.6)" }}>
-              {[
-                { name: "Paul van Zwam", role: "Voorzitter" },
-                { name: "Ivo Spanjersberg", role: "Secretaris" },
-                { name: "Mano Radema", role: "Penningmeester" },
-              ].map((m) => (
-                <li key={m.name}>
-                  <strong style={{ color: "var(--pitch-dark)" }}>{m.name}</strong>
-                  <span className="mx-1.5 opacity-40">—</span>
-                  {m.role}
-                </li>
-              ))}
-            </ul>
-            <p className="text-xs mt-3" style={{ color: "rgba(12,26,13,0.35)" }}>
-              Onbezoldigd bestuur · Alle inkomsten gaan naar het project
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Body copy — real text from the site */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease, delay: 0.15 }}
-          className="space-y-5 text-lg leading-relaxed"
-          style={{ color: "rgba(12,26,13,0.72)" }}
-        >
-          <p>
-            Binnen no-time sta je midden tussen honderden mensen — kinderen,
-            ouders, jongeren — allemaal op een veld dat eigenlijk geen veld mag
-            heten. Ze lachen, ze spelen, ze genieten.
-          </p>
-          <p>
-            Die kracht is zó groot, dat we besloten hebben er iets blijvends mee
-            te doen. Zo is{" "}
-            <strong style={{ color: "var(--pitch-dark)" }}>
-              Football is Life
-            </strong>{" "}
-            ontstaan.
-          </p>
-          <p>
-            Met deze stichting gebruiken we voetbal als middel om{" "}
-            <strong style={{ color: "var(--primary)" }}>
-              communities te bouwen
-            </strong>
-            . Om mensen te verbinden. Om hoop, structuur en toekomst te brengen
-            op plekken waar dat niet vanzelfsprekend is.
-          </p>
-          <p>
-            In de communities die we ondersteunen, krijgen kinderen de kans om
-            samen te spelen, samen te trainen — maar ook om samen te leren. Over
-            gezondheid. Over educatie. Over samenwerken.
-          </p>
-          <p>
-            Het voetbalveld is daarbij de verbindende factor —{" "}
-            <strong style={{ color: "var(--pitch-dark)" }}>
-              het hart van de community.
-            </strong>
-          </p>
-
-          <div className="pt-4">
-            <Link
-              href="https://football-is-life.nl/over-ons/"
-              className="inline-flex items-center gap-2 font-bold text-base hover:opacity-70 transition-opacity"
-              style={{ color: "var(--primary)" }}
-            >
-              Meer over de stichting →
-            </Link>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Stats ────────────────────────────────────────── */
-const stats = [
+/* ── Hoe het werkt ───────────────────────────────────── */
+const steps = [
   {
-    value: "€ 15.000",
-    label: "Projectdoel",
-    desc: "Totaal nodig voor het veld, trainersopleiding en 2 jaar begeleiding in Soweto, Mzuzu",
+    n: "01",
+    title: "Voetbal opent de deur",
+    desc: "Het voetbalveld trekt jongeren aan en creëert een veilige, vertrouwde ontmoetingsplek. Hier begint alles.",
   },
   {
-    value: "1",
-    label: "Project in uitvoering",
-    desc: "Soweto — de armste wijk van Mzuzu, Malawi. Eerste project, blauwdruk voor meer.",
+    n: "02",
+    title: "Coaches bouwen vertrouwen",
+    desc: "Lokale jongeren worden geselecteerd en opgeleid als coach. Zij zijn rolmodellen uit de eigen community.",
   },
   {
-    value: "2 jaar",
-    label: "Begeleiding ter plaatse",
-    desc: "Football is Life blijft aanwezig na oplevering van het veld",
+    n: "03",
+    title: "Life skills geven richting",
+    desc: "Naast voetbal is er wekelijks ruimte voor gezondheid, samenwerken en persoonlijke ontwikkeling.",
+  },
+  {
+    n: "04",
+    title: "Lokaal eigenaarschap",
+    desc: "Football is Life blijft 2 jaar aanwezig. Daarna staat het lokale team er zelf voor — duurzaam verankerd.",
   },
 ];
 
-function Stats() {
+function HoeHetWerkt() {
   return (
-    <section className="py-24 px-6 bg-surface">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-        {stats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: i * 0.1, ease }}
-            className="glass-card rounded-2xl p-8 text-center"
+    <section className="py-24 px-6" style={{ background: "var(--sand-light)" }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease }}
+          className="mb-12"
+        >
+          <Label>Onze aanpak</Label>
+          <h2
+            className="font-display font-extrabold leading-tight tracking-tight max-w-xl"
+            style={{
+              fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+              color: "var(--green)",
+              letterSpacing: "-0.02em",
+            }}
           >
-            <p
-              className="font-display font-black leading-none"
+            Zo werkt het model.
+          </h2>
+          <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
+            Voetbal is de ingang — coaching en life skills zijn de inhoud.
+            Lokale partners zijn de dragers.
+          </p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.n}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease }}
+              className="rounded-2xl p-6"
               style={{
-                fontSize: "clamp(2rem, 4vw, 3.2rem)",
-                color: "var(--amber)",
+                background: "var(--white)",
+                border: "1px solid var(--border)",
+                boxShadow: "var(--shadow-sm)",
               }}
             >
-              {stat.value}
-            </p>
-            <p className="font-bold text-foreground text-base mt-2">
-              {stat.label}
-            </p>
-            <p className="text-foreground/45 text-sm mt-3 leading-relaxed">
-              {stat.desc}
-            </p>
-          </motion.div>
-        ))}
+              <p
+                className="font-display font-bold text-4xl leading-none mb-4"
+                style={{ color: "var(--green)", opacity: 0.18 }}
+              >
+                {step.n}
+              </p>
+              <h3
+                className="font-display font-bold text-base leading-snug mb-2"
+                style={{ color: "var(--charcoal)" }}
+              >
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                {step.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-/* ─── Project ──────────────────────────────────────── */
-function Project() {
+/* ── Project Soweto ──────────────────────────────────── */
+function ProjectSoweto() {
   return (
-    <section className="py-32 px-6 bg-background">
-      <div className="max-w-6xl mx-auto">
-        <motion.p
-          className="font-semibold tracking-widest text-sm uppercase mb-4"
-          style={{ color: "var(--amber)" }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          Huidig project
-        </motion.p>
-
+    <section className="py-24 px-6 bg-background">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        {/* Text */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease }}
-          className="rounded-3xl overflow-hidden border"
-          style={{
-            background: "var(--gradient-navy)",
-            borderColor: "rgba(245,166,35,0.15)",
-          }}
+          initial={{ opacity: 0, x: -24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease }}
         >
-          <div className="grid md:grid-cols-2">
-            {/* Visual panel */}
-            <div
-              className="relative min-h-72 md:min-h-full overflow-hidden"
+          <Label>Huidig project</Label>
+          <h2
+            className="font-display font-extrabold leading-tight tracking-tight"
+            style={{
+              fontSize: "clamp(1.9rem, 3.5vw, 3rem)",
+              color: "var(--green)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Communityproject
+            <br />
+            in Soweto, Mzuzu.
+          </h2>
+          <p className="mt-4 leading-relaxed" style={{ color: "var(--stone)" }}>
+            In Soweto — de armste wijk van Mzuzu, Malawi — bouwen we samen met
+            lokale partners een voetbalveld, leiden we coaches op en brengen we
+            life skills naar jongeren die dat het hardst nodig hebben.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--stone)", opacity: 0.75 }}>
+            In samenwerking met{" "}
+            <strong style={{ color: "var(--charcoal)" }}>UNGWERU</strong> en{" "}
+            <strong style={{ color: "var(--charcoal)" }}>St. Patrick</strong>{" "}
+            — twee lokaal gewortelde partners die de uitvoering dragen.
+          </p>
+
+          <div className="flex flex-wrap gap-3 mt-8">
+            <Link
+              href="/project"
+              className="px-6 py-3 rounded-full font-semibold text-white text-sm hover:opacity-85 transition-opacity"
+              style={{ background: "var(--green)" }}
+            >
+              Meer over dit project →
+            </Link>
+            <Link
+              href="/doneren"
+              className="px-6 py-3 rounded-full font-semibold text-sm border transition-colors"
               style={{
-                background:
-                  "linear-gradient(135deg, #0c1a0d 0%, #1a3d1c 60%, #0d1a10 100%)",
+                color: "var(--orange)",
+                borderColor: "rgba(201,107,44,0.30)",
               }}
             >
-              {/* Mini pitch */}
-              <svg
-                className="absolute inset-0 w-full h-full pointer-events-none"
-                viewBox="0 0 60 40"
-                preserveAspectRatio="xMidYMid slice"
-                aria-hidden="true"
-              >
-                <g stroke="white" strokeWidth="0.4" fill="none" opacity="0.11">
-                  <rect x="2" y="2" width="56" height="36" />
-                  <circle cx="30" cy="20" r="7" />
-                  <line x1="30" y1="2" x2="30" y2="38" />
-                  <rect x="2" y="10" width="9" height="20" />
-                  <rect x="49" y="10" width="9" height="20" />
-                </g>
-              </svg>
+              Steun het project
+            </Link>
+          </div>
+        </motion.div>
 
-              {/* Location badge */}
-              <div className="absolute top-6 left-6">
+        {/* Visual card */}
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.1, ease }}
+        >
+          <div
+            className="rounded-3xl overflow-hidden relative"
+            style={{
+              background: "var(--green-dark)",
+              aspectRatio: "4/3",
+              boxShadow: "var(--shadow-lg)",
+            }}
+          >
+            <PitchDecor opacity={0.09} stroke="white" />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(24,56,40,0.6) 0%, rgba(33,77,58,0.3) 100%)",
+              }}
+            />
+            <div className="absolute inset-0 p-7 flex flex-col justify-between">
+              <div>
                 <span
-                  className="rounded-full px-4 py-2 text-sm font-semibold text-foreground"
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold"
                   style={{
-                    background: "rgba(255,255,255,0.07)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    backdropFilter: "blur(8px)",
+                    background: "rgba(246,241,232,0.10)",
+                    border: "1px solid rgba(246,241,232,0.18)",
+                    color: "rgba(246,241,232,0.75)",
                   }}
                 >
                   📍 Soweto, Mzuzu — Malawi
                 </span>
               </div>
 
-              {/* Partners */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <p
-                  className="text-xs font-semibold tracking-widest uppercase mb-2"
-                  style={{ color: "rgba(255,255,255,0.35)" }}
-                >
-                  Partners
-                </p>
-                <div className="flex gap-2 flex-wrap">
-                  {["UNGWERU", "St. Patrick"].map((p) => (
-                    <span
-                      key={p}
-                      className="rounded-full px-3 py-1 text-xs font-bold"
+              <div>
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                  {[
+                    { v: "€ 15.000", l: "Projectdoel" },
+                    { v: "2 jaar", l: "Begeleiding" },
+                    { v: "60–80", l: "Jongeren (doel)" },
+                  ].map((s) => (
+                    <div
+                      key={s.l}
+                      className="rounded-xl p-3 text-center"
                       style={{
-                        background: "rgba(245,166,35,0.15)",
-                        border: "1px solid rgba(245,166,35,0.3)",
-                        color: "var(--amber)",
+                        background: "rgba(246,241,232,0.08)",
+                        border: "1px solid rgba(246,241,232,0.10)",
                       }}
                     >
-                      {p}
-                    </span>
+                      <p
+                        className="font-bold text-base leading-none"
+                        style={{ color: "rgba(246,241,232,0.92)" }}
+                      >
+                        {s.v}
+                      </p>
+                      <p
+                        className="text-xs mt-1 leading-tight"
+                        style={{ color: "rgba(246,241,232,0.45)" }}
+                      >
+                        {s.l}
+                      </p>
+                    </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Decorative number */}
-              <p
-                className="absolute right-4 top-1/2 -translate-y-1/2 font-display font-black leading-none select-none pointer-events-none"
-                style={{
-                  fontSize: "clamp(6rem, 12vw, 10rem)",
-                  color: "rgba(255,255,255,0.04)",
-                }}
-              >
-                01
-              </p>
-            </div>
-
-            {/* Content */}
-            <div className="p-10 flex flex-col justify-center">
-              <h2
-                className="font-display font-black text-foreground leading-tight"
-                style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}
-              >
-                Bouw mee aan de voetbalclub van Soweto
-              </h2>
-              <p className="mt-4 leading-relaxed text-foreground/60">
-                In Soweto — de armste wijk van Mzuzu — bouwen we een voetbalveld
-                en een veilige ontmoetingsplek. Lokale coaches worden opgeleid.
-                Naast voetbal is er ruimte voor educatie, voorlichting en
-                psychologische ondersteuning.
-              </p>
-              <p className="mt-3 text-sm text-foreground/35 leading-relaxed">
-                Football is Life levert sportmateriaal, begeleidt de aanleg en
-                traint lokale leiders — samen met UNGWERU en St. Patrick.
-              </p>
-
-              <div
-                className="mt-6 pt-6 border-t"
-                style={{ borderColor: "rgba(255,255,255,0.07)" }}
-              >
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="text-foreground/40">Projectdoel</span>
-                  <span
-                    className="font-bold"
-                    style={{ color: "var(--amber)" }}
-                  >
-                    € 15.000
-                  </span>
-                </div>
-                <p className="text-foreground/30 text-xs">
-                  Help mee dit doel te bereiken — iedere bijdrage telt
+                <p
+                  className="text-xs"
+                  style={{ color: "rgba(246,241,232,0.38)" }}
+                >
+                  Doelstellingen fase 1 · In uitvoering
                 </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Link
-                  href="/project"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-white font-bold hover:opacity-90 transition-opacity"
-                >
-                  Meer over het project →
-                </Link>
-                <Link
-                  href="/doneren"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full border text-foreground font-bold hover:bg-glass-bg transition-colors"
-                  style={{ borderColor: "rgba(255,255,255,0.12)" }}
-                >
-                  Steun dit project
-                </Link>
               </div>
             </div>
           </div>
@@ -518,93 +503,411 @@ function Project() {
   );
 }
 
-/* ─── Donate CTA (orange burst) ────────────────────── */
-const donationAmounts = ["€ 20", "€ 50", "€ 75", "€ 100"];
+/* ── Lokale partners ─────────────────────────────────── */
+const partners = [
+  {
+    name: "UNGWERU",
+    role: "Lokale verankering & coördinatie",
+    desc: "Diepgewortelde kennis van de gemeenschap in Soweto. UNGWERU zorgt voor lokale verankering en draagt de dagelijkse coördinatie van het project.",
+  },
+  {
+    name: "St. Patrick",
+    role: "Community & scholen",
+    desc: "Legt de verbinding met buurtbewoners, coaches en scholen in en rondom Soweto. Onmisbaar voor draagvlak en lokaal vertrouwen.",
+  },
+];
 
-function DonateCTA() {
+function LokalePartners() {
+  return (
+    <section className="py-24 px-6" style={{ background: "var(--green-pale)" }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease }}
+          className="mb-10"
+        >
+          <Label>Lokale partners</Label>
+          <h2
+            className="font-display font-extrabold leading-tight tracking-tight"
+            style={{
+              fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+              color: "var(--green)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Geworteld in de community.
+          </h2>
+          <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
+            UNGWERU en St. Patrick zijn geen footnoot — zij zijn de dragers van
+            het model.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {partners.map((p, i) => (
+            <motion.div
+              key={p.name}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease }}
+              className="rounded-2xl p-7"
+              style={{
+                background: "var(--white)",
+                border: "1px solid rgba(33,77,58,0.12)",
+                boxShadow: "var(--shadow-sm)",
+                borderLeft: "3px solid var(--green)",
+              }}
+            >
+              <p
+                className="font-display font-bold text-xl mb-1"
+                style={{ color: "var(--green)" }}
+              >
+                {p.name}
+              </p>
+              <p
+                className="text-xs font-semibold tracking-wide uppercase mb-3"
+                style={{ color: "var(--orange)" }}
+              >
+                {p.role}
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                {p.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Impact meting ───────────────────────────────────── */
+const metrics = [
+  { value: "60–80", label: "Jongeren bereikt", sub: "doelstelling fase 1" },
+  { value: "4–6", label: "Coaches opgeleid", sub: "lokale rolmodellen" },
+  { value: "3×", label: "Trainingen p/week", sub: "per groep" },
+  { value: "Wekelijks", label: "Life skills sessies", sub: "naast training" },
+  { value: "2 jaar", label: "Begeleiding", sub: "ter plaatse" },
+];
+
+function ImpactMeting() {
+  return (
+    <section className="py-24 px-6 bg-background">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease }}
+          className="mb-10 grid md:grid-cols-2 gap-8 items-end"
+        >
+          <div>
+            <Label>Impact</Label>
+            <h2
+              className="font-display font-extrabold leading-tight tracking-tight"
+              style={{
+                fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                color: "var(--green)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Zo meten we impact.
+            </h2>
+          </div>
+          <p className="text-sm leading-relaxed md:text-right" style={{ color: "var(--stone)" }}>
+            We meten wat we beloven. Onderstaande indicatoren zijn de
+            doelstellingen voor fase 1 van het project in Soweto.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {metrics.map((m, i) => (
+            <motion.div
+              key={m.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: i * 0.07, ease }}
+              className="rounded-2xl p-5 text-center"
+              style={{
+                background: "var(--green-pale)",
+                border: "1px solid rgba(33,77,58,0.10)",
+              }}
+            >
+              <p
+                className="font-display font-bold leading-none mb-2"
+                style={{
+                  fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
+                  color: "var(--green)",
+                }}
+              >
+                {m.value}
+              </p>
+              <p
+                className="text-xs font-semibold leading-snug mb-1"
+                style={{ color: "var(--charcoal)" }}
+              >
+                {m.label}
+              </p>
+              <p className="text-xs" style={{ color: "var(--stone)" }}>
+                {m.sub}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Groeipad ────────────────────────────────────────── */
+const growth = [
+  {
+    loc: "Soweto",
+    city: "Mzuzu, Malawi",
+    status: "In uitvoering",
+    statusColor: "var(--orange)",
+    desc: "Ons eerste project. Dit wordt de blauwdruk voor wat volgt.",
+    active: true,
+  },
+  {
+    loc: "Mzuzu",
+    city: "Malawi",
+    status: "Groeiplan",
+    statusColor: "var(--blue-grey)",
+    desc: "Uitbreiding binnen Mzuzu met het bewezen model en lokale coaches.",
+    active: false,
+  },
+  {
+    loc: "Rumphi & Nkhata Bay",
+    city: "Malawi",
+    status: "Toekomst",
+    statusColor: "var(--blue-grey)",
+    desc: "Verdere doorgroei naar andere regio's in Malawi.",
+    active: false,
+  },
+];
+
+function Groeipad() {
+  return (
+    <section className="py-24 px-6" style={{ background: "var(--sand-light)" }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease }}
+          className="mb-10"
+        >
+          <Label>Groeipad</Label>
+          <h2
+            className="font-display font-extrabold leading-tight tracking-tight"
+            style={{
+              fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+              color: "var(--green)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Stap voor stap verder.
+          </h2>
+          <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
+            We beginnen klein, grondig en lokaal verankerd. Daarna groeien we.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {growth.map((g, i) => (
+            <motion.div
+              key={g.loc}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease }}
+              className="rounded-2xl p-6 relative"
+              style={{
+                background: g.active ? "var(--white)" : "rgba(246,241,232,0.6)",
+                border: g.active
+                  ? "1px solid rgba(33,77,58,0.18)"
+                  : "1px solid var(--border)",
+                boxShadow: g.active ? "var(--shadow-md)" : "none",
+              }}
+            >
+              <div className="flex items-start justify-between mb-4">
+                <span
+                  className="font-display font-bold text-3xl leading-none"
+                  style={{ color: g.active ? "var(--green)" : "var(--stone)", opacity: 0.22 }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span
+                  className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                  style={{
+                    background: g.active
+                      ? "rgba(201,107,44,0.10)"
+                      : "rgba(102,112,106,0.10)",
+                    color: g.statusColor,
+                  }}
+                >
+                  {g.status}
+                </span>
+              </div>
+              <h3
+                className="font-display font-bold text-lg leading-snug mb-1"
+                style={{ color: g.active ? "var(--green)" : "var(--stone)" }}
+              >
+                {g.loc}
+              </h3>
+              <p
+                className="text-xs font-semibold mb-3"
+                style={{ color: "var(--orange)", opacity: g.active ? 1 : 0.5 }}
+              >
+                {g.city}
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                {g.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Doneer sectie ───────────────────────────────────── */
+const donationTiles = [
+  { amount: 10, impact: "1 jongere, 1 jaar betere begeleiding" },
+  { amount: 50, impact: "Bijdrage aan coachontwikkeling" },
+  { amount: 100, impact: "Trainingen en life skills" },
+];
+
+function DoneerSectie() {
   return (
     <section
-      className="py-32 px-6 relative overflow-hidden"
-      style={{ background: "var(--amber)" }}
+      className="py-28 px-6 relative overflow-hidden"
+      style={{ background: "var(--green)" }}
     >
-      {/* Pitch lines on amber */}
-      <PitchLines opacity={0.06} />
-      {/* Override SVG stroke for dark-on-amber effect */}
-      <style>{`
-        section[data-donate] svg g { stroke: #0c1a0d !important; }
-      `}</style>
+      <PitchDecor opacity={0.07} stroke="white" />
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+      <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        {/* Text */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease }}
         >
           <p
-            className="font-semibold tracking-widest text-sm uppercase mb-6"
-            style={{ color: "rgba(12,26,13,0.55)" }}
+            className="text-xs font-semibold tracking-widest uppercase mb-4"
+            style={{ color: "rgba(246,241,232,0.50)" }}
           >
             Doe mee
           </p>
-
           <h2
-            className="font-display font-black text-pitch-dark leading-tight"
-            style={{ fontSize: "clamp(3.5rem, 12vw, 10rem)" }}
-          >
-            DRAAG BIJ.
-          </h2>
-          <p
-            className="font-display font-black italic mt-2 leading-tight"
+            className="font-display font-extrabold leading-tight tracking-tight"
             style={{
-              fontSize: "clamp(1.5rem, 4vw, 3rem)",
-              color: "rgba(12,26,13,0.55)",
+              fontSize: "clamp(2.2rem, 5vw, 4.2rem)",
+              color: "rgba(246,241,232,0.95)",
+              letterSpacing: "-0.02em",
             }}
           >
-            Want Football is Life.
-          </p>
-
-          <p
-            className="text-lg mt-6 max-w-xl mx-auto leading-relaxed"
-            style={{ color: "rgba(12,26,13,0.7)" }}
-          >
-            € 20 = een voetbal voor een kind in Soweto.
+            Bouw mee aan
             <br />
-            Iedere bijdrage bouwt mee aan de community.
+            Soweto.
+          </h2>
+          <p
+            className="mt-5 text-base leading-relaxed"
+            style={{ color: "rgba(246,241,232,0.60)" }}
+          >
+            Elke bijdrage versterkt het lokale team, de coaches en de jongeren
+            die meedoen. Word partner of doneer een eenmalig bedrag.
           </p>
+          <Link
+            href="/doneren"
+            className="mt-7 inline-flex items-center px-7 py-3.5 rounded-full font-semibold text-base hover:opacity-85 transition-opacity"
+            style={{ background: "var(--orange)", color: "white" }}
+          >
+            Ga naar de donatietools →
+          </Link>
+        </motion.div>
 
-          {/* Donation amounts */}
-          <div className="flex flex-wrap gap-3 justify-center mt-10">
-            {donationAmounts.map((a) => (
-              <Link
-                key={a}
-                href="/doneren"
-                className="px-6 py-3 rounded-full font-bold text-lg border-2 transition-all duration-200"
-                style={{
-                  borderColor: "rgba(12,26,13,0.25)",
-                  color: "var(--pitch-dark)",
-                }}
-              >
-                {a}
-              </Link>
-            ))}
+        {/* Tiles */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.1, ease }}
+          className="space-y-3"
+        >
+          {donationTiles.map((tile, i) => (
             <Link
+              key={tile.amount}
               href="/doneren"
-              className="px-6 py-3 rounded-full font-bold text-lg transition-all duration-200 hover:opacity-90"
+              className="flex items-center justify-between rounded-2xl p-5 transition-all duration-200 group"
               style={{
-                background: "var(--pitch-dark)",
-                color: "var(--amber)",
+                background: "rgba(246,241,232,0.06)",
+                border: "1px solid rgba(246,241,232,0.10)",
               }}
             >
-              Eigen bedrag →
+              <div>
+                <p
+                  className="font-display font-bold text-xl leading-none"
+                  style={{ color: "rgba(246,241,232,0.92)" }}
+                >
+                  € {tile.amount}
+                </p>
+                <p
+                  className="text-sm mt-1"
+                  style={{ color: "rgba(246,241,232,0.50)" }}
+                >
+                  {tile.impact}
+                </p>
+              </div>
+              <span
+                className="text-lg group-hover:translate-x-1 transition-transform duration-200"
+                style={{ color: "rgba(246,241,232,0.35)" }}
+              >
+                →
+              </span>
             </Link>
-          </div>
-
-          <p
-            className="text-xs mt-6"
-            style={{ color: "rgba(12,26,13,0.4)" }}
+          ))}
+          <Link
+            href="/doneren"
+            className="flex items-center justify-between rounded-2xl p-5 transition-all duration-200 group"
+            style={{
+              background: "rgba(201,107,44,0.15)",
+              border: "1px solid rgba(201,107,44,0.25)",
+            }}
           >
-            ANBI-erkend stichting · Donaties fiscaal aftrekbaar
+            <div>
+              <p
+                className="font-display font-bold text-xl leading-none"
+                style={{ color: "rgba(246,241,232,0.92)" }}
+              >
+                Eigen bedrag
+              </p>
+              <p
+                className="text-sm mt-1"
+                style={{ color: "rgba(201,107,44,0.70)" }}
+              >
+                Voor partners en sponsors
+              </p>
+            </div>
+            <span
+              className="text-lg group-hover:translate-x-1 transition-transform duration-200"
+              style={{ color: "rgba(201,107,44,0.60)" }}
+            >
+              →
+            </span>
+          </Link>
+          <p
+            className="text-xs text-center pt-1"
+            style={{ color: "rgba(246,241,232,0.28)" }}
+          >
+            ANBI-erkend · Donaties fiscaal aftrekbaar
           </p>
         </motion.div>
       </div>
@@ -612,100 +915,121 @@ function DonateCTA() {
   );
 }
 
-/* ─── Footer ───────────────────────────────────────── */
+/* ── Footer ──────────────────────────────────────────── */
 function Footer() {
   return (
     <footer
       className="border-t py-16 px-6"
-      style={{
-        background: "var(--background)",
-        borderColor: "var(--glass-border)",
-      }}
+      style={{ background: "var(--charcoal)", borderColor: "rgba(246,241,232,0.08)" }}
     >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-10">
         {/* Brand */}
-        <div>
-          <p className="font-display font-black text-foreground text-2xl tracking-tight">
-            FOOTBALL IS LIFE
+        <div className="md:col-span-2">
+          <p
+            className="font-display font-bold text-base tracking-tight mb-3"
+            style={{ color: "rgba(246,241,232,0.85)" }}
+          >
+            Football is Life
           </p>
-          <p className="text-foreground/40 text-sm mt-2 leading-relaxed">
-            Stichting Football is Life
-            <br />
-            Pass it on!
-            <br />
-            ANBI · RSIN 868370873
+          <p
+            className="text-sm leading-relaxed max-w-xs"
+            style={{ color: "rgba(246,241,232,0.38)" }}
+          >
+            Stichting Football is Life gebruikt voetbal als ingang naar
+            coaching, life skills en ontwikkeling voor jongeren in Malawi.
+          </p>
+          <p
+            className="text-xs mt-4"
+            style={{ color: "rgba(246,241,232,0.22)" }}
+          >
+            ANBI-erkend · RSIN 868370873 · KvK Nijmegen
           </p>
         </div>
 
         {/* Bestuur */}
         <div>
-          <p className="text-foreground/35 text-xs font-semibold tracking-widest uppercase mb-4">
+          <p
+            className="text-xs font-semibold tracking-widest uppercase mb-4"
+            style={{ color: "rgba(246,241,232,0.28)" }}
+          >
             Bestuur
           </p>
-          <ul className="space-y-2 text-foreground/55 text-sm">
+          <ul className="space-y-2 text-sm" style={{ color: "rgba(246,241,232,0.45)" }}>
             {[
               { name: "Paul van Zwam", role: "Voorzitter" },
               { name: "Ivo Spanjersberg", role: "Secretaris" },
               { name: "Mano Radema", role: "Penningmeester" },
             ].map((m) => (
               <li key={m.name}>
-                <strong className="text-foreground/75">{m.name}</strong>
-                <span className="mx-1.5 opacity-40">—</span>
+                <span style={{ color: "rgba(246,241,232,0.70)" }}>{m.name}</span>
+                <span className="mx-1.5 opacity-30">—</span>
                 {m.role}
               </li>
             ))}
           </ul>
+          <p
+            className="text-xs mt-3"
+            style={{ color: "rgba(246,241,232,0.20)" }}
+          >
+            Onbezoldigd bestuur
+          </p>
         </div>
 
-        {/* Contact */}
+        {/* Links + contact */}
         <div>
-          <p className="text-foreground/35 text-xs font-semibold tracking-widest uppercase mb-4">
+          <p
+            className="text-xs font-semibold tracking-widest uppercase mb-4"
+            style={{ color: "rgba(246,241,232,0.28)" }}
+          >
             Contact
           </p>
-          <address className="not-italic text-foreground/55 text-sm leading-relaxed">
+          <address
+            className="not-italic text-sm leading-relaxed mb-4"
+            style={{ color: "rgba(246,241,232,0.45)" }}
+          >
             Dobbelmannweg 128
             <br />
             6531 KZ Nijmegen
           </address>
-          <div className="mt-6 flex gap-4">
+          <div className="flex flex-col gap-2 text-sm">
             <Link
               href="/project"
-              className="text-foreground/40 text-sm hover:text-foreground transition-colors"
+              className="hover:opacity-75 transition-opacity"
+              style={{ color: "rgba(246,241,232,0.40)" }}
             >
-              Project
+              Project Soweto
             </Link>
             <Link
               href="/over-ons"
-              className="text-foreground/40 text-sm hover:text-foreground transition-colors"
+              className="hover:opacity-75 transition-opacity"
+              style={{ color: "rgba(246,241,232,0.40)" }}
             >
               Over ons
             </Link>
             <Link
               href="/doneren"
-              className="text-amber text-sm font-semibold hover:opacity-75 transition-opacity"
+              className="font-semibold hover:opacity-75 transition-opacity"
+              style={{ color: "var(--orange)" }}
             >
-              Doneren
+              Doneren →
             </Link>
           </div>
         </div>
       </div>
 
       <div
-        className="max-w-6xl mx-auto mt-12 pt-8 border-t flex items-center justify-between"
-        style={{ borderColor: "var(--glass-border)" }}
+        className="max-w-6xl mx-auto mt-12 pt-8 border-t"
+        style={{ borderColor: "rgba(246,241,232,0.07)" }}
       >
-        <p className="text-foreground/25 text-xs">
-          © Football is Life. Pass it on!
-        </p>
-        <p className="text-foreground/20 text-xs">
-          Onbezoldigd bestuur · Alle inkomsten gaan naar het project
+        <p className="text-xs" style={{ color: "rgba(246,241,232,0.18)" }}>
+          © Football is Life · Alle inkomsten gaan naar het project
         </p>
       </div>
     </footer>
   );
 }
 
-/* ─── Page ─────────────────────────────────────────── */
+/* ── Page ────────────────────────────────────────────── */
 export default function Home() {
   return (
     <>
@@ -713,10 +1037,12 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee />
-        <Mission />
-        <Stats />
-        <Project />
-        <DonateCTA />
+        <HoeHetWerkt />
+        <ProjectSoweto />
+        <LokalePartners />
+        <ImpactMeting />
+        <Groeipad />
+        <DoneerSectie />
       </main>
       <Footer />
     </>

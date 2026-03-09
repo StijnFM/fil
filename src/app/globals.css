@@ -1,125 +1,128 @@
 @import "tailwindcss";
 
-/* ─── Base browser resets ─── */
+/* ── Browser baseline ─────────────────────────────── */
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Football is Life — Design Tokens (Editorial v2) ── */
+:root {
+  /* Palette */
+  --ivory:          #F6F1E8;
+  --sand:           #E7D8BF;
+  --sand-light:     #EFE7D5;
+  --charcoal:       #1F2421;
+  --stone:          #66706A;
+  --green:          #214D3A;
+  --green-dark:     #183828;
+  --green-mid:      #2D6B52;
+  --green-pale:     #EDF3EE;
+  --orange:         #C96B2C;
+  --orange-hover:   #D97830;
+  --orange-pale:    #FDF0E7;
+  --blue-grey:      #AAB8B6;
+  --blue-grey-pale: #EEF2F1;
+  --white:          #FFFFFF;
+
+  /* Semantic */
+  --background:         var(--ivory);
+  --surface:            var(--sand-light);
+  --foreground:         var(--charcoal);
+  --foreground-muted:   var(--stone);
+  --primary:            var(--green);
+  --primary-hover:      var(--green-mid);
+  --accent:             var(--orange);
+  --accent-hover:       var(--orange-hover);
+  --border:             rgba(31, 36, 33, 0.10);
+  --border-strong:      rgba(31, 36, 33, 0.20);
+  --nav-bg:             rgba(246, 241, 232, 0.96);
+
+  /* Shadows */
+  --shadow-xs:   0 1px 2px rgba(31,36,33,0.06);
+  --shadow-sm:   0 1px 4px rgba(31,36,33,0.07), 0 0 1px rgba(31,36,33,0.04);
+  --shadow-md:   0 4px 16px rgba(31,36,33,0.08), 0 1px 4px rgba(31,36,33,0.04);
+  --shadow-lg:   0 10px 40px rgba(31,36,33,0.10), 0 2px 8px rgba(31,36,33,0.05);
+  --shadow-card: 0 2px 8px rgba(31,36,33,0.07), 0 0 1px rgba(31,36,33,0.05);
+
+  /* Glows */
+  --glow-green:  0 0 32px rgba(33,77,58,0.24);
+  --glow-orange: 0 0 28px rgba(201,107,44,0.30);
+
+  /* Motion */
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 280ms;
+  --duration-slow:   500ms;
+}
+
+/* ── Tailwind v4 theme mapping ────────────────────── */
+@theme inline {
+  --color-background:    var(--ivory);
+  --color-surface:       var(--sand-light);
+  --color-foreground:    var(--charcoal);
+  --color-muted:         var(--stone);
+  --color-primary:       var(--green);
+  --color-accent:        var(--orange);
+  --color-sand:          var(--sand);
+  --color-ivory:         var(--ivory);
+  --color-green-pale:    var(--green-pale);
+  --color-orange-pale:   var(--orange-pale);
+  --color-blue-grey:     var(--blue-grey);
+  --color-green-dark:    var(--green-dark);
+  --color-charcoal:      var(--charcoal);
+  --color-stone:         var(--stone);
+  --color-white:         var(--white);
+  --font-sans:           var(--font-inter);
+  --font-display:        var(--font-jakarta);
+}
+
+/* ── Base ─────────────────────────────────────────── */
 body {
+  background: var(--ivory);
+  color: var(--charcoal);
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-[class*="fixed"],
-[class*="sticky"] {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
-
-/* ─── Football is Life — Design Tokens ─── */
-:root {
-  /* Core */
-  --background: #0c1a0d;
-  --foreground: #fef9f0;
-  --primary: #f4811f;
-  --primary-rgb: 244, 129, 31;
-  --surface: #111f12;
-  --border: rgba(255, 255, 255, 0.08);
-  --nav-bg: rgba(12, 26, 13, 0.88);
-
-  /* Brand */
-  --pitch-dark: #0c1a0d;
-  --grass-dark: #1a3d1c;
-  --grass: #2d6e35;
-  --grass-light: #43a047;
-  --amber: #f5a623;
-  --earth: #8b4513;
-  --earth-light: #c2502c;
-  --cream: #fef9f0;
-  --sand: #f5e6c8;
-
-  /* Glass */
-  --glass-border: rgba(255, 255, 255, 0.10);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-hover-border: rgba(255, 255, 255, 0.22);
-
-  /* Glows & shadows */
-  --glow-orange: 0 0 40px rgba(244, 129, 31, 0.35);
-  --glow-amber: 0 0 40px rgba(245, 166, 35, 0.30);
-  --glow-green: 0 0 40px rgba(45, 110, 53, 0.30);
-  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.35);
-
-  /* Gradients */
-  --gradient-pitch: linear-gradient(135deg, #0c1a0d 0%, #1a3d1c 100%);
-  --gradient-sun: linear-gradient(135deg, #f4811f 0%, #f5a623 100%);
-  --gradient-earth: linear-gradient(135deg, #8b4513 0%, #f4811f 100%);
-  --gradient-navy: linear-gradient(135deg, #0d1523 0%, #162035 100%);
-
-  /* Easing */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-
-  /* Durations */
-  --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 500ms;
-  --duration-slower: 800ms;
-}
-
-/* ─── Tailwind v4 theme mapping ─── */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-surface: var(--surface);
-  --color-border: var(--border);
-  --color-pitch-dark: var(--pitch-dark);
-  --color-grass-dark: var(--grass-dark);
-  --color-grass: var(--grass);
-  --color-grass-light: var(--grass-light);
-  --color-amber: var(--amber);
-  --color-earth: var(--earth);
-  --color-earth-light: var(--earth-light);
-  --color-cream: var(--cream);
-  --color-sand: var(--sand);
-  --color-glass-border: var(--glass-border);
-  --color-glass-bg: var(--glass-bg);
-  --color-glass-hover-border: var(--glass-hover-border);
-  --font-sans: var(--font-figtree);
-  --font-display: var(--font-barlow);
-}
-
-/* ─── Base styles ─── */
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
-
 ::selection {
-  background: rgba(245, 166, 35, 0.3);
-  color: var(--pitch-dark);
+  background: rgba(201, 107, 44, 0.15);
+  color: var(--charcoal);
 }
 
 :focus-visible {
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--orange);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* ─── Glass utility ─── */
-@utility glass-card {
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* ── Component utilities ──────────────────────────── */
+@utility card {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
 }
 
-/* ─── Keyframes ─── */
+@utility card-sand {
+  background: var(--sand-light);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+@utility card-green {
+  background: var(--green-pale);
+  border-radius: 16px;
+  border: 1px solid rgba(33,77,58,0.12);
+}
+
+/* ── Keyframes ────────────────────────────────────── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -133,31 +136,22 @@ body {
   to   { transform: translateX(-50%); }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
-}
-
-/* ─── Animation utilities ─── */
+/* ── Animation utilities ──────────────────────────── */
 @utility animate-fade-up {
-  animation: fadeUp 0.8s var(--ease-out-expo) forwards;
+  animation: fadeUp 0.65s var(--ease-out-expo) forwards;
   opacity: 0;
 }
 
 @utility animate-fade-in {
-  animation: fadeIn 0.6s var(--ease-out-expo) forwards;
+  animation: fadeIn 0.5s ease forwards;
   opacity: 0;
 }
 
 @utility animate-marquee {
-  animation: marquee 28s linear infinite;
+  animation: marquee 32s linear infinite;
 }
 
-@utility animate-pulse-glow {
-  animation: pulseGlow 2.5s ease-in-out infinite;
-}
-
-/* ─── Reduced motion ─── */
+/* ── Reduced motion ───────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

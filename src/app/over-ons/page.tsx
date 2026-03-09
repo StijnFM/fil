@@ -8,24 +8,35 @@ export const metadata: Metadata = {
     "Stichting Football is Life wordt bestuurd door een onbezoldigd bestuur van drie leden. ANBI-erkend, RSIN 868370873, gevestigd in Nijmegen.",
 };
 
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "var(--orange)" }}>
+      {children}
+    </p>
+  );
+}
+
 const board = [
   {
     name: "Paul van Zwam",
     role: "Voorzitter",
     initials: "PZ",
-    desc: "Paul voert naast zijn bestuursrol ook operationele taken uit. Hij is het gezicht van Football is Life in het veld.",
+    desc: "Paul voert naast zijn bestuursrol ook operationele taken uit. Hij is het gezicht van Football is Life in het veld en in het netwerk.",
+    expertise: ["Operationele leiding", "Netwerk professionele sport", "Veldwerk"],
   },
   {
     name: "Ivo Spanjersberg",
     role: "Secretaris",
     initials: "IS",
     desc: "Ivo verzorgt de interne communicatie, documentatie en coördinatie. Samen met Paul draagt hij operationele verantwoordelijkheid.",
+    expertise: ["Communicatie", "Documentatie", "Coördinatie"],
   },
   {
     name: "Mano Radema",
     role: "Penningmeester",
     initials: "MR",
-    desc: "Mano bewaakt de financiën en zorgt dat elke gedoneerde euro transparant en verantwoord wordt besteed.",
+    desc: "Mano bewaakt de financiën en zorgt dat elke gedoneerde euro transparant en verantwoord wordt besteed conform ANBI-voorwaarden.",
+    expertise: ["Financiën", "ANBI-verantwoording", "Transparantie"],
   },
 ];
 
@@ -53,214 +64,271 @@ export default function OverOnsPage() {
       <main className="bg-background">
 
         {/* ── Hero ── */}
-        <section className="relative min-h-[55vh] flex flex-col items-center justify-center overflow-hidden pt-16">
+        <section
+          className="relative pt-16 overflow-hidden"
+          style={{ background: "var(--green)" }}
+        >
           <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
+            className="absolute inset-0 w-full h-full pointer-events-none select-none"
             viewBox="0 0 120 80"
             preserveAspectRatio="xMidYMid slice"
             aria-hidden="true"
-            style={{ opacity: 0.09 }}
           >
-            <g stroke="white" strokeWidth="0.5" fill="none">
+            <g stroke="white" strokeWidth="0.5" fill="none" style={{ opacity: 0.07 }}>
               <rect x="4" y="4" width="112" height="72" />
               <circle cx="60" cy="40" r="10" />
               <line x1="60" y1="4" x2="60" y2="76" />
             </g>
           </svg>
-          <div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-64 rounded-full blur-[100px] pointer-events-none"
-            style={{ background: "var(--amber)", opacity: 0.10 }}
-          />
 
-          <div className="relative z-10 text-center max-w-4xl mx-auto px-6 py-20">
-            <p
-              className="text-xs font-semibold tracking-widest uppercase mb-6"
-              style={{ color: "var(--amber)" }}
+          <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 md:py-28">
+            <span
+              className="inline-block text-xs font-semibold tracking-widest uppercase mb-6"
+              style={{ color: "rgba(201,107,44,0.80)" }}
             >
               Stichting · Nijmegen · ANBI
-            </p>
+            </span>
             <h1
-              className="font-display font-black text-foreground leading-[0.85]"
-              style={{ fontSize: "clamp(3.5rem, 14vw, 11rem)" }}
-            >
-              OVER ONS.
-            </h1>
-            <p
-              className="font-display font-black italic mt-3"
+              className="font-display font-extrabold leading-[1.0] tracking-tight"
               style={{
-                fontSize: "clamp(1.4rem, 3.5vw, 2.8rem)",
-                color: "rgba(254,249,240,0.4)",
+                fontSize: "clamp(3rem, 7vw, 5.5rem)",
+                color: "rgba(246,241,232,0.95)",
+                letterSpacing: "-0.025em",
               }}
             >
-              Football is Life. Pass it on.
+              Over ons.
+            </h1>
+            <p
+              className="mt-5 max-w-lg text-lg leading-relaxed"
+              style={{ color: "rgba(246,241,232,0.58)" }}
+            >
+              Een jonge stichting met serieuze uitvoeringskracht. Kleinschalig,
+              persoonlijk en volledig transparant.
             </p>
           </div>
         </section>
 
-        {/* ── Mission (cream) ── */}
-        <section style={{ background: "var(--cream)" }} className="py-24 px-6">
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+        {/* ── Missie ── */}
+        <section style={{ background: "var(--ivory)" }} className="py-24 px-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
-              <p
-                className="text-xs font-semibold tracking-widest uppercase mb-4"
-                style={{ color: "rgba(12,26,13,0.4)" }}
-              >
-                Missie
-              </p>
+              <Label>Missie</Label>
               <h2
-                className="font-display font-black leading-tight"
+                className="font-display font-extrabold leading-tight tracking-tight"
                 style={{
-                  fontSize: "clamp(2rem, 4vw, 3.2rem)",
-                  color: "var(--pitch-dark)",
+                  fontSize: "clamp(1.9rem, 3.5vw, 3rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
                 }}
               >
-                Voetbal als middel. Community als doel.
+                Voetbal als middel.
+                <br />
+                Community als doel.
               </h2>
-              <div
-                className="w-14 h-1 mt-5 rounded-full"
-                style={{ background: "var(--primary)" }}
-              />
+              <div className="w-12 h-1 mt-5 rounded-full" style={{ background: "var(--orange)" }} />
             </div>
-            <div
-              className="space-y-4 text-base leading-relaxed"
-              style={{ color: "rgba(12,26,13,0.70)" }}
-            >
+            <div className="space-y-4 leading-relaxed" style={{ color: "var(--stone)" }}>
               <p>
                 Die kracht is zó groot, dat we besloten hebben er iets blijvends
                 mee te doen. Zo is{" "}
-                <strong style={{ color: "var(--pitch-dark)" }}>
-                  Football is Life
-                </strong>{" "}
+                <strong style={{ color: "var(--charcoal)" }}>Football is Life</strong>{" "}
                 ontstaan.
               </p>
               <p>
                 Met deze stichting gebruiken we voetbal als middel om{" "}
-                <strong style={{ color: "var(--primary)" }}>
-                  communities te bouwen
-                </strong>
-                . Om mensen te verbinden. Om hoop, structuur en toekomst te
-                brengen op plekken waar dat niet vanzelfsprekend is.
+                <strong style={{ color: "var(--green)" }}>communities te bouwen</strong>.
+                Om mensen te verbinden. Om hoop, structuur en toekomst te brengen
+                op plekken waar dat niet vanzelfsprekend is.
               </p>
               <p>
                 De stichting kiest voor een{" "}
-                <strong style={{ color: "var(--pitch-dark)" }}>
+                <strong style={{ color: "var(--charcoal)" }}>
                   kleinschalige, persoonlijke en transparante aanpak
                 </strong>
                 , gericht op duurzame relaties met betrokken donateurs. In het
-                eerste jaar werken we aan een eerste voorbeeldproject in Mzuzu,
-                dat als blauwdruk dient voor verdere uitbreiding.
+                eerste jaar werken we aan een eerste voorbeeldproject in Soweto,
+                Mzuzu — dat als blauwdruk dient voor verdere uitbreiding.
               </p>
             </div>
           </div>
         </section>
 
-        {/* ── Board ── */}
-        <section className="py-24 px-6 bg-background">
+        {/* ── Bestuur ── */}
+        <section className="py-24 px-6" style={{ background: "var(--sand-light)" }}>
           <div className="max-w-6xl mx-auto">
-            <p
-              className="text-xs font-semibold tracking-widest uppercase mb-3"
-              style={{ color: "var(--amber)" }}
-            >
-              Bestuur
-            </p>
-            <h2
-              className="font-display font-black text-foreground mb-3"
-              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
-            >
-              Drie mensen. Één missie.
-            </h2>
-            <p
-              className="mb-12 max-w-xl"
-              style={{ color: "rgba(254,249,240,0.5)" }}
-            >
-              Het bestuur werkt volledig onbezoldigd. Alleen werkelijk gemaakte
-              onkosten worden gedeclareerd, conform de ANBI-voorwaarden.
-            </p>
+            <div className="mb-12">
+              <Label>Bestuur</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Drie mensen. Één missie.
+              </h2>
+              <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
+                Het bestuur werkt volledig onbezoldigd. Alleen werkelijk gemaakte
+                onkosten worden gedeclareerd, conform de ANBI-voorwaarden.
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-5">
               {board.map((member) => (
                 <div
                   key={member.name}
-                  className="glass-card rounded-2xl p-8"
+                  className="rounded-2xl p-7"
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid var(--border)",
+                    boxShadow: "var(--shadow-card)",
+                  }}
                 >
                   {/* Avatar */}
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center font-display font-black text-xl mb-6"
+                    className="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-base mb-5"
                     style={{
-                      background: "rgba(245,166,35,0.15)",
-                      border: "2px solid rgba(245,166,35,0.3)",
-                      color: "var(--amber)",
+                      background: "var(--green-pale)",
+                      border: "2px solid rgba(33,77,58,0.18)",
+                      color: "var(--green)",
                     }}
                   >
                     {member.initials}
                   </div>
-                  <p
-                    className="font-bold text-foreground text-lg leading-tight"
-                  >
+                  <p className="font-bold text-base" style={{ color: "var(--charcoal)" }}>
                     {member.name}
                   </p>
                   <p
-                    className="text-xs font-semibold tracking-widest uppercase mt-1 mb-4"
-                    style={{ color: "var(--amber)" }}
+                    className="text-xs font-semibold tracking-wide uppercase mt-1 mb-4"
+                    style={{ color: "var(--orange)" }}
                   >
                     {member.role}
                   </p>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: "rgba(254,249,240,0.5)" }}
-                  >
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--stone)" }}>
                     {member.desc}
                   </p>
+                  {/* Expertise tags */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {member.expertise.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2.5 py-1 rounded-full"
+                        style={{
+                          background: "var(--green-pale)",
+                          color: "var(--green)",
+                          border: "1px solid rgba(33,77,58,0.12)",
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Funding ── */}
-        <section className="py-24 px-6 bg-surface">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+        {/* ── Hoe we werken ── */}
+        <section className="py-24 px-6 bg-background">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
-              <p
-                className="text-xs font-semibold tracking-widest uppercase mb-3"
-                style={{ color: "var(--amber)" }}
-              >
-                Financiering
-              </p>
+              <Label>Werkwijze</Label>
               <h2
-                className="font-display font-black text-foreground leading-tight mb-4"
-                style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Kleinschalig, persoonlijk,
+                transparant.
+              </h2>
+            </div>
+            <div className="space-y-5">
+              {[
+                {
+                  title: "Lokaal ingebed",
+                  desc: "We werken altijd met en via lokale partners. Zij kennen de community — wij ondersteunen en borgen de aanpak.",
+                },
+                {
+                  title: "Persoonlijk contact",
+                  desc: "Donateurs krijgen directe updates van het veld. Geen bulkmails, maar echte betrokkenheid bij het project.",
+                },
+                {
+                  title: "Verantwoord besteden",
+                  desc: "Alle middelen gaan naar het project. Het bestuur werkt onbezoldigd. Transparante financiële verantwoording.",
+                },
+                {
+                  title: "Schaalbaar model",
+                  desc: "We beginnen met Soweto als blauwdruk. Daarna groeien we naar Mzuzu, Rumphi en Nkhata Bay.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="flex gap-4 py-4 border-b last:border-0"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  <div
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
+                    style={{ background: "var(--orange)" }}
+                  />
+                  <div>
+                    <p className="font-semibold text-sm mb-1" style={{ color: "var(--charcoal)" }}>
+                      {item.title}
+                    </p>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Financiering ── */}
+        <section className="py-24 px-6" style={{ background: "var(--green-pale)" }}>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
+            <div>
+              <Label>Financiering</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
               >
                 Hoe we onze middelen verkrijgen.
               </h2>
-              <p style={{ color: "rgba(254,249,240,0.55)" }} className="leading-relaxed">
+              <p className="mt-4 leading-relaxed" style={{ color: "var(--stone)" }}>
                 Football is Life financiert haar activiteiten door middel van
                 donaties, fondsenwerving en sponsorschap. Primair binnen het
                 netwerk van de oprichters in de professionele sport en het
                 bedrijfsleven.
               </p>
             </div>
-            <ul className="space-y-4">
+            <ul className="space-y-0">
               {fundingSources.map((source, i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-4 py-4 border-b"
-                  style={{ borderColor: "var(--glass-border)" }}
+                  className="flex items-start gap-4 py-4 border-b last:border-0"
+                  style={{ borderColor: "rgba(33,77,58,0.12)" }}
                 >
                   <span
-                    className="font-display font-black text-sm flex-shrink-0 mt-1"
-                    style={{ color: "var(--amber)" }}
+                    className="font-display font-bold text-xs flex-shrink-0 mt-1 w-5"
+                    style={{ color: "var(--orange)" }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <p className="font-semibold text-foreground text-sm">
+                    <p className="font-semibold text-sm" style={{ color: "var(--charcoal)" }}>
                       {source.label}
                     </p>
-                    <p
-                      className="text-xs mt-0.5"
-                      style={{ color: "rgba(254,249,240,0.38)" }}
-                    >
+                    <p className="text-xs mt-0.5" style={{ color: "var(--stone)" }}>
                       {source.desc}
                     </p>
                   </div>
@@ -275,35 +343,24 @@ export default function OverOnsPage() {
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
             {/* ANBI */}
             <div>
-              <p
-                className="text-xs font-semibold tracking-widest uppercase mb-6"
-                style={{ color: "var(--amber)" }}
-              >
-                Transparantie & ANBI
-              </p>
-              <div className="space-y-3">
+              <Label>Transparantie & ANBI</Label>
+              <div className="space-y-0">
                 {anbiInfo.map((row) => (
                   <div
                     key={row.label}
-                    className="flex justify-between py-3 border-b"
-                    style={{ borderColor: "var(--glass-border)" }}
+                    className="flex justify-between py-3.5 border-b"
+                    style={{ borderColor: "var(--border)" }}
                   >
-                    <span
-                      className="text-sm"
-                      style={{ color: "rgba(254,249,240,0.45)" }}
-                    >
+                    <span className="text-sm" style={{ color: "var(--stone)" }}>
                       {row.label}
                     </span>
-                    <span className="text-sm font-semibold text-foreground">
+                    <span className="text-sm font-semibold" style={{ color: "var(--charcoal)" }}>
                       {row.value}
                     </span>
                   </div>
                 ))}
               </div>
-              <p
-                className="mt-6 text-xs leading-relaxed"
-                style={{ color: "rgba(254,249,240,0.3)" }}
-              >
+              <p className="mt-5 text-xs leading-relaxed" style={{ color: "var(--stone)", opacity: 0.75 }}>
                 Als ANBI-erkende instelling zijn donaties aan Football is Life
                 fiscaal aftrekbaar. Alle financiële informatie is beschikbaar op
                 verzoek via het bestuur.
@@ -312,25 +369,20 @@ export default function OverOnsPage() {
 
             {/* Contact */}
             <div>
-              <p
-                className="text-xs font-semibold tracking-widest uppercase mb-6"
-                style={{ color: "var(--amber)" }}
-              >
-                Contact
-              </p>
+              <Label>Contact</Label>
               <address className="not-italic space-y-3">
-                <p className="font-bold text-foreground text-lg">
+                <p className="font-bold text-lg" style={{ color: "var(--charcoal)" }}>
                   Stichting Football is Life
                 </p>
-                <p style={{ color: "rgba(254,249,240,0.55)" }}>
+                <p style={{ color: "var(--stone)" }}>
                   Dobbelmannweg 128
                   <br />
                   6531 KZ Nijmegen
                 </p>
                 <a
                   href="tel:+31639478488"
-                  className="block font-semibold hover:opacity-75 transition-opacity"
-                  style={{ color: "var(--amber)" }}
+                  className="block font-semibold hover:opacity-70 transition-opacity"
+                  style={{ color: "var(--orange)" }}
                 >
                   +31 6 39 47 84 88
                 </a>
@@ -338,17 +390,15 @@ export default function OverOnsPage() {
 
               <div
                 className="mt-8 pt-8 border-t"
-                style={{ borderColor: "var(--glass-border)" }}
+                style={{ borderColor: "var(--border)" }}
               >
-                <p
-                  className="text-sm mb-4"
-                  style={{ color: "rgba(254,249,240,0.45)" }}
-                >
+                <p className="text-sm mb-4" style={{ color: "var(--stone)" }}>
                   Wil je bijdragen aan het project in Soweto?
                 </p>
                 <Link
                   href="/doneren"
-                  className="inline-flex items-center px-6 py-3 rounded-full bg-primary text-white font-bold hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center px-6 py-3 rounded-full font-semibold text-white hover:opacity-85 transition-opacity"
+                  style={{ background: "var(--orange)" }}
                 >
                   Doneer nu →
                 </Link>
@@ -357,24 +407,18 @@ export default function OverOnsPage() {
           </div>
         </section>
 
-        {/* ── Ambassadors note ── */}
+        {/* ── Ambassadeurs ── */}
         <section
-          className="py-16 px-6 border-t"
-          style={{ borderColor: "var(--glass-border)" }}
+          className="py-14 px-6 border-t"
+          style={{ borderColor: "var(--border)", background: "var(--sand-light)" }}
         >
           <div className="max-w-4xl mx-auto text-center">
-            <p
-              className="text-sm leading-relaxed max-w-2xl mx-auto"
-              style={{ color: "rgba(254,249,240,0.38)" }}
-            >
+            <p className="text-sm leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--stone)" }}>
               De stichting werkt met{" "}
-              <strong style={{ color: "rgba(254,249,240,0.6)" }}>
-                ambassadeurs
-              </strong>
-              : mensen met een sterke reputatie of specifiek netwerk in de sport-
-              of zakenwereld, die zich belangeloos inzetten voor de zichtbaarheid
-              en impact van de stichting. Elke ambassadeur heeft een specifieke
-              taak.
+              <strong style={{ color: "var(--charcoal)" }}>ambassadeurs</strong>
+              : mensen met een sterke reputatie of specifiek netwerk in de sport- of
+              zakenwereld, die zich belangeloos inzetten voor de zichtbaarheid en
+              impact van de stichting. Elke ambassadeur heeft een specifieke taak.
             </p>
           </div>
         </section>

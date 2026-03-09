@@ -3,8 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-const PRESET_AMOUNTS = [20, 50, 75, 100];
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+const TILES = [
+  { amount: 10, label: "1 jongere", impact: "1 jaar betere begeleiding" },
+  { amount: 50, label: "Coachontwikkeling", impact: "Meerdere jongeren geholpen" },
+  { amount: 100, label: "Trainingen & life skills", impact: "Direct verschil op het veld" },
+];
 
 export function DoneerForm() {
   const [selectedAmount, setSelectedAmount] = useState<number | "custom">(50);
@@ -78,59 +83,98 @@ export function DoneerForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-8">
-      {/* ── Amount selection ── */}
+    <form onSubmit={handleSubmit} noValidate className="space-y-7">
+
+      {/* ── Amount tiles ── */}
       <div>
         <p
           className="text-xs font-semibold tracking-widest uppercase mb-4"
-          style={{ color: "rgba(254,249,240,0.4)" }}
+          style={{ color: "var(--stone)" }}
         >
           Kies een bedrag
         </p>
 
-        <div className="grid grid-cols-2 gap-3">
-          {PRESET_AMOUNTS.map((a) => {
-            const active = selectedAmount === a;
+        <div className="space-y-2.5">
+          {TILES.map((tile) => {
+            const active = selectedAmount === tile.amount;
             return (
               <button
-                key={a}
+                key={tile.amount}
                 type="button"
-                onClick={() => selectAmount(a)}
-                className="py-5 rounded-2xl border-2 font-display font-black transition-all duration-200"
+                onClick={() => selectAmount(tile.amount)}
+                className="w-full rounded-2xl p-4 text-left transition-all duration-200 flex items-center justify-between group"
                 style={{
-                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                  background: active ? "var(--amber)" : "var(--surface)",
-                  borderColor: active ? "var(--amber)" : "var(--glass-border)",
-                  color: active ? "var(--pitch-dark)" : "var(--foreground)",
-                  boxShadow: active ? "var(--glow-amber)" : "none",
+                  background: active ? "var(--green)" : "var(--white)",
+                  border: `2px solid ${active ? "var(--green)" : "var(--border)"}`,
+                  boxShadow: active ? "var(--glow-green)" : "var(--shadow-sm)",
                 }}
               >
-                € {a}
+                <div>
+                  <p
+                    className="font-bold text-xl leading-none mb-1"
+                    style={{ color: active ? "rgba(246,241,232,0.95)" : "var(--charcoal)" }}
+                  >
+                    € {tile.amount}
+                  </p>
+                  <p
+                    className="text-xs font-semibold"
+                    style={{ color: active ? "rgba(246,241,232,0.65)" : "var(--stone)" }}
+                  >
+                    {tile.label}
+                    <span className="mx-1.5 opacity-40">—</span>
+                    {tile.impact}
+                  </p>
+                </div>
+                <div
+                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors duration-200"
+                  style={{
+                    borderColor: active ? "rgba(246,241,232,0.50)" : "var(--border-strong)",
+                    background: active ? "rgba(246,241,232,0.20)" : "transparent",
+                  }}
+                >
+                  {active && (
+                    <div className="w-2 h-2 rounded-full" style={{ background: "rgba(246,241,232,0.90)" }} />
+                  )}
+                </div>
               </button>
             );
           })}
-        </div>
 
-        {/* Custom amount toggle */}
-        <button
-          type="button"
-          onClick={() => selectAmount("custom")}
-          className="mt-3 w-full py-3.5 rounded-2xl text-sm font-semibold border-2 transition-all duration-200"
-          style={{
-            borderColor:
-              selectedAmount === "custom" ? "var(--amber)" : "var(--glass-border)",
-            background:
-              selectedAmount === "custom"
-                ? "rgba(245,166,35,0.08)"
-                : "transparent",
-            color:
-              selectedAmount === "custom"
-                ? "var(--amber)"
-                : "rgba(254,249,240,0.45)",
-          }}
-        >
-          Eigen bedrag
-        </button>
+          {/* Custom amount */}
+          <button
+            type="button"
+            onClick={() => selectAmount("custom")}
+            className="w-full rounded-2xl p-4 text-left transition-all duration-200 flex items-center justify-between"
+            style={{
+              background: selectedAmount === "custom" ? "var(--orange-pale)" : "var(--white)",
+              border: `2px solid ${selectedAmount === "custom" ? "var(--orange)" : "var(--border)"}`,
+              boxShadow: "var(--shadow-sm)",
+            }}
+          >
+            <div>
+              <p
+                className="font-bold text-base leading-none mb-0.5"
+                style={{ color: selectedAmount === "custom" ? "var(--orange)" : "var(--charcoal)" }}
+              >
+                Eigen bedrag
+              </p>
+              <p className="text-xs" style={{ color: "var(--stone)" }}>
+                Voor partners en sponsors
+              </p>
+            </div>
+            <div
+              className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+              style={{
+                borderColor: selectedAmount === "custom" ? "var(--orange)" : "var(--border-strong)",
+                background: selectedAmount === "custom" ? "rgba(201,107,44,0.15)" : "transparent",
+              }}
+            >
+              {selectedAmount === "custom" && (
+                <div className="w-2 h-2 rounded-full" style={{ background: "var(--orange)" }} />
+              )}
+            </div>
+          </button>
+        </div>
 
         <AnimatePresence>
           {selectedAmount === "custom" && (
@@ -142,8 +186,8 @@ export function DoneerForm() {
               className="mt-3 relative"
             >
               <span
-                className="absolute left-5 top-1/2 -translate-y-1/2 text-xl font-bold pointer-events-none"
-                style={{ color: "rgba(254,249,240,0.4)" }}
+                className="absolute left-5 top-1/2 -translate-y-1/2 font-bold pointer-events-none"
+                style={{ color: "var(--stone)" }}
               >
                 €
               </span>
@@ -155,11 +199,11 @@ export function DoneerForm() {
                 value={customAmount}
                 onChange={(e) => setCustomAmount(e.target.value)}
                 autoFocus
-                className="w-full pl-10 pr-5 py-4 rounded-2xl text-xl font-bold"
+                className="w-full pl-9 pr-5 py-4 rounded-2xl text-xl font-bold"
                 style={{
-                  background: "var(--surface)",
-                  border: "2px solid var(--amber)",
-                  color: "var(--foreground)",
+                  background: "var(--white)",
+                  border: "2px solid var(--orange)",
+                  color: "var(--charcoal)",
                   outline: "none",
                 }}
               />
@@ -169,17 +213,14 @@ export function DoneerForm() {
       </div>
 
       {/* ── Divider ── */}
-      <div
-        className="border-t"
-        style={{ borderColor: "var(--glass-border)" }}
-      />
+      <div className="border-t" style={{ borderColor: "var(--border)" }} />
 
       {/* ── Personal info ── */}
       <div className="space-y-4">
         <div>
           <label
             className="block text-xs font-semibold tracking-widest uppercase mb-2"
-            style={{ color: "rgba(254,249,240,0.4)" }}
+            style={{ color: "var(--stone)" }}
           >
             Naam
           </label>
@@ -189,23 +230,22 @@ export function DoneerForm() {
             placeholder="Voornaam Achternaam"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-5 py-4 rounded-2xl text-base"
+            className="w-full px-5 py-3.5 rounded-xl text-base transition-colors"
             style={{
-              background: "var(--surface)",
-              border: "2px solid var(--glass-border)",
-              color: "var(--foreground)",
+              background: "var(--white)",
+              border: "2px solid var(--border)",
+              color: "var(--charcoal)",
               outline: "none",
-              transition: "border-color 0.15s ease",
             }}
-            onFocus={(e) => (e.target.style.borderColor = "var(--amber)")}
-            onBlur={(e) => (e.target.style.borderColor = "var(--glass-border)")}
+            onFocus={(e) => (e.target.style.borderColor = "var(--green)")}
+            onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
           />
         </div>
 
         <div>
           <label
             className="block text-xs font-semibold tracking-widest uppercase mb-2"
-            style={{ color: "rgba(254,249,240,0.4)" }}
+            style={{ color: "var(--stone)" }}
           >
             E-mailadres
           </label>
@@ -215,16 +255,15 @@ export function DoneerForm() {
             placeholder="naam@voorbeeld.nl"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-5 py-4 rounded-2xl text-base"
+            className="w-full px-5 py-3.5 rounded-xl text-base transition-colors"
             style={{
-              background: "var(--surface)",
-              border: "2px solid var(--glass-border)",
-              color: "var(--foreground)",
+              background: "var(--white)",
+              border: "2px solid var(--border)",
+              color: "var(--charcoal)",
               outline: "none",
-              transition: "border-color 0.15s ease",
             }}
-            onFocus={(e) => (e.target.style.borderColor = "var(--amber)")}
-            onBlur={(e) => (e.target.style.borderColor = "var(--glass-border)")}
+            onFocus={(e) => (e.target.style.borderColor = "var(--green)")}
+            onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
           />
         </div>
       </div>
@@ -236,8 +275,8 @@ export function DoneerForm() {
           onClick={() => setNewsletter(!newsletter)}
           className="mt-0.5 w-5 h-5 rounded-md flex-shrink-0 border-2 flex items-center justify-center transition-all duration-200"
           style={{
-            background: newsletter ? "var(--amber)" : "transparent",
-            borderColor: newsletter ? "var(--amber)" : "var(--glass-border)",
+            background: newsletter ? "var(--green)" : "transparent",
+            borderColor: newsletter ? "var(--green)" : "var(--border-strong)",
           }}
           role="checkbox"
           aria-checked={newsletter}
@@ -246,7 +285,7 @@ export function DoneerForm() {
             <svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden>
               <path
                 d="M1 4L3.5 6.5L9 1"
-                stroke="#0c1a0d"
+                stroke="white"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -254,10 +293,7 @@ export function DoneerForm() {
             </svg>
           )}
         </button>
-        <p
-          className="text-sm leading-relaxed select-none"
-          style={{ color: "rgba(254,249,240,0.5)" }}
-        >
+        <p className="text-sm leading-relaxed select-none" style={{ color: "var(--stone)" }}>
           Houd me via een nieuwsbrief op de hoogte van de voortgang van het
           project
         </p>
@@ -272,9 +308,9 @@ export function DoneerForm() {
             exit={{ opacity: 0 }}
             className="text-sm px-4 py-3 rounded-xl"
             style={{
-              background: "rgba(220,50,50,0.1)",
-              color: "#f87171",
-              border: "1px solid rgba(220,50,50,0.2)",
+              background: "rgba(200,50,50,0.06)",
+              color: "#b91c1c",
+              border: "1px solid rgba(200,50,50,0.15)",
             }}
           >
             {error}
@@ -286,19 +322,16 @@ export function DoneerForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-5 rounded-full font-bold text-xl text-white transition-opacity hover:opacity-90 disabled:opacity-40"
+        className="w-full py-4 rounded-full font-semibold text-base text-white transition-opacity hover:opacity-85 disabled:opacity-40"
         style={{
-          background: "var(--primary)",
+          background: "var(--orange)",
           boxShadow: "var(--glow-orange)",
         }}
       >
         {loading ? "Betaling aanmaken..." : `Doneer ${displayAmount}`}
       </button>
 
-      <p
-        className="text-xs text-center"
-        style={{ color: "rgba(254,249,240,0.22)" }}
-      >
+      <p className="text-xs text-center" style={{ color: "var(--stone)", opacity: 0.65 }}>
         ANBI-erkende stichting · Fiscaal aftrekbaar · RSIN 868370873
         <br />
         Veilig betalen via iDEAL, creditcard of bankoverschrijving

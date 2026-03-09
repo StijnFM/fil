@@ -14,46 +14,47 @@ export default async function BedanktPage({
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-background flex items-center justify-center px-6">
+      <main
+        className="min-h-screen flex items-center justify-center px-6"
+        style={{ background: "var(--ivory)" }}
+      >
         <div className="text-center max-w-lg mx-auto pt-16 py-24">
-          {/* Football icon */}
+          {/* Icon */}
           <div
-            className="w-24 h-24 rounded-full mx-auto mb-8 flex items-center justify-center text-5xl"
-            style={{ background: "var(--amber)", boxShadow: "var(--glow-amber)" }}
+            className="w-20 h-20 rounded-full mx-auto mb-8 flex items-center justify-center text-4xl"
+            style={{ background: "var(--green-pale)", border: "2px solid rgba(33,77,58,0.15)" }}
             aria-hidden
           >
             ⚽
           </div>
 
           <h1
-            className="font-display font-black text-foreground leading-tight"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)" }}
+            className="font-display font-extrabold leading-tight tracking-tight"
+            style={{
+              fontSize: "clamp(2.2rem, 6vw, 4rem)",
+              color: "var(--green)",
+              letterSpacing: "-0.025em",
+            }}
           >
             {firstName ? `Bedankt, ${firstName}!` : "Bedankt!"}
           </h1>
 
           <p
-            className="font-display font-black italic mt-2"
-            style={{
-              fontSize: "clamp(1.2rem, 3vw, 2rem)",
-              color: "var(--amber)",
-            }}
+            className="font-semibold mt-2 text-lg"
+            style={{ color: "var(--orange)" }}
           >
             Football is Life.
           </p>
 
           {amount && (
             <div
-              className="mt-6 inline-block px-6 py-3 rounded-full border"
+              className="mt-5 inline-block px-5 py-2.5 rounded-full"
               style={{
-                borderColor: "rgba(245,166,35,0.3)",
-                background: "rgba(245,166,35,0.08)",
+                background: "var(--orange-pale)",
+                border: "1px solid rgba(201,107,44,0.20)",
               }}
             >
-              <p
-                className="text-sm font-semibold"
-                style={{ color: "var(--amber)" }}
-              >
+              <p className="text-sm font-semibold" style={{ color: "var(--orange)" }}>
                 Je donatie van € {amount} wordt verwerkt
               </p>
             </div>
@@ -61,7 +62,7 @@ export default async function BedanktPage({
 
           <p
             className="mt-6 leading-relaxed"
-            style={{ color: "rgba(254,249,240,0.6)" }}
+            style={{ color: "var(--stone)" }}
           >
             Je ontvangt een bevestiging per e-mail. We houden je op de hoogte
             van de voortgang van het project in Soweto, Mzuzu.
@@ -70,23 +71,21 @@ export default async function BedanktPage({
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/"
-              className="px-8 py-4 rounded-full border text-foreground font-bold hover:bg-glass-bg transition-colors"
-              style={{ borderColor: "var(--glass-border)" }}
+              className="px-7 py-3.5 rounded-full font-semibold border transition-colors"
+              style={{ color: "var(--charcoal)", borderColor: "var(--border-strong)" }}
             >
               Terug naar home
             </Link>
             <Link
-              href="https://football-is-life.nl/project-soweto/"
-              className="px-8 py-4 rounded-full bg-primary text-white font-bold hover:opacity-90 transition-opacity"
+              href="/project"
+              className="px-7 py-3.5 rounded-full font-semibold text-white hover:opacity-85 transition-opacity"
+              style={{ background: "var(--green)" }}
             >
               Bekijk het project →
             </Link>
           </div>
 
-          <p
-            className="mt-10 text-xs"
-            style={{ color: "rgba(254,249,240,0.2)" }}
-          >
+          <p className="mt-10 text-xs" style={{ color: "var(--stone)", opacity: 0.5 }}>
             ANBI-erkende stichting · RSIN 868370873 · Nijmegen
           </p>
         </div>
