@@ -128,13 +128,13 @@ const assessmentCriteria = [
 ];
 
 const workbookElements = [
-  { label: "Doel", desc: "Wat leert de deelnemer door deze oefenvorm?" },
-  { label: "Materiaal", desc: "Welke spullen heb je nodig? Pionnen, hesjes, ballen." },
-  { label: "Opbouw", desc: "Stapsgewijze opzet: van simpel naar complex." },
-  { label: "Coachtaal", desc: "Voorbeeldzinnen die de coach kan gebruiken." },
-  { label: "Variaties", desc: "Aanpassingen voor niveau, groepsgrootte of weer." },
-  { label: "Reflectievraag", desc: "Korte vraag die het thema koppelt aan het dagelijks leven." },
-  { label: "Observatiepunten", desc: "Waar let de coach op tijdens de oefenvorm?" },
+  { label: "Doel", desc: "Koppeling aan het thema: wat leert de deelnemer door deze oefenvorm?" },
+  { label: "Benodigdheden", desc: "Welke spullen heb je nodig? Bal, hesjes, pionnen en meer." },
+  { label: "Opzet stap voor stap", desc: "Stapsgewijze opbouw van de oefenvorm: van simpel naar complex." },
+  { label: "Coachtaal", desc: "Voorbeeldzinnen die trainers direct kunnen gebruiken tijdens de oefening." },
+  { label: "Variaties", desc: "Aanpassingen voor makkelijker of moeilijker, inclusief leeftijdsaanpassingen." },
+  { label: "Reflectievraag", desc: "1 tot 2 korte vragen na afloop die het thema koppelen aan het dagelijks leven." },
+  { label: "Observatiepunten", desc: "Waar let de trainer op tijdens de oefenvorm? Concrete aandachtspunten." },
 ];
 
 export default function OpleidingPage() {
@@ -288,11 +288,23 @@ export default function OpleidingPage() {
               <p>
                 De Trainer Coach 1-opleiding is gebouwd op die overtuiging.
                 Niet vanuit theorie, maar vanuit de praktijk. Samen met{" "}
-                <strong style={{ color: "var(--green)" }}>UNGWERU</strong> —
-                een lokale NGO in Mzuzu met diepe wortels in de community —
+                <strong style={{ color: "var(--green)" }}>UNGWERU</strong>{" "}
+                — een lokale NGO in Mzuzu met diepe wortels in de community —
                 ontwikkelden we een programma dat past bij de realiteit ter
                 plaatse.
               </p>
+              <blockquote
+                className="mt-5 pl-4 py-3 text-sm leading-relaxed italic"
+                style={{
+                  borderLeft: "3px solid var(--orange)",
+                  color: "var(--stone)",
+                  background: "var(--green-pale)",
+                  borderRadius: "0 0.5rem 0.5rem 0",
+                  paddingRight: "1rem",
+                }}
+              >
+                &ldquo;Sport maakt kinderen en jongvolwassenen zichtbaar en biedt een veilige ingang. Via Ungweru kan dit leiden tot bredere ondersteuning in gezondheidszorg, educatie en empowerment. De coach maakt het verschil.&rdquo;
+              </blockquote>
             </div>
 
             <div className="md:col-span-2 mt-4">
@@ -429,9 +441,37 @@ export default function OpleidingPage() {
               <p className="mt-3 leading-relaxed" style={{ color: "var(--stone)" }}>
                 Het werkboek is niet bedoeld als leesboek, maar als gereedschap.
                 Coaches gebruiken het voor, tijdens en na de training. Na de
-                opleiding blijft het werkboek eigendom van de coach — een
+                opleiding blijft het werkboek eigendom van de coach. Een
                 praktisch naslagwerk voor iedere training.
               </p>
+              <div
+                className="mt-6 rounded-xl p-5"
+                style={{
+                  background: "var(--green-pale)",
+                  border: "1px solid rgba(33,77,58,0.12)",
+                }}
+              >
+                <p className="font-semibold text-sm mb-2" style={{ color: "var(--green)" }}>
+                  Voorbereiding
+                </p>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                  Trainers krijgen vooraf 1 of 2 oefenvormen toegewezen. Ze bereiden coachzinnen voor, kiezen variaties en formuleren het leerdoel. Zo start de opleiding niet bij nul, maar bij voorbereiding.
+                </p>
+              </div>
+              <div
+                className="mt-4 rounded-xl p-5"
+                style={{
+                  background: "var(--sand-light)",
+                  border: "1px solid rgba(33,77,58,0.08)",
+                }}
+              >
+                <p className="font-semibold text-sm mb-2" style={{ color: "var(--green)" }}>
+                  Leren door doen
+                </p>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                  De opleiding is volledig praktijkgericht: leren door doen. Trainers voeren oefenvormen uit op elkaar in kleine groepjes. Na elke uitvoering volgt directe feedback op uitleg, veiligheid, coachtaal en de koppeling aan het thema.
+                </p>
+              </div>
             </div>
 
             <div>
@@ -498,6 +538,23 @@ export default function OpleidingPage() {
                 korte theoriemomenten met uitgebreide praktijkblokken en
                 feedbackrondes.
               </p>
+              <div
+                className="mt-6 max-w-xl rounded-xl p-4 flex gap-3"
+                style={{
+                  background: "var(--white)",
+                  border: "1px solid rgba(201,107,44,0.20)",
+                  borderLeft: "3px solid var(--orange)",
+                }}
+              >
+                <div>
+                  <p className="font-semibold text-xs mb-1" style={{ color: "var(--orange)" }}>
+                    Vóór de eerste dag
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                    Trainers krijgen vooraf oefenvormen toegewezen. Ze bereiden coachzinnen voor, kiezen variaties en formuleren het leerdoel. Zo start de opleiding niet bij nul, maar bij voorbereiding.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="space-y-6">
@@ -675,7 +732,7 @@ export default function OpleidingPage() {
                 },
                 {
                   title: "Follow-up na 6-8 weken",
-                  desc: "Na 6 tot 8 weken komt de groep samen voor ervaringsuitwisseling. Wat werkt? Wat kan beter? Het werkboek wordt waar nodig bijgeschaafd en coaches ontvangen extra begeleiding.",
+                  desc: "Na certificering draaien trainers het programma zelfstandig in hun eigen groepen. Na 6 tot 8 weken volgt een terugkommoment voor uitwisseling van ervaringen, aanscherping van het werkboek en extra coaching.",
                 },
                 {
                   title: "Doorlopende coaching",
@@ -756,6 +813,9 @@ export default function OpleidingPage() {
                 . Niet als losse activiteiten naast elkaar, maar als een
                 samenhangend geheel waarin de coach een sleutelrol speelt.
               </p>
+              <p>
+                In overleg met UNGWERU stemmen we af over doelgroep, logistiek, culturele aansluiting, selectie van oefenvormen en de koppeling met het empowermentprogramma.
+              </p>
             </div>
 
             <div className="md:col-span-2">
@@ -796,6 +856,99 @@ export default function OpleidingPage() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Onze Methodiek ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-12">
+              <Label>Methodiek</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Gebouwd op sportpsychologie en ervaringsleren.
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-14">
+              {/* Left column */}
+              <div>
+                <p className="text-base leading-relaxed mb-7" style={{ color: "var(--stone)" }}>
+                  De Trainer Coach 1-opleiding is ontwikkeld door Paul van Zwam en Ivo Spanjersberg, beiden sport- en prestatiepsychologen met jarenlange ervaring in het topvoetbal en bij Libre Foundation.
+                </p>
+                <p
+                  className="text-xs font-semibold tracking-wide uppercase mb-5"
+                  style={{ color: "var(--orange)" }}
+                >
+                  Kenmerken van succesvolle teams
+                </p>
+                <ol className="space-y-4">
+                  {[
+                    { title: "Duidelijke ambitie", desc: "Weten waar je naartoe werkt." },
+                    { title: "Plezier en humor", desc: "Een veilige sfeer waarin je durft te proberen." },
+                    { title: "Vertrouwen", desc: "Directe communicatie en eerlijke feedback." },
+                    { title: "Optimaal benutten van talent", desc: "Iedereen heeft een rol." },
+                    { title: "Een eigen kracht", desc: "Ontdek waar je goed in bent." },
+                    { title: "Professioneel karakter", desc: "Afspraken nakomen, respect tonen." },
+                    { title: "Voortdurende verbetering", desc: "Elke training een stap vooruit." },
+                  ].map((item, i) => (
+                    <li key={item.title} className="flex gap-4 items-start">
+                      <span
+                        className="font-display font-bold text-sm flex-shrink-0 w-6 text-right mt-0.5"
+                        style={{ color: "var(--orange)" }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <span className="font-semibold text-sm" style={{ color: "var(--charcoal)" }}>
+                          {item.title}
+                        </span>
+                        {" "}
+                        <span className="text-sm" style={{ color: "var(--stone)" }}>
+                          {item.desc}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Right column */}
+              <div className="space-y-5">
+                <p className="text-base leading-relaxed" style={{ color: "var(--stone)" }}>
+                  Deze principes vormen de basis van elke oefenvorm in het werkboek. Coaches leren niet alleen wat ze moeten doen, maar begrijpen waarom het werkt.
+                </p>
+                <p className="text-base leading-relaxed" style={{ color: "var(--stone)" }}>
+                  De methodiek van Libre Foundation, gebaseerd op ervaringsleren en directe feedback, is vertaald naar een programma dat werkt in de context van Mzuzu. Praktisch, haalbaar en cultureel passend.
+                </p>
+                <blockquote
+                  className="rounded-xl p-5 text-sm leading-relaxed italic"
+                  style={{
+                    background: "var(--white)",
+                    borderLeft: "3px solid var(--green)",
+                    color: "var(--stone)",
+                    boxShadow: "var(--shadow-sm)",
+                    paddingLeft: "1.25rem",
+                  }}
+                >
+                  &ldquo;Wij communiceren niet dat wij &apos;arme kinderen helpen&apos;. Wij bouwen samen met lokale partners aan toekomstkansen via voetbal en empowerment.&rdquo;
+                </blockquote>
+              </div>
+            </div>
+
+            <div className="mt-10">
+              <ImagePlaceholder
+                label="(Afb: Methodiek)"
+                description="Trainers tijdens een oefenvorm op het veld"
+                aspect="21/9"
+              />
             </div>
           </div>
         </section>
