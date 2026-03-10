@@ -19,7 +19,7 @@ function Label({ children }: { children: React.ReactNode }) {
   );
 }
 
-function PitchDecor({ opacity = 0.07, stroke = "white" }: { opacity?: number; stroke?: string }) {
+function PitchDecor({ opacity = 0.22, stroke = "white" }: { opacity?: number; stroke?: string }) {
   return (
     <svg
       className="absolute inset-0 w-full h-full pointer-events-none select-none"
@@ -27,17 +27,30 @@ function PitchDecor({ opacity = 0.07, stroke = "white" }: { opacity?: number; st
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
-      <g stroke={stroke} strokeWidth="0.5" fill="none" style={{ opacity }}>
+      <defs>
+        <pattern id="grass-p" x="0" y="0" width="10" height="80" patternUnits="userSpaceOnUse">
+          <rect x="0" y="0" width="10" height="80" fill="rgba(255,255,255,0.025)" />
+          <rect x="5" y="0" width="5" height="80" fill="rgba(0,0,0,0.018)" />
+        </pattern>
+      </defs>
+      <rect width="120" height="80" fill="url(#grass-p)" />
+      <g stroke={stroke} strokeWidth="0.7" fill="none" style={{ opacity }}>
         <rect x="4" y="4" width="112" height="72" />
         <line x1="60" y1="4" x2="60" y2="76" />
         <circle cx="60" cy="40" r="10" />
-        <circle cx="60" cy="40" r="0.9" fill={stroke} stroke="none" />
+        <circle cx="60" cy="40" r="1.1" fill={stroke} stroke="none" />
         <rect x="4" y="21" width="18" height="38" />
         <rect x="4" y="29" width="7" height="22" />
+        <circle cx="16" cy="40" r="1.1" fill={stroke} stroke="none" />
         <path d="M 22 29 A 11 11 0 0 1 22 51" />
         <rect x="98" y="21" width="18" height="38" />
         <rect x="109" y="29" width="7" height="22" />
+        <circle cx="104" cy="40" r="1.1" fill={stroke} stroke="none" />
         <path d="M 98 29 A 11 11 0 0 0 98 51" />
+        <path d="M 7,4 A 3,3 0 0,1 4,7" />
+        <path d="M 113,4 A 3,3 0 0,0 116,7" />
+        <path d="M 4,73 A 3,3 0 0,0 7,76" />
+        <path d="M 116,73 A 3,3 0 0,1 113,76" />
       </g>
     </svg>
   );
@@ -111,7 +124,7 @@ export default function ProjectPage() {
             }}
           />
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-24">
             <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 mb-8"
               style={{ borderColor: "rgba(201,107,44,0.35)", background: "rgba(201,107,44,0.10)" }}>
               <span>📍</span>
@@ -160,7 +173,7 @@ export default function ProjectPage() {
         </section>
 
         {/* ── Waarom Soweto (cream) ── */}
-        <section style={{ background: "var(--ivory)" }} className="py-24 px-6">
+        <section style={{ background: "var(--ivory)" }} className="py-16 md:py-24 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
               <Label>Achtergrond</Label>
@@ -202,7 +215,7 @@ export default function ProjectPage() {
         </section>
 
         {/* ── Lokale partners ── */}
-        <section className="py-24 px-6" style={{ background: "var(--green-pale)" }}>
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
           <div className="max-w-6xl mx-auto">
             <div className="mb-10">
               <Label>Lokale partners</Label>
@@ -264,7 +277,7 @@ export default function ProjectPage() {
         </section>
 
         {/* ── Vier pijlers ── */}
-        <section className="py-24 px-6 bg-background">
+        <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto">
             <div className="mb-12">
               <Label>Wat we doen</Label>
@@ -312,7 +325,7 @@ export default function ProjectPage() {
         </section>
 
         {/* ── Projectfasen (timeline) ── */}
-        <section className="py-24 px-6" style={{ background: "var(--sand-light)" }}>
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
           <div className="max-w-4xl mx-auto">
             <div className="mb-12">
               <Label>Projectfasen</Label>
@@ -369,7 +382,7 @@ export default function ProjectPage() {
         </section>
 
         {/* ── Impactindicatoren ── */}
-        <section className="py-24 px-6 bg-background">
+        <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto">
             <div className="mb-10">
               <Label>Impact</Label>
@@ -414,7 +427,7 @@ export default function ProjectPage() {
         </section>
 
         {/* ── Kostenopbouw + donatie ── */}
-        <section className="py-24 px-6" style={{ background: "var(--sand-light)" }}>
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
               <Label>Projectdoel</Label>
@@ -503,10 +516,10 @@ export default function ProjectPage() {
 
         {/* ── CTA ── */}
         <section
-          className="py-24 px-6 relative overflow-hidden"
+          className="py-16 md:py-24 px-4 sm:px-6 relative overflow-hidden"
           style={{ background: "var(--green)" }}
         >
-          <PitchDecor opacity={0.07} stroke="white" />
+          <PitchDecor opacity={0.22} stroke="white" />
           <div className="relative z-10 max-w-xl mx-auto text-center">
             <h2
               className="font-display font-extrabold leading-tight tracking-tight"

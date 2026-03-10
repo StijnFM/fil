@@ -74,14 +74,32 @@ export default function OverOnsPage() {
             preserveAspectRatio="xMidYMid slice"
             aria-hidden="true"
           >
-            <g stroke="white" strokeWidth="0.5" fill="none" style={{ opacity: 0.07 }}>
+            <defs>
+              <pattern id="grass-o" x="0" y="0" width="10" height="80" patternUnits="userSpaceOnUse">
+                <rect x="0" y="0" width="10" height="80" fill="rgba(255,255,255,0.025)" />
+                <rect x="5" y="0" width="5" height="80" fill="rgba(0,0,0,0.018)" />
+              </pattern>
+            </defs>
+            <rect width="120" height="80" fill="url(#grass-o)" />
+            <g stroke="white" strokeWidth="0.7" fill="none" style={{ opacity: 0.22 }}>
               <rect x="4" y="4" width="112" height="72" />
               <circle cx="60" cy="40" r="10" />
+              <circle cx="60" cy="40" r="1.1" fill="white" stroke="none" />
               <line x1="60" y1="4" x2="60" y2="76" />
+              <rect x="4" y="21" width="18" height="38" />
+              <rect x="4" y="29" width="7" height="22" />
+              <path d="M 22 29 A 11 11 0 0 1 22 51" />
+              <rect x="98" y="21" width="18" height="38" />
+              <rect x="109" y="29" width="7" height="22" />
+              <path d="M 98 29 A 11 11 0 0 0 98 51" />
+              <path d="M 7,4 A 3,3 0 0,1 4,7" />
+              <path d="M 113,4 A 3,3 0 0,0 116,7" />
+              <path d="M 4,73 A 3,3 0 0,0 7,76" />
+              <path d="M 116,73 A 3,3 0 0,1 113,76" />
             </g>
           </svg>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 md:py-28">
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-24">
             <span
               className="inline-block text-xs font-semibold tracking-widest uppercase mb-6"
               style={{ color: "rgba(201,107,44,0.80)" }}
@@ -109,7 +127,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* ── Missie ── */}
-        <section style={{ background: "var(--ivory)" }} className="py-24 px-6">
+        <section style={{ background: "var(--ivory)" }} className="py-16 md:py-24 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
               <Label>Missie</Label>
@@ -154,7 +172,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* ── Bestuur ── */}
-        <section className="py-24 px-6" style={{ background: "var(--sand-light)" }}>
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
           <div className="max-w-6xl mx-auto">
             <div className="mb-12">
               <Label>Bestuur</Label>
@@ -231,7 +249,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* ── Hoe we werken ── */}
-        <section className="py-24 px-6 bg-background">
+        <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
               <Label>Werkwijze</Label>
@@ -290,7 +308,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* ── Financiering ── */}
-        <section className="py-24 px-6" style={{ background: "var(--green-pale)" }}>
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
               <Label>Financiering</Label>
@@ -339,7 +357,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* ── ANBI & Contact ── */}
-        <section className="py-24 px-6 bg-background">
+        <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
             {/* ANBI */}
             <div>

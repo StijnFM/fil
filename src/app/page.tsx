@@ -6,13 +6,15 @@ import { Navbar } from "@/components/Navbar";
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-/* ── Pitch SVG overlay ──────────────────────────────── */
+/* ── Pitch background with grass stripes + field markings ── */
 function PitchDecor({
-  opacity = 0.07,
+  opacity = 0.18,
   stroke = "white",
+  stripes = true,
 }: {
   opacity?: number;
   stroke?: string;
+  stripes?: boolean;
 }) {
   return (
     <svg
@@ -21,19 +23,34 @@ function PitchDecor({
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
-      <g stroke={stroke} strokeWidth="0.5" fill="none" style={{ opacity }}>
+      <defs>
+        {stripes && (
+          <pattern id="grass" x="0" y="0" width="10" height="80" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="10" height="80" fill="rgba(255,255,255,0.028)" />
+            <rect x="5" y="0" width="5" height="80" fill="rgba(0,0,0,0.018)" />
+          </pattern>
+        )}
+      </defs>
+      {stripes && <rect width="120" height="80" fill="url(#grass)" />}
+      <g stroke={stroke} strokeWidth="0.7" fill="none" style={{ opacity }}>
+        {/* Outer boundary */}
         <rect x="4" y="4" width="112" height="72" />
+        {/* Centre line */}
         <line x1="60" y1="4" x2="60" y2="76" />
+        {/* Centre circle */}
         <circle cx="60" cy="40" r="10" />
-        <circle cx="60" cy="40" r="0.9" fill={stroke} stroke="none" />
+        <circle cx="60" cy="40" r="1.1" fill={stroke} stroke="none" />
+        {/* Left penalty area */}
         <rect x="4" y="21" width="18" height="38" />
         <rect x="4" y="29" width="7" height="22" />
-        <circle cx="16" cy="40" r="0.9" fill={stroke} stroke="none" />
+        <circle cx="16" cy="40" r="1.1" fill={stroke} stroke="none" />
         <path d="M 22 29 A 11 11 0 0 1 22 51" />
+        {/* Right penalty area */}
         <rect x="98" y="21" width="18" height="38" />
         <rect x="109" y="29" width="7" height="22" />
-        <circle cx="104" cy="40" r="0.9" fill={stroke} stroke="none" />
+        <circle cx="104" cy="40" r="1.1" fill={stroke} stroke="none" />
         <path d="M 98 29 A 11 11 0 0 0 98 51" />
+        {/* Corner arcs */}
         <path d="M 7,4 A 3,3 0 0,1 4,7" />
         <path d="M 113,4 A 3,3 0 0,0 116,7" />
         <path d="M 4,73 A 3,3 0 0,0 7,76" />
@@ -59,7 +76,7 @@ function Label({ children }: { children: React.ReactNode }) {
 function Hero() {
   return (
     <section className="bg-background pt-16 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-[1fr_420px] lg:grid-cols-[1fr_480px] gap-10 md:gap-16 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-20 grid md:grid-cols-[1fr_420px] lg:grid-cols-[1fr_480px] gap-8 md:gap-14 items-center">
         {/* Text column */}
         <div>
           <motion.div
@@ -106,7 +123,7 @@ function Hero() {
           >
             Football is Life geeft jongeren die buiten beeld blijven via lokale
             coaches toegang tot begeleiding, life skills en nieuwe kansen. In
-            Soweto, Mzuzu — en verder.
+            Soweto, Malawi — en verder.
           </motion.p>
 
           <motion.div
@@ -151,16 +168,17 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.97, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.15, ease }}
+          className=""
         >
           <div
-            className="relative rounded-3xl overflow-hidden"
+            className="relative rounded-2xl md:rounded-3xl overflow-hidden"
             style={{
               background: "var(--green)",
-              aspectRatio: "4/5",
+              aspectRatio: "3/2",
               boxShadow: "var(--shadow-lg)",
             }}
           >
-            <PitchDecor opacity={0.1} stroke="white" />
+            <PitchDecor opacity={0.28} stroke="white" />
 
             {/* Ambient gradient */}
             <div
@@ -273,7 +291,7 @@ function Marquee() {
   );
 }
 
-/* ── Hoe het werkt ───────────────────────────────────── */
+/* ── Hoe het werkt (mobile: section label + 2-col grid) ─ */
 const steps = [
   {
     n: "01",
@@ -299,7 +317,7 @@ const steps = [
 
 function HoeHetWerkt() {
   return (
-    <section className="py-24 px-6" style={{ background: "var(--sand-light)" }}>
+    <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -325,7 +343,7 @@ function HoeHetWerkt() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {steps.map((step, i) => (
             <motion.div
               key={step.n}
@@ -366,8 +384,8 @@ function HoeHetWerkt() {
 /* ── Project Soweto ──────────────────────────────────── */
 function ProjectSoweto() {
   return (
-    <section className="py-24 px-6 bg-background">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 items-center">
         {/* Text */}
         <motion.div
           initial={{ opacity: 0, x: -24 }}
@@ -386,7 +404,7 @@ function ProjectSoweto() {
           >
             Communityproject
             <br />
-            in Soweto, Mzuzu.
+            in Soweto.
           </h2>
           <p className="mt-4 leading-relaxed" style={{ color: "var(--stone)" }}>
             In Soweto — de armste wijk van Mzuzu, Malawi — bouwen we samen met
@@ -519,7 +537,7 @@ const partners = [
 
 function LokalePartners() {
   return (
-    <section className="py-24 px-6" style={{ background: "var(--green-pale)" }}>
+    <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -595,7 +613,7 @@ const metrics = [
 
 function ImpactMeting() {
   return (
-    <section className="py-24 px-6 bg-background">
+    <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -623,7 +641,7 @@ function ImpactMeting() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
           {metrics.map((m, i) => (
             <motion.div
               key={m.label}
@@ -693,7 +711,7 @@ const growth = [
 
 function Groeipad() {
   return (
-    <section className="py-24 px-6" style={{ background: "var(--sand-light)" }}>
+    <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -787,12 +805,12 @@ const donationTiles = [
 function DoneerSectie() {
   return (
     <section
-      className="py-28 px-6 relative overflow-hidden"
+      className="py-16 md:py-24 px-4 sm:px-6 relative overflow-hidden"
       style={{ background: "var(--green)" }}
     >
-      <PitchDecor opacity={0.07} stroke="white" />
+      <PitchDecor opacity={0.22} stroke="white" />
 
-      <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         {/* Text */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -919,10 +937,10 @@ function DoneerSectie() {
 function Footer() {
   return (
     <footer
-      className="border-t py-16 px-6"
+      className="border-t py-14 px-4 sm:px-6"
       style={{ background: "var(--charcoal)", borderColor: "rgba(246,241,232,0.08)" }}
     >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-10">
+      <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
         {/* Brand */}
         <div className="md:col-span-2">
           <p
