@@ -370,6 +370,102 @@ export default function MalawiPage() {
           </div>
         </section>
 
+        {/* ── Historische context ── */}
+        <section style={{ background: "var(--sand-light)" }} className="py-16 md:py-24 px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-10">
+              <Label>Historische context</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Mzuzu Diocese en de Ierse missionarissen.
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-14 items-start">
+              {/* Left column: narrative text */}
+              <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--stone)" }}>
+                <p>
+                  De eerste katholieke missie in het noorden van Malawi werd in 1938
+                  gevestigd door de White Fathers, later bekend als Missionaries of
+                  Africa. Zij legden de basis voor het onderwijsnetwerk dat het
+                  diocees vandaag kenmerkt.
+                </p>
+                <p>
+                  In 1970 arriveerden de eerste priesters van St. Patrick&apos;s
+                  Missionary Society: Fathers Alfie Byrne, Frank Morris, Padraig O
+                  Maille en Pat McGivern. Sindsdien heeft het diocees een uitgebreid
+                  netwerk opgebouwd van 263 basisscholen, 5 middelbare scholen en 3
+                  colleges.
+                </p>
+                <p>
+                  Bishop John Ryan, lid van St. Patrick&apos;s Missionary Society,
+                  speelt een bijzondere rol in dit verhaal. Naast zijn pastorale werk
+                  doceert hij wiskunde aan Mzuzu University. In 2004 richtte hij
+                  UNGWERU op als community-based organisatie. Vandaag is UNGWERU een
+                  geregistreerde NGO en een van de belangrijkste partners van Football
+                  is Life.
+                </p>
+              </div>
+
+              {/* Right column: key facts + image */}
+              <div className="space-y-6">
+                <div
+                  className="rounded-2xl p-6"
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid rgba(33,77,58,0.10)",
+                    boxShadow: "var(--shadow-card)",
+                  }}
+                >
+                  <div className="space-y-3">
+                    {[
+                      "263 basisscholen onder het diocees",
+                      "5 middelbare scholen",
+                      "3 colleges",
+                      "Sinds 1970: St. Patrick\u2019s Missionary Society",
+                      "UNGWERU opgericht in 2004 door Bishop John Ryan",
+                    ].map((fact) => (
+                      <div key={fact} className="flex gap-4 items-start">
+                        <div
+                          className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5"
+                          style={{ background: "var(--orange)" }}
+                        />
+                        <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                          {fact}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <ImagePlaceholder
+                  label="(Afb: Diocese Mzuzu)"
+                  description="Onderwijsnetwerk en gemeenschapswerk in Mzuzu Diocese"
+                  aspect="3/2"
+                  dark={false}
+                />
+              </div>
+            </div>
+
+            {/* Closing paragraph full-width */}
+            <p
+              className="mt-12 max-w-3xl text-base leading-relaxed"
+              style={{ color: "var(--stone)" }}
+            >
+              Deze combinatie van onderwijs, gemeenschapswerk en sport vormt het
+              fundament waarop het Football is Life-project is gebouwd. De
+              infrastructuur en het vertrouwen dat in decennia is opgebouwd, maakt
+              ons werk mogelijk.
+            </p>
+          </div>
+        </section>
+
         {/* ── Sport for Development ── */}
         <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto">
