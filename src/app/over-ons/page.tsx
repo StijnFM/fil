@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
+import { Label } from "@/components/Label";
+import { PitchDecor } from "@/components/PitchDecor";
 
 export const metadata: Metadata = {
   title: "Over ons — Football is Life",
   description:
     "Stichting Football is Life wordt bestuurd door een onbezoldigd bestuur van drie leden. ANBI-erkend, RSIN 868370873, gevestigd in Nijmegen.",
 };
-
-function Label({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "var(--orange)" }}>
-      {children}
-    </p>
-  );
-}
 
 const board = [
   {
@@ -69,36 +64,7 @@ export default function OverOnsPage() {
           className="relative pt-16 overflow-hidden"
           style={{ background: "var(--green)" }}
         >
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none select-none"
-            viewBox="0 0 120 80"
-            preserveAspectRatio="xMidYMid slice"
-            aria-hidden="true"
-          >
-            <defs>
-              <pattern id="grass-o" x="0" y="0" width="10" height="80" patternUnits="userSpaceOnUse">
-                <rect x="0" y="0" width="10" height="80" fill="rgba(255,255,255,0.025)" />
-                <rect x="5" y="0" width="5" height="80" fill="rgba(0,0,0,0.018)" />
-              </pattern>
-            </defs>
-            <rect width="120" height="80" fill="url(#grass-o)" />
-            <g stroke="white" strokeWidth="0.7" fill="none" style={{ opacity: 0.22 }}>
-              <rect x="4" y="4" width="112" height="72" />
-              <circle cx="60" cy="40" r="10" />
-              <circle cx="60" cy="40" r="1.1" fill="white" stroke="none" />
-              <line x1="60" y1="4" x2="60" y2="76" />
-              <rect x="4" y="21" width="18" height="38" />
-              <rect x="4" y="29" width="7" height="22" />
-              <path d="M 22 29 A 11 11 0 0 1 22 51" />
-              <rect x="98" y="21" width="18" height="38" />
-              <rect x="109" y="29" width="7" height="22" />
-              <path d="M 98 29 A 11 11 0 0 0 98 51" />
-              <path d="M 7,4 A 3,3 0 0,1 4,7" />
-              <path d="M 113,4 A 3,3 0 0,0 116,7" />
-              <path d="M 4,73 A 3,3 0 0,0 7,76" />
-              <path d="M 116,73 A 3,3 0 0,1 113,76" />
-            </g>
-          </svg>
+          <PitchDecor opacity={0.22} stroke="white" id="grass-about" />
 
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-24">
             <span
@@ -176,6 +142,11 @@ export default function OverOnsPage() {
                 eerste jaar werken we aan een eerste voorbeeldproject in Soweto,
                 Mzuzu — dat als blauwdruk dient voor verdere uitbreiding.
               </p>
+              <p>
+                Wij communiceren niet dat wij &apos;arme kinderen helpen&apos;. Wij
+                communiceren dat wij samen met lokale partners bouwen aan
+                toekomstkansen via voetbal en empowerment.
+              </p>
             </div>
             {/* Mission image spanning both columns */}
             <div className="md:col-span-2 mt-6">
@@ -214,7 +185,7 @@ export default function OverOnsPage() {
               {board.map((member) => (
                 <div
                   key={member.name}
-                  className="rounded-2xl p-7"
+                  className="rounded-2xl p-7 card-hover"
                   style={{
                     background: "var(--white)",
                     border: "1px solid var(--border)",
@@ -263,6 +234,69 @@ export default function OverOnsPage() {
                       </span>
                     ))}
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Team in Malawi ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-10">
+              <Label>In Malawi</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Lokale uitvoering door lokale mensen.
+              </h2>
+              <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
+                De dagelijkse uitvoering in Mzuzu wordt gedragen door een team
+                dat de community van binnenuit kent.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { name: "Crief", role: "Coördinator", initials: "C" },
+                { name: "Isaac", role: "Coach", initials: "I" },
+                { name: "Sam", role: "Begeleider", initials: "S" },
+                { name: "Leo", role: "Adviseur", initials: "L" },
+              ].map((person) => (
+                <div
+                  key={person.name}
+                  className="rounded-2xl p-6 text-center card-hover"
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid var(--border)",
+                    boxShadow: "var(--shadow-card)",
+                  }}
+                >
+                  <div
+                    className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #2D6B52, #183828)" }}
+                  >
+                    <span
+                      className="font-display font-bold text-lg"
+                      style={{ color: "rgba(246,241,232,0.50)" }}
+                    >
+                      {person.initials}
+                    </span>
+                  </div>
+                  <p className="font-bold text-base" style={{ color: "var(--charcoal)" }}>
+                    {person.name}
+                  </p>
+                  <p
+                    className="text-xs font-semibold tracking-wide uppercase mt-1"
+                    style={{ color: "var(--orange)" }}
+                  >
+                    {person.role}
+                  </p>
                 </div>
               ))}
             </div>
@@ -387,7 +421,7 @@ export default function OverOnsPage() {
                 {anbiInfo.map((row) => (
                   <div
                     key={row.label}
-                    className="flex justify-between py-3.5 border-b"
+                    className="flex justify-between py-3.5 border-b stat-card"
                     style={{ borderColor: "var(--border)" }}
                   >
                     <span className="text-sm" style={{ color: "var(--stone)" }}>
@@ -436,7 +470,7 @@ export default function OverOnsPage() {
                 </p>
                 <Link
                   href="/doneren"
-                  className="inline-flex items-center px-6 py-3 rounded-full font-semibold text-white hover:opacity-85 transition-opacity"
+                  className="inline-flex items-center px-6 py-3 rounded-full font-semibold text-white btn-primary"
                   style={{ background: "var(--orange)" }}
                 >
                   Doneer nu →
@@ -462,6 +496,7 @@ export default function OverOnsPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

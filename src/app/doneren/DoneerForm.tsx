@@ -322,7 +322,7 @@ export function DoneerForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-4 rounded-full font-semibold text-base text-white transition-opacity hover:opacity-85 disabled:opacity-40"
+        className="w-full py-4 rounded-full font-semibold text-base text-white btn-primary disabled:opacity-40"
         style={{
           background: "var(--orange)",
           boxShadow: "var(--glow-orange)",

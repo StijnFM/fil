@@ -2,60 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
+import { Label } from "@/components/Label";
+import { PitchDecor } from "@/components/PitchDecor";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Project Soweto — Football is Life",
   description:
     "Communityproject in Soweto, de armste wijk van Mzuzu (Malawi). Via lokale coaches, life skills en een voetbalveld geven we jongeren duurzaam meer perspectief.",
 };
-
-function Label({ children }: { children: React.ReactNode }) {
-  return (
-    <p
-      className="text-xs font-semibold tracking-widest uppercase mb-4"
-      style={{ color: "var(--orange)" }}
-    >
-      {children}
-    </p>
-  );
-}
-
-function PitchDecor({ opacity = 0.22, stroke = "white" }: { opacity?: number; stroke?: string }) {
-  return (
-    <svg
-      className="absolute inset-0 w-full h-full pointer-events-none select-none"
-      viewBox="0 0 120 80"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-    >
-      <defs>
-        <pattern id="grass-p" x="0" y="0" width="10" height="80" patternUnits="userSpaceOnUse">
-          <rect x="0" y="0" width="10" height="80" fill="rgba(255,255,255,0.025)" />
-          <rect x="5" y="0" width="5" height="80" fill="rgba(0,0,0,0.018)" />
-        </pattern>
-      </defs>
-      <rect width="120" height="80" fill="url(#grass-p)" />
-      <g stroke={stroke} strokeWidth="0.7" fill="none" style={{ opacity }}>
-        <rect x="4" y="4" width="112" height="72" />
-        <line x1="60" y1="4" x2="60" y2="76" />
-        <circle cx="60" cy="40" r="10" />
-        <circle cx="60" cy="40" r="1.1" fill={stroke} stroke="none" />
-        <rect x="4" y="21" width="18" height="38" />
-        <rect x="4" y="29" width="7" height="22" />
-        <circle cx="16" cy="40" r="1.1" fill={stroke} stroke="none" />
-        <path d="M 22 29 A 11 11 0 0 1 22 51" />
-        <rect x="98" y="21" width="18" height="38" />
-        <rect x="109" y="29" width="7" height="22" />
-        <circle cx="104" cy="40" r="1.1" fill={stroke} stroke="none" />
-        <path d="M 98 29 A 11 11 0 0 0 98 51" />
-        <path d="M 7,4 A 3,3 0 0,1 4,7" />
-        <path d="M 113,4 A 3,3 0 0,0 116,7" />
-        <path d="M 4,73 A 3,3 0 0,0 7,76" />
-        <path d="M 116,73 A 3,3 0 0,1 113,76" />
-      </g>
-    </svg>
-  );
-}
 
 const pillars = [
   {
@@ -116,7 +71,7 @@ export default function ProjectPage() {
           className="relative pt-16 overflow-hidden"
           style={{ background: "var(--green)" }}
         >
-          <PitchDecor opacity={0.09} stroke="white" />
+          <PitchDecor id="grass-proj-hero" opacity={0.09} stroke="white" />
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -157,14 +112,14 @@ export default function ProjectPage() {
             <div className="flex flex-wrap gap-3 mt-8">
               <Link
                 href="/doneren"
-                className="px-7 py-3.5 rounded-full font-semibold text-base hover:opacity-85 transition-opacity"
+                className="px-7 py-3.5 rounded-full font-semibold text-base btn-primary"
                 style={{ background: "var(--orange)", color: "white" }}
               >
                 Help mee bouwen →
               </Link>
               <Link
                 href="/over-ons"
-                className="px-7 py-3.5 rounded-full font-semibold text-base border transition-colors"
+                className="px-7 py-3.5 rounded-full font-semibold text-base border btn-secondary"
                 style={{ color: "rgba(246,241,232,0.75)", borderColor: "rgba(246,241,232,0.18)" }}
               >
                 Over de stichting
@@ -199,6 +154,11 @@ export default function ProjectPage() {
               <div className="w-12 h-1 mt-5 rounded-full" style={{ background: "var(--orange)" }} />
             </div>
             <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--stone)" }}>
+              <p>
+                Malawi kent een extreem jonge bevolking — de gemiddelde leeftijd
+                ligt rond de 18 jaar. Veel jongeren groeien op zonder structuur,
+                begeleiding en perspectief.
+              </p>
               <p>
                 Soweto is de armste wijk van Mzuzu, Malawi. Jongeren hier missen
                 niet alleen faciliteiten — ze missen ook de begeleiding en
@@ -269,7 +229,7 @@ export default function ProjectPage() {
               ].map((p) => (
                 <div
                   key={p.name}
-                  className="rounded-2xl p-7"
+                  className="rounded-2xl p-7 card-hover"
                   style={{
                     background: "var(--white)",
                     border: "1px solid rgba(33,77,58,0.12)",
@@ -295,6 +255,72 @@ export default function ProjectPage() {
           </div>
         </section>
 
+        {/* ── Team in Malawi ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-10">
+              <Label>Het team</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                De mensen achter het project.
+              </h2>
+              <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
+                In Malawi wordt het programma gedragen door lokale professionals
+                die de community kennen en het vertrouwen hebben.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { name: "Crief", role: "Coördinator", desc: "Dagelijkse aansturing en community contact" },
+                { name: "Isaac", role: "Coach", desc: "Ervaren trainer en rolmodel voor jongeren" },
+                { name: "Sam", role: "Begeleider", desc: "Verbinding tussen programma en community" },
+                { name: "Leo", role: "Adviseur", desc: "Strategisch advies en kennisoverdracht" },
+              ].map((person) => (
+                <div
+                  key={person.name}
+                  className="rounded-2xl p-6 card-hover"
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid var(--border)",
+                    boxShadow: "var(--shadow-card)",
+                  }}
+                >
+                  <div
+                    className="w-12 h-12 rounded-full mb-4 flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #2D6B52, #183828)" }}
+                  >
+                    <span
+                      className="font-display font-bold text-sm"
+                      style={{ color: "rgba(246,241,232,0.50)" }}
+                    >
+                      {person.name[0]}
+                    </span>
+                  </div>
+                  <p className="font-bold text-base mb-0.5" style={{ color: "var(--charcoal)" }}>
+                    {person.name}
+                  </p>
+                  <p
+                    className="text-xs font-semibold tracking-wide uppercase mb-2"
+                    style={{ color: "var(--orange)" }}
+                  >
+                    {person.role}
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                    {person.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Vier pijlers ── */}
         <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto">
@@ -312,29 +338,29 @@ export default function ProjectPage() {
               </h2>
             </div>
             <div className="grid md:grid-cols-2 gap-5">
-              {pillars.map((p) => (
+              {pillars.map((p, i) => (
                 <div
                   key={p.n}
-                  className="rounded-2xl p-7"
+                  className="rounded-2xl p-7 card-hover"
                   style={{
-                    background: "var(--white)",
-                    border: "1px solid var(--border)",
-                    boxShadow: "var(--shadow-card)",
+                    background: i === 0 ? "var(--green)" : "var(--white)",
+                    border: i === 0 ? "1px solid var(--green-dark)" : "1px solid var(--border)",
+                    boxShadow: i === 0 ? "var(--shadow-md)" : "var(--shadow-card)",
                   }}
                 >
                   <p
                     className="font-display font-bold text-5xl leading-none mb-4"
-                    style={{ color: "var(--green)", opacity: 0.15 }}
+                    style={{ color: i === 0 ? "rgba(246,241,232,0.20)" : "var(--green)", opacity: i === 0 ? 1 : 0.15 }}
                   >
                     {p.n}
                   </p>
                   <h3
                     className="font-display font-bold text-lg mb-3"
-                    style={{ color: "var(--charcoal)" }}
+                    style={{ color: i === 0 ? "rgba(246,241,232,0.95)" : "var(--charcoal)" }}
                   >
                     {p.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: i === 0 ? "rgba(246,241,232,0.60)" : "var(--stone)" }}>
                     {p.desc}
                   </p>
                 </div>
@@ -352,6 +378,102 @@ export default function ProjectPage() {
             aspect="3/2"
           />
         </div>
+          </div>
+        </section>
+
+        {/* ── Trainer Coach 1 ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-14 items-start">
+              <div>
+                <Label>Opleiding</Label>
+                <h2
+                  className="font-display font-extrabold leading-tight tracking-tight"
+                  style={{
+                    fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                    color: "var(--green)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  Trainer Coach 1.
+                </h2>
+                <p className="mt-4 leading-relaxed" style={{ color: "var(--stone)" }}>
+                  Football is Life ontwikkelt samen met UNGWERU een gecertificeerd
+                  opleidingsprogramma voor lokale coaches. Na een driedaagse opleiding
+                  ontvangen trainers het certificaat &quot;Trainer Coach 1&quot;.
+                </p>
+                <div className="w-12 h-1 mt-5 rounded-full" style={{ background: "var(--orange)" }} />
+              </div>
+
+              <div className="space-y-5">
+                {[
+                  {
+                    title: "Samenwerken",
+                    desc: "Oefenvormen gericht op verbinding, teamwork en gezamenlijke doelen bereiken — op en buiten het veld.",
+                  },
+                  {
+                    title: "Leiderschap",
+                    desc: "Spel- en balvormen met rollen, keuzes maken, instructies geven en evalueren. Initiatief en invloed met respect.",
+                  },
+                  {
+                    title: "Verantwoordelijkheid nemen",
+                    desc: "Voor jezelf, voor elkaar en voor de omgeving. Gedrag zichtbaar maken, afspraken nakomen, samen verbeteren.",
+                  },
+                ].map((theme) => (
+                  <div
+                    key={theme.title}
+                    className="flex gap-4 py-4 border-b last:border-0"
+                    style={{ borderColor: "rgba(33,77,58,0.12)" }}
+                  >
+                    <div
+                      className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2"
+                      style={{ background: "var(--orange)" }}
+                    />
+                    <div>
+                      <p className="font-semibold text-sm mb-1" style={{ color: "var(--charcoal)" }}>
+                        {theme.title}
+                      </p>
+                      <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                        {theme.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certification details */}
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { value: "3", label: "Dagen opleiding", sub: "intensief & praktijkgericht" },
+                { value: "15", label: "Oefenvormen", sub: "in het werkboek" },
+                { value: "3", label: "Kernthema's", sub: "samenwerken, leiderschap, verantwoordelijkheid" },
+                { value: "Certificaat", label: "Trainer Coach 1", sub: "erkende kwalificatie" },
+              ].map((m) => (
+                <div
+                  key={m.label}
+                  className="rounded-2xl p-5 text-center card-hover"
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid rgba(33,77,58,0.10)",
+                    boxShadow: "var(--shadow-sm)",
+                  }}
+                >
+                  <p
+                    className="font-display font-bold text-2xl leading-none mb-2"
+                    style={{ color: "var(--green)" }}
+                  >
+                    {m.value}
+                  </p>
+                  <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--charcoal)" }}>
+                    {m.label}
+                  </p>
+                  <p className="text-xs" style={{ color: "var(--stone)" }}>
+                    {m.sub}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -436,7 +558,7 @@ export default function ProjectPage() {
               {indicators.map((m) => (
                 <div
                   key={m.label}
-                  className="rounded-2xl p-5"
+                  className="rounded-2xl p-5 stat-card"
                   style={{ background: "var(--green-pale)", border: "1px solid rgba(33,77,58,0.10)" }}
                 >
                   <p
@@ -503,7 +625,7 @@ export default function ProjectPage() {
 
               <Link
                 href="/doneren"
-                className="mt-6 inline-flex items-center px-7 py-3.5 rounded-full font-semibold text-base text-white hover:opacity-85 transition-opacity"
+                className="mt-6 inline-flex items-center px-7 py-3.5 rounded-full font-semibold text-base text-white btn-primary"
                 style={{ background: "var(--orange)" }}
               >
                 Doneer nu →
@@ -550,7 +672,7 @@ export default function ProjectPage() {
           className="py-16 md:py-24 px-4 sm:px-6 relative overflow-hidden"
           style={{ background: "var(--green)" }}
         >
-          <PitchDecor opacity={0.22} stroke="white" />
+          <PitchDecor id="grass-proj-cta" opacity={0.22} stroke="white" />
           <div className="relative z-10 max-w-xl mx-auto text-center">
             <h2
               className="font-display font-extrabold leading-tight tracking-tight"
@@ -572,7 +694,7 @@ export default function ProjectPage() {
             </p>
             <Link
               href="/doneren"
-              className="mt-8 inline-flex items-center px-9 py-4 rounded-full font-semibold text-lg text-white hover:opacity-85 transition-opacity"
+              className="mt-8 inline-flex items-center px-9 py-4 rounded-full font-semibold text-lg text-white btn-primary"
               style={{ background: "var(--orange)", boxShadow: "var(--glow-orange)" }}
             >
               Doneer nu →
@@ -588,6 +710,7 @@ export default function ProjectPage() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

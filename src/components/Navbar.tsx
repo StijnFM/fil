@@ -39,7 +39,7 @@ export function Navbar() {
           </Link>
           <Link
             href="/doneren"
-            className="px-5 py-2 rounded-full text-sm font-semibold text-white transition-opacity hover:opacity-85 hidden sm:block"
+            className="px-5 py-2 rounded-full text-sm font-semibold text-white btn-primary hidden sm:block"
             style={{ background: "var(--green)" }}
           >
             Doneren
@@ -108,7 +108,7 @@ export function Navbar() {
               <Link
                 href="/doneren"
                 onClick={() => setOpen(false)}
-                className="mt-4 text-center px-6 py-3.5 rounded-full font-semibold text-white transition-opacity hover:opacity-85"
+                className="mt-4 text-center px-6 py-3.5 rounded-full font-semibold text-white btn-primary"
                 style={{ background: "var(--orange)" }}
               >
                 Doneer nu

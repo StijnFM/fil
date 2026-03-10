@@ -170,12 +170,57 @@ body {
 
 /* ── Better link hover for cards ─────────────────── */
 .card-hover {
-  transition: transform 280ms var(--ease-out-expo), box-shadow 280ms var(--ease-out-expo);
+  transition: transform 280ms var(--ease-out-expo), box-shadow 280ms var(--ease-out-expo), border-color 280ms var(--ease-out-expo);
 }
 
 .card-hover:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+  border-color: rgba(33, 77, 58, 0.18);
+}
+
+/* ── Button hover refinement ─────────────────────── */
+.btn-primary {
+  transition: transform 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo), opacity 200ms ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(201, 107, 44, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  transition: transform 200ms var(--ease-out-expo), background 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(33, 77, 58, 0.05);
+  transform: translateY(-1px);
+}
+
+/* ── Donation tile hover ─────────────────────────── */
+.donation-tile {
+  transition: background 200ms ease, border-color 200ms ease, transform 200ms var(--ease-out-expo);
+}
+
+.donation-tile:hover {
+  background: rgba(246, 241, 232, 0.12) !important;
+  border-color: rgba(246, 241, 232, 0.18) !important;
+  transform: translateX(4px);
+}
+
+/* ── Interactive stat card ───────────────────────── */
+.stat-card {
+  transition: transform 280ms var(--ease-out-expo), box-shadow 280ms var(--ease-out-expo), background 280ms ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ── Reduced motion ───────────────────────────────── */

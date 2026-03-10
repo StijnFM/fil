@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { DoneerForm } from "./DoneerForm";
 
@@ -178,7 +179,49 @@ export default function DonerenPage() {
             </div>
           </div>
         </section>
+        {/* ── Football Shirt Challenge ── */}
+        <section className="py-12 px-6 bg-background">
+          <div className="max-w-lg mx-auto">
+            <div
+              className="rounded-2xl p-6 relative overflow-hidden card-hover"
+              style={{
+                background: "var(--green)",
+                boxShadow: "var(--shadow-lg)",
+              }}
+            >
+              <div className="relative z-10">
+                <p
+                  className="text-xs font-semibold tracking-widest uppercase mb-3"
+                  style={{ color: "rgba(201,107,44,0.80)" }}
+                >
+                  Maandelijkse actie
+                </p>
+                <h3
+                  className="font-display font-bold text-xl leading-snug mb-3"
+                  style={{ color: "rgba(246,241,232,0.95)" }}
+                >
+                  Football Shirt Challenge
+                </h3>
+                <p
+                  className="text-sm leading-relaxed mb-4"
+                  style={{ color: "rgba(246,241,232,0.55)" }}
+                >
+                  Elke maand verloten we onder de donateurs een voetbalshirt
+                  van een bekende speler. Doneer en maak kans — en steun
+                  tegelijkertijd het project.
+                </p>
+                <p
+                  className="text-xs font-semibold"
+                  style={{ color: "rgba(246,241,232,0.35)" }}
+                >
+                  Meer weten? Volg ons op LinkedIn en Instagram.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+      <Footer />
     </>
   );
 }
