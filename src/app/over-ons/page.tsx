@@ -117,9 +117,10 @@ const fundingSources = [
 const anbiInfo = [
   { label: "Rechtsvorm", value: "Stichting" },
   { label: "RSIN", value: "868370873" },
+  { label: "KvK-nummer", value: "(op te vragen bij bestuur)" },
   { label: "Status", value: "ANBI-erkend" },
   { label: "Beloning bestuur", value: "Onbezoldigd" },
-  { label: "KvK", value: "Nijmegen" },
+  { label: "Vestiging", value: "Nijmegen" },
 ];
 
 export default function OverOnsPage() {
@@ -667,6 +668,13 @@ export default function OverOnsPage() {
                 fiscaal aftrekbaar. Alle financiele informatie is beschikbaar op
                 verzoek via het bestuur.
               </p>
+              <Link
+                href="/transparantie"
+                className="mt-4 inline-flex text-xs font-semibold hover:opacity-70 transition-opacity"
+                style={{ color: "var(--orange)" }}
+              >
+                Volledige ANBI-informatie →
+              </Link>
             </div>
 
             <div>

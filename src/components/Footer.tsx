@@ -37,7 +37,7 @@ export function Footer() {
 
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
           {/* Info */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-1">
             <p
               className="text-sm leading-relaxed max-w-xs"
               style={{ color: "rgba(246,241,232,0.40)" }}
@@ -53,36 +53,67 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Bestuur */}
+          {/* Project */}
           <div>
             <p
               className="text-xs font-semibold tracking-widest uppercase mb-4"
               style={{ color: "rgba(246,241,232,0.28)" }}
             >
-              Bestuur
+              Project
             </p>
-            <ul className="space-y-2 text-sm" style={{ color: "rgba(246,241,232,0.45)" }}>
+            <div className="flex flex-col gap-2 text-sm">
               {[
-                { name: "Paul van Zwam", role: "Voorzitter" },
-                { name: "Ivo Spanjersberg", role: "Secretaris" },
-                { name: "Mano Radema", role: "Penningmeester" },
-              ].map((m) => (
-                <li key={m.name}>
-                  <span style={{ color: "rgba(246,241,232,0.70)" }}>{m.name}</span>
-                  <span className="mx-1.5 opacity-30">—</span>
-                  {m.role}
-                </li>
+                { href: "/project", label: "Project Soweto" },
+                { href: "/opleiding", label: "Trainer Coach 1" },
+                { href: "/partners", label: "Partners in Malawi" },
+                { href: "/malawi", label: "Over Malawi" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="hover:opacity-75 transition-opacity"
+                  style={{ color: "rgba(246,241,232,0.40)" }}
+                >
+                  {link.label}
+                </Link>
               ))}
-            </ul>
-            <p
-              className="text-xs mt-3"
-              style={{ color: "rgba(246,241,232,0.20)" }}
-            >
-              Onbezoldigd bestuur
-            </p>
+            </div>
           </div>
 
-          {/* Links + contact */}
+          {/* Organisatie */}
+          <div>
+            <p
+              className="text-xs font-semibold tracking-widest uppercase mb-4"
+              style={{ color: "rgba(246,241,232,0.28)" }}
+            >
+              Organisatie
+            </p>
+            <div className="flex flex-col gap-2 text-sm">
+              {[
+                { href: "/over-ons", label: "Over ons" },
+                { href: "/transparantie", label: "Transparantie & ANBI" },
+                { href: "/meedoen", label: "Meedoen" },
+                { href: "/doneren", label: "Doneren" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="hover:opacity-75 transition-opacity"
+                  style={{
+                    color:
+                      link.href === "/doneren"
+                        ? "var(--orange)"
+                        : "rgba(246,241,232,0.40)",
+                    fontWeight: link.href === "/doneren" ? 600 : undefined,
+                  }}
+                >
+                  {link.href === "/doneren" ? `${link.label} →` : link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
           <div>
             <p
               className="text-xs font-semibold tracking-widest uppercase mb-4"
@@ -98,28 +129,33 @@ export function Footer() {
               <br />
               6531 KZ Nijmegen
             </address>
-            <div className="flex flex-col gap-2 text-sm">
-              <Link
-                href="/project"
-                className="hover:opacity-75 transition-opacity"
-                style={{ color: "rgba(246,241,232,0.40)" }}
+            <a
+              href="tel:+31639478488"
+              className="block text-sm mb-1 hover:opacity-75 transition-opacity"
+              style={{ color: "rgba(246,241,232,0.45)" }}
+            >
+              +31 6 39 47 84 88
+            </a>
+            <a
+              href="mailto:info@footballislife.nl"
+              className="block text-sm hover:opacity-75 transition-opacity"
+              style={{ color: "rgba(246,241,232,0.45)" }}
+            >
+              info@footballislife.nl
+            </a>
+
+            <div className="mt-4">
+              <p
+                className="text-xs"
+                style={{ color: "rgba(246,241,232,0.22)" }}
               >
-                Project Soweto
-              </Link>
-              <Link
-                href="/over-ons"
-                className="hover:opacity-75 transition-opacity"
-                style={{ color: "rgba(246,241,232,0.40)" }}
-              >
-                Over ons
-              </Link>
-              <Link
-                href="/doneren"
-                className="font-semibold hover:opacity-75 transition-opacity"
-                style={{ color: "var(--orange)" }}
-              >
-                Doneren →
-              </Link>
+                Bestuur (onbezoldigd)
+              </p>
+              <ul className="mt-1.5 space-y-1 text-xs" style={{ color: "rgba(246,241,232,0.35)" }}>
+                <li>Paul van Zwam — Voorzitter</li>
+                <li>Ivo Spanjersberg — Secretaris</li>
+                <li>Mano Radema — Penningmeester</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -129,10 +165,10 @@ export function Footer() {
           style={{ borderColor: "rgba(246,241,232,0.07)" }}
         >
           <p className="text-xs" style={{ color: "rgba(246,241,232,0.18)" }}>
-            © {new Date().getFullYear()} Football is Life
+            © {new Date().getFullYear()} Stichting Football is Life
           </p>
           <p className="text-xs" style={{ color: "rgba(246,241,232,0.14)" }}>
-            Alle inkomsten gaan naar het project
+            Alle inkomsten gaan naar het project · ANBI-erkend
           </p>
         </div>
       </div>

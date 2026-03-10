@@ -1122,6 +1122,105 @@ function SocialFeed() {
   );
 }
 
+/* ── Ontdek meer ────────────────────────────────────── */
+const exploreLinks = [
+  {
+    href: "/opleiding",
+    label: "Trainer Coach 1",
+    desc: "Het driedaagse opleidingsprogramma dat lokale coaches klaarstoomt voor de toekomst.",
+  },
+  {
+    href: "/partners",
+    label: "Partners in Malawi",
+    desc: "UNGWERU en St. Patrick — de organisaties die het programma lokaal dragen.",
+  },
+  {
+    href: "/malawi",
+    label: "Over Malawi",
+    desc: "Waarom juist hier? Context over het land, Mzuzu en de wijk Soweto.",
+  },
+  {
+    href: "/meedoen",
+    label: "Meedoen",
+    desc: "Ambassadeur worden, sponsoring, de Football Shirt Challenge en meer.",
+  },
+  {
+    href: "/transparantie",
+    label: "Transparantie",
+    desc: "ANBI-informatie, financiële verantwoording en onze bestuurssamenstelling.",
+  },
+];
+
+function OntdekMeer() {
+  return (
+    <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--ivory)" }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease }}
+          className="mb-10"
+        >
+          <Label>Ontdek meer</Label>
+          <h2
+            className="font-display font-extrabold leading-tight tracking-tight"
+            style={{
+              fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+              color: "var(--green)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Alles over Football is Life.
+          </h2>
+          <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
+            Van de opleiding en onze partners tot financiële transparantie —
+            alles staat open.
+          </p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {exploreLinks.map((link, i) => (
+            <motion.div
+              key={link.href}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: i * 0.06, ease }}
+            >
+              <Link
+                href={link.href}
+                className="block rounded-2xl p-6 card-hover group h-full"
+                style={{
+                  background: "var(--white)",
+                  border: "1px solid var(--border)",
+                  boxShadow: "var(--shadow-card)",
+                }}
+              >
+                <h3
+                  className="font-display font-bold text-base mb-2 group-hover:underline underline-offset-2"
+                  style={{ color: "var(--green)" }}
+                >
+                  {link.label}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                  {link.desc}
+                </p>
+                <span
+                  className="inline-block mt-3 text-sm font-semibold group-hover:translate-x-1 transition-transform"
+                  style={{ color: "var(--orange)" }}
+                >
+                  Lees meer →
+                </span>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── Doneer sectie ───────────────────────────────────── */
 const donationTiles = [
   { amount: 10, impact: "1 jongere, 1 jaar betere begeleiding" },
@@ -1284,6 +1383,7 @@ export default function Home() {
         <ImpactMeting />
         <Roadmap />
         <SocialFeed />
+        <OntdekMeer />
         <DoneerSectie />
       </main>
       <Footer />

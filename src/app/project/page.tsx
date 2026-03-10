@@ -212,6 +212,13 @@ export default function ProjectPage() {
                 Zonder lokale verankering werkt geen enkel programma. UNGWERU en
                 St. Patrick zijn geen uitvoerders — zij zijn mede-eigenaren.
               </p>
+              <Link
+                href="/partners"
+                className="mt-3 inline-flex text-sm font-semibold hover:opacity-70 transition-opacity"
+                style={{ color: "var(--orange)" }}
+              >
+                Meer over onze partners →
+              </Link>
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
@@ -402,6 +409,13 @@ export default function ProjectPage() {
                   opleidingsprogramma voor lokale coaches. Na een driedaagse opleiding
                   ontvangen trainers het certificaat &quot;Trainer Coach 1&quot;.
                 </p>
+                <Link
+                  href="/opleiding"
+                  className="mt-4 inline-flex text-sm font-semibold hover:opacity-70 transition-opacity"
+                  style={{ color: "var(--orange)" }}
+                >
+                  Alles over de opleiding →
+                </Link>
                 <div className="w-12 h-1 mt-5 rounded-full" style={{ background: "var(--orange)" }} />
               </div>
 
