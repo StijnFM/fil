@@ -263,10 +263,19 @@ export default function PartnersPage() {
                     Noel McGeeney en Leo Traynor.
                   </p>
                   <p>
-                    De YDU richt zich op Sexual and Reproductive Health workshops
-                    voor jongeren van 16 tot 24 jaar, gecombineerd met justice
-                    education, mentorship en safeguarding. Dit sluit nauw aan bij
-                    de doelen van Football is Life.
+                    De YDU organiseert workshops over Sexual and Reproductive
+                    Health voor jongeren van 16 tot 24 jaar, gecombineerd met
+                    justice education, mentorship en safeguarding. Actief in
+                    Mzuzu en Nkhata-Bay. Dit sluit nauw aan bij de doelen van
+                    Football is Life.
+                  </p>
+                  <p>
+                    De{" "}
+                    <strong style={{ color: "var(--charcoal)" }}>Lusekelo School of Computing and Tailoring</strong>{" "}
+                    biedt ICT- en kleermakerij-opleiding voor jongeren en valt
+                    onder de Youth Development Unit. Het kantoor van UNGWERU
+                    bevindt zich achter het Tahit Filling Station, naast de
+                    Mzuzu University in Luwinga.
                   </p>
                 </div>
               </div>
@@ -469,6 +478,150 @@ export default function PartnersPage() {
                 jarenlange aanwezigheid zorgen zij voor draagvlak, vertrouwen
                 en directe toegang tot de jongeren die het programma wil bereiken.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── VVCS ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--ivory)" }}>
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-12">
+              <Label>Partner in Nederland</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                VVCS.
+              </h2>
+              <p className="mt-3 max-w-2xl" style={{ color: "var(--stone)" }}>
+                De VVCS is de belangenorganisatie voor profvoetballers in
+                Nederland. Naast juridische ondersteuning, carrierebegeleiding
+                en mentale gezondheidszorg zet de VVCS zich in voor
+                maatschappelijke projecten. Via de VVCS ontvangen wij
+                trainingskleding en sportmateriaal voor het project in Soweto.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              {/* Key points */}
+              <div
+                className="rounded-2xl p-7"
+                style={{
+                  background: "var(--white)",
+                  border: "1px solid var(--border)",
+                  boxShadow: "var(--shadow-card)",
+                }}
+              >
+                <p
+                  className="text-xs font-semibold tracking-wide uppercase mb-5"
+                  style={{ color: "var(--orange)" }}
+                >
+                  Bijdrage
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Trainingskleding en sportmateriaal voor coaches en jongeren",
+                    "Verbinding tussen profvoetbal en grassroots-ontwikkeling",
+                    "Maatschappelijke betrokkenheid van de spelersvereniging",
+                  ].map((point) => (
+                    <li key={point} className="flex gap-3 items-start">
+                      <span
+                        className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0"
+                        style={{ background: "var(--orange)" }}
+                      />
+                      <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                        {point}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Photo */}
+              <div>
+                <ImagePlaceholder
+                  label="(Afb: VVCS)"
+                  description="VVCS trainingsmateriaal voor het project"
+                  aspect="16/9"
+                  dark={false}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Libre Foundation ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-12">
+              <Label>Trainingspartner</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Libre Foundation.
+              </h2>
+              <p className="mt-3 max-w-2xl" style={{ color: "var(--stone)" }}>
+                Libre Foundation verzorgt gratis leiderschaps- en
+                communicatietrainingen voor lokale organisaties in
+                ontwikkelingslanden. In 2023 faciliteerden zij 13 tweedaagse
+                trainingen in Afrika en Azie en 7 in Latijns-Amerika. Paul van
+                Zwam en Ivo Spanjersberg werken als trainers bij Libre
+                Foundation. Vanuit deze ervaring is Football is Life ontstaan.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              {/* Photo */}
+              <div>
+                <ImagePlaceholder
+                  label="(Afb: Libre Foundation)"
+                  description="Leiderschapstraining Libre Foundation"
+                  aspect="16/9"
+                />
+              </div>
+
+              {/* Key points */}
+              <div
+                className="rounded-2xl p-7"
+                style={{
+                  background: "var(--white)",
+                  border: "1px solid var(--border)",
+                  boxShadow: "var(--shadow-card)",
+                }}
+              >
+                <p
+                  className="text-xs font-semibold tracking-wide uppercase mb-5"
+                  style={{ color: "var(--orange)" }}
+                >
+                  Bijdrage
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Gratis leiderschapstraining voor lokale organisaties in ontwikkelingslanden",
+                    "Actief in Afrika, Azie en Latijns-Amerika",
+                    "Directe methodische basis voor de Trainer Coach 1-opleiding",
+                  ].map((point) => (
+                    <li key={point} className="flex gap-3 items-start">
+                      <span
+                        className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0"
+                        style={{ background: "var(--orange)" }}
+                      />
+                      <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                        {point}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
