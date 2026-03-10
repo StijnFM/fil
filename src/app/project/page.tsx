@@ -179,6 +179,24 @@ export default function ProjectPage() {
                 — twee organisaties met diepe wortels in de community — bouwen
                 we iets wat blijft.
               </p>
+
+              <blockquote
+                className="my-8 py-6 px-8 rounded-2xl"
+                style={{
+                  background: "var(--green-pale)",
+                  borderLeft: "4px solid var(--green)",
+                }}
+              >
+                <p
+                  className="font-display font-bold text-lg md:text-xl leading-relaxed italic"
+                  style={{ color: "var(--green)" }}
+                >
+                  &ldquo;We willen niet de zoveelste betweterige westerlingen zijn die wel even komen vertellen hoe het moet.&rdquo;
+                </p>
+                <p className="mt-3 text-sm font-semibold" style={{ color: "var(--stone)" }}>
+                  Paul van Zwam en Ivo Spanjersberg, oprichters
+                </p>
+              </blockquote>
             </div>
 
             {/* Full-width image spanning both columns */}
@@ -677,6 +695,173 @@ export default function ProjectPage() {
                 fiscaal aftrekbaar. Financiële verantwoording is beschikbaar via
                 het bestuur.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Voortgang ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
+          <div className="max-w-6xl mx-auto">
+            <Label>Voortgang</Label>
+            <h2
+              className="font-display font-extrabold leading-tight tracking-tight"
+              style={{
+                fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                color: "var(--green)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Tweederde van het doel bereikt.
+            </h2>
+            <p className="mt-4 max-w-xl leading-relaxed" style={{ color: "var(--stone)" }}>
+              Van de benodigde 15.000 euro is inmiddels tweederde opgehaald via sponsors, donaties en veilingen. Het project nadert de uitvoeringsfase.
+            </p>
+
+            <div className="mt-8 max-w-xl">
+              <div className="flex justify-between text-sm mb-2">
+                <span style={{ color: "var(--stone)" }}>Opgehaald</span>
+                <span className="font-semibold" style={{ color: "var(--green)" }}>~€10.000 van €15.000</span>
+              </div>
+              <div
+                className="h-3 rounded-full overflow-hidden"
+                style={{ background: "rgba(33,77,58,0.12)" }}
+              >
+                <div
+                  className="h-full rounded-full"
+                  style={{ background: "var(--green)", width: "66%" }}
+                />
+              </div>
+              <p className="mt-2 text-xs" style={{ color: "var(--stone)" }}>
+                Tweederde van het projectdoel
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <p className="mb-4 font-semibold" style={{ color: "var(--charcoal)" }}>
+                Help ons het laatste deel bereiken
+              </p>
+              <Link
+                href="/doneren"
+                className="inline-flex items-center px-7 py-3.5 rounded-full font-semibold text-base text-white btn-primary"
+                style={{ background: "var(--orange)" }}
+              >
+                Doneer nu →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Toekomst ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--ivory)" }}>
+          <div className="max-w-6xl mx-auto">
+            <Label>Toekomst</Label>
+            <h2
+              className="font-display font-extrabold leading-tight tracking-tight"
+              style={{
+                fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                color: "var(--green)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Soweto als blauwdruk.
+            </h2>
+            <p className="mt-4 max-w-2xl leading-relaxed" style={{ color: "var(--stone)" }}>
+              Het project in Soweto is het begin. De slogan &lsquo;Football is Life, Pass it on&rsquo; is niet alleen een kreet, maar een aanpak: kennis overdragen, lokaal verankeren en doorgroeien. Er is al interesse vanuit Noord-Ghana en Tanzania voor vergelijkbare initiatieven.
+            </p>
+
+            <div className="mt-10 grid md:grid-cols-3 gap-5">
+              {[
+                {
+                  title: "Fase 2: Uitbreiding Mzuzu",
+                  desc: "Na het succes van FC Soweto groeien we naar andere wijken in Mzuzu. Hetzelfde model, aangepast aan de lokale context.",
+                },
+                {
+                  title: "Fase 3: Rumphi en Nkhata Bay",
+                  desc: "Het diocees kent meer gebieden waar jongeren baat hebben bij structuur en begeleiding via sport.",
+                },
+                {
+                  title: "Internationaal",
+                  desc: "Noord-Ghana en Tanzania hebben al interesse getoond. De methodiek is ontworpen om overdraagbaar te zijn.",
+                },
+              ].map((card) => (
+                <div
+                  key={card.title}
+                  className="rounded-2xl p-6"
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid var(--border)",
+                    boxShadow: "var(--shadow-card)",
+                  }}
+                >
+                  <h3
+                    className="font-display font-bold text-base mb-3"
+                    style={{ color: "var(--charcoal)" }}
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                    {card.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Volg de voortgang ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
+          <div className="max-w-6xl mx-auto">
+            <Label>Volg de voortgang</Label>
+            <h2
+              className="font-display font-extrabold leading-tight tracking-tight"
+              style={{
+                fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                color: "var(--green)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              FC Soweto in beeld.
+            </h2>
+            <p className="mt-4 max-w-xl leading-relaxed" style={{ color: "var(--stone)" }}>
+              Volg de voortgang van het project via onze kanalen.
+            </p>
+
+            <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { freq: "6x per jaar", label: "Videoreeks" },
+                { freq: "3-4x per jaar", label: "Faciliteitenupdate" },
+                { freq: "5x per jaar", label: "Lokale verhalen" },
+                { freq: "Maandelijks", label: "Football Shirt Challenge" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl p-5 text-center"
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid var(--border)",
+                  }}
+                >
+                  <p
+                    className="font-display font-bold text-lg leading-snug mb-2"
+                    style={{ color: "var(--green)" }}
+                  >
+                    {item.freq}
+                  </p>
+                  <p className="text-xs" style={{ color: "var(--stone)" }}>
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6">
+              <Link
+                href="/in-de-media"
+                className="font-semibold hover:opacity-70 transition-opacity"
+                style={{ color: "var(--orange)" }}
+              >
+                Bekijk onze mediapagina →
+              </Link>
             </div>
           </div>
         </section>
