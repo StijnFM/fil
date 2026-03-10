@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
+import { ShareButtons } from "./ShareButtons";
 
 export default async function BedanktPage({
   searchParams,
@@ -55,7 +56,7 @@ export default async function BedanktPage({
               }}
             >
               <p className="text-sm font-semibold" style={{ color: "var(--orange)" }}>
-                Je donatie van € {amount} wordt verwerkt
+                Je donatie van &euro; {amount} wordt verwerkt
               </p>
             </div>
           )}
@@ -67,6 +68,9 @@ export default async function BedanktPage({
             Je ontvangt een bevestiging per e-mail. We houden je op de hoogte
             van de voortgang van het project in Soweto, Mzuzu.
           </p>
+
+          {/* Share Section */}
+          <ShareButtons firstName={firstName} amount={amount} />
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <Link

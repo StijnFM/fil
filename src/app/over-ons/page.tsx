@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client";
+
+import { motion } from "motion/react";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -6,11 +8,7 @@ import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { Label } from "@/components/Label";
 import { PitchDecor } from "@/components/PitchDecor";
 
-export const metadata: Metadata = {
-  title: "Over ons — Football is Life",
-  description:
-    "Stichting Football is Life wordt bestuurd door een onbezoldigd bestuur van drie leden. ANBI-erkend, RSIN 868370873, gevestigd in Nijmegen.",
-};
+const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const board = [
   {
@@ -19,6 +17,8 @@ const board = [
     initials: "PZ",
     desc: "Paul voert naast zijn bestuursrol ook operationele taken uit. Hij is het gezicht van Football is Life in het veld en in het netwerk.",
     expertise: ["Operationele leiding", "Netwerk professionele sport", "Veldwerk"],
+    photoLabel: "(Foto: Paul)",
+    photoDesc: "Paul van Zwam — voorzitter Football is Life",
   },
   {
     name: "Ivo Spanjersberg",
@@ -26,6 +26,8 @@ const board = [
     initials: "IS",
     desc: "Ivo verzorgt de interne communicatie, documentatie en coördinatie. Samen met Paul draagt hij operationele verantwoordelijkheid.",
     expertise: ["Communicatie", "Documentatie", "Coördinatie"],
+    photoLabel: "(Foto: Ivo)",
+    photoDesc: "Ivo Spanjersberg — secretaris",
   },
   {
     name: "Mano Radema",
@@ -33,6 +35,73 @@ const board = [
     initials: "MR",
     desc: "Mano bewaakt de financiën en zorgt dat elke gedoneerde euro transparant en verantwoord wordt besteed conform ANBI-voorwaarden.",
     expertise: ["Financiën", "ANBI-verantwoording", "Transparantie"],
+    photoLabel: "(Foto: Mano)",
+    photoDesc: "Mano Radema — penningmeester",
+  },
+];
+
+const malawiTeam = [
+  {
+    name: "Crief",
+    role: "Coördinator",
+    initials: "C",
+    desc: "Crief coördineert de dagelijkse activiteiten in Soweto en is het eerste aanspreekpunt voor de community.",
+    photoLabel: "(Foto: Crief)",
+    photoDesc: "Crief — coördinator in Mzuzu",
+  },
+  {
+    name: "Isaac",
+    role: "Coach",
+    initials: "I",
+    desc: "Isaac leidt de voetbaltrainingen en combineert sport met persoonlijke begeleiding van jongeren.",
+    photoLabel: "(Foto: Isaac)",
+    photoDesc: "Isaac — coach op het veld",
+  },
+  {
+    name: "Sam",
+    role: "Begeleider",
+    initials: "S",
+    desc: "Sam begeleidt jongeren individueel en organiseert de wekelijkse life skills sessies.",
+    photoLabel: "(Foto: Sam)",
+    photoDesc: "Sam — begeleider jongeren",
+  },
+  {
+    name: "Leo",
+    role: "Adviseur",
+    initials: "L",
+    desc: "Leo adviseert het team over lokale context en helpt bij de verbinding met scholen en organisaties.",
+    photoLabel: "(Foto: Leo)",
+    photoDesc: "Leo — lokaal adviseur",
+  },
+];
+
+const ambassadors = [
+  {
+    name: "Ambassadeur 1",
+    title: "Sport & netwerk",
+    initials: "A1",
+    desc: "Zet zich in voor de zichtbaarheid van Football is Life binnen de professionele sportwereld en opent deuren bij sportclubs en organisaties.",
+    photoLabel: "(Foto: Ambassadeur)",
+    photoDesc: "Ambassadeur — sport & netwerk",
+    tags: ["Professionele sport", "Netwerk"],
+  },
+  {
+    name: "Ambassadeur 2",
+    title: "Bedrijfsleven",
+    initials: "A2",
+    desc: "Verbindt bedrijven aan de missie van Football is Life en helpt bij het werven van structurele sponsoring en partnerschappen.",
+    photoLabel: "(Foto: Ambassadeur)",
+    photoDesc: "Ambassadeur — bedrijfsleven",
+    tags: ["Sponsoring", "Partnerschappen"],
+  },
+  {
+    name: "Ambassadeur 3",
+    title: "Community & media",
+    initials: "A3",
+    desc: "Vergroot het bereik van de stichting via media, evenementen en persoonlijke inzet. Deelt het verhaal van Football is Life met een breed publiek.",
+    photoLabel: "(Foto: Ambassadeur)",
+    photoDesc: "Ambassadeur — community & media",
+    tags: ["Media", "Evenementen", "Zichtbaarheid"],
   },
 ];
 
@@ -67,13 +136,19 @@ export default function OverOnsPage() {
           <PitchDecor opacity={0.22} stroke="white" id="grass-about" />
 
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-24">
-            <span
+            <motion.span
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease }}
               className="inline-block text-xs font-semibold tracking-widest uppercase mb-6"
               style={{ color: "rgba(201,107,44,0.80)" }}
             >
               Stichting · Nijmegen · ANBI
-            </span>
-            <h1
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.06, ease }}
               className="font-display font-extrabold leading-[1.0] tracking-tight"
               style={{
                 fontSize: "clamp(3rem, 7vw, 5.5rem)",
@@ -82,29 +157,42 @@ export default function OverOnsPage() {
               }}
             >
               Over ons.
-            </h1>
-            <p
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.18, ease }}
               className="mt-5 max-w-lg text-lg leading-relaxed"
               style={{ color: "rgba(246,241,232,0.58)" }}
             >
               Een jonge stichting met serieuze uitvoeringskracht. Kleinschalig,
               persoonlijk en volledig transparant.
-            </p>
-            <div className="mt-10">
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease }}
+              className="mt-10"
+            >
               <ImagePlaceholder
                 label="(Afb L)"
                 description="Het bestuur van Football is Life"
                 aspect="21/9"
                 className="rounded-xl"
               />
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* ── Missie ── */}
         <section style={{ background: "var(--ivory)" }} className="py-16 md:py-24 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease }}
+            >
               <Label>Missie</Label>
               <h2
                 className="font-display font-extrabold leading-tight tracking-tight"
@@ -119,10 +207,17 @@ export default function OverOnsPage() {
                 Community als doel.
               </h2>
               <div className="w-12 h-1 mt-5 rounded-full" style={{ background: "var(--orange)" }} />
-            </div>
-            <div className="space-y-4 leading-relaxed" style={{ color: "var(--stone)" }}>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: 0.1, ease }}
+              className="space-y-4 leading-relaxed"
+              style={{ color: "var(--stone)" }}
+            >
               <p>
-                Die kracht is zó groot, dat we besloten hebben er iets blijvends
+                Die kracht is zo groot, dat we besloten hebben er iets blijvends
                 mee te doen. Zo is{" "}
                 <strong style={{ color: "var(--charcoal)" }}>Football is Life</strong>{" "}
                 ontstaan.
@@ -147,8 +242,7 @@ export default function OverOnsPage() {
                 communiceren dat wij samen met lokale partners bouwen aan
                 toekomstkansen via voetbal en empowerment.
               </p>
-            </div>
-            {/* Mission image spanning both columns */}
+            </motion.div>
             <div className="md:col-span-2 mt-6">
               <ImagePlaceholder
                 label="(Afb M)"
@@ -160,10 +254,16 @@ export default function OverOnsPage() {
           </div>
         </section>
 
-        {/* ── Bestuur ── */}
+        {/* ── Bestuur — with large photo placeholders ── */}
         <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
           <div className="max-w-6xl mx-auto">
-            <div className="mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease }}
+              className="mb-12"
+            >
               <Label>Bestuur</Label>
               <h2
                 className="font-display font-extrabold leading-tight tracking-tight"
@@ -173,77 +273,81 @@ export default function OverOnsPage() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Drie mensen. Één missie.
+                Drie mensen. Eén missie.
               </h2>
               <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
                 Het bestuur werkt volledig onbezoldigd. Alleen werkelijk gemaakte
                 onkosten worden gedeclareerd, conform de ANBI-voorwaarden.
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid md:grid-cols-3 gap-5">
-              {board.map((member) => (
-                <div
+              {board.map((member, i) => (
+                <motion.div
                   key={member.name}
-                  className="rounded-2xl p-7 card-hover"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease }}
+                  className="rounded-2xl overflow-hidden card-hover"
                   style={{
                     background: "var(--white)",
                     border: "1px solid var(--border)",
                     boxShadow: "var(--shadow-card)",
                   }}
                 >
-                  {/* Photo placeholder */}
-                  <div
-                    className="w-16 h-16 rounded-full overflow-hidden mb-5 flex items-center justify-center"
-                    style={{
-                      background: "linear-gradient(135deg, #2D6B52, #183828)",
-                    }}
-                  >
-                    <span
-                      className="font-display font-bold text-lg"
-                      style={{ color: "rgba(246,241,232,0.50)" }}
+                  {/* Large photo placeholder */}
+                  <ImagePlaceholder
+                    label={member.photoLabel}
+                    description={member.photoDesc}
+                    aspect="4/3"
+                    className="rounded-none"
+                  />
+                  <div className="p-6">
+                    <p className="font-display font-bold text-lg" style={{ color: "var(--charcoal)" }}>
+                      {member.name}
+                    </p>
+                    <p
+                      className="text-xs font-semibold tracking-wide uppercase mt-1 mb-3"
+                      style={{ color: "var(--orange)" }}
                     >
-                      {member.initials}
-                    </span>
+                      {member.role}
+                    </p>
+                    <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--stone)" }}>
+                      {member.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {member.expertise.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs px-2.5 py-1 rounded-full"
+                          style={{
+                            background: "var(--green-pale)",
+                            color: "var(--green)",
+                            border: "1px solid rgba(33,77,58,0.12)",
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <p className="font-bold text-base" style={{ color: "var(--charcoal)" }}>
-                    {member.name}
-                  </p>
-                  <p
-                    className="text-xs font-semibold tracking-wide uppercase mt-1 mb-4"
-                    style={{ color: "var(--orange)" }}
-                  >
-                    {member.role}
-                  </p>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--stone)" }}>
-                    {member.desc}
-                  </p>
-                  {/* Expertise tags */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {member.expertise.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2.5 py-1 rounded-full"
-                        style={{
-                          background: "var(--green-pale)",
-                          color: "var(--green)",
-                          border: "1px solid rgba(33,77,58,0.12)",
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Team in Malawi ── */}
+        {/* ── Team in Malawi — with photo placeholders ── */}
         <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-10">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease }}
+              className="mb-10"
+            >
               <Label>In Malawi</Label>
               <h2
                 className="font-display font-extrabold leading-tight tracking-tight"
@@ -259,54 +363,176 @@ export default function OverOnsPage() {
                 De dagelijkse uitvoering in Mzuzu wordt gedragen door een team
                 dat de community van binnenuit kent.
               </p>
-            </div>
+            </motion.div>
+
+            {/* Group photo */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, ease }}
+              className="mb-8"
+            >
+              <ImagePlaceholder
+                label="(Afb N)"
+                description="Het team in Malawi samen op het veld in Soweto"
+                aspect="21/9"
+              />
+            </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { name: "Crief", role: "Coördinator", initials: "C" },
-                { name: "Isaac", role: "Coach", initials: "I" },
-                { name: "Sam", role: "Begeleider", initials: "S" },
-                { name: "Leo", role: "Adviseur", initials: "L" },
-              ].map((person) => (
-                <div
+              {malawiTeam.map((person, i) => (
+                <motion.div
                   key={person.name}
-                  className="rounded-2xl p-6 text-center card-hover"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: i * 0.08, ease }}
+                  className="rounded-2xl overflow-hidden card-hover"
                   style={{
                     background: "var(--white)",
                     border: "1px solid var(--border)",
                     boxShadow: "var(--shadow-card)",
                   }}
                 >
-                  <div
-                    className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center"
-                    style={{ background: "linear-gradient(135deg, #2D6B52, #183828)" }}
-                  >
-                    <span
-                      className="font-display font-bold text-lg"
-                      style={{ color: "rgba(246,241,232,0.50)" }}
+                  <ImagePlaceholder
+                    label={person.photoLabel}
+                    description={person.photoDesc}
+                    aspect="1/1"
+                    className="rounded-none"
+                  />
+                  <div className="p-4 text-center">
+                    <p className="font-bold text-base" style={{ color: "var(--charcoal)" }}>
+                      {person.name}
+                    </p>
+                    <p
+                      className="text-xs font-semibold tracking-wide uppercase mt-0.5 mb-2"
+                      style={{ color: "var(--orange)" }}
                     >
-                      {person.initials}
-                    </span>
+                      {person.role}
+                    </p>
+                    <p className="text-xs leading-relaxed" style={{ color: "var(--stone)" }}>
+                      {person.desc}
+                    </p>
                   </div>
-                  <p className="font-bold text-base" style={{ color: "var(--charcoal)" }}>
-                    {person.name}
-                  </p>
-                  <p
-                    className="text-xs font-semibold tracking-wide uppercase mt-1"
-                    style={{ color: "var(--orange)" }}
-                  >
-                    {person.role}
-                  </p>
-                </div>
+                </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── Ambassadeurs ── */}
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease }}
+              className="mb-12"
+            >
+              <Label>Ambassadeurs</Label>
+              <h2
+                className="font-display font-extrabold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+                  color: "var(--green)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Gezichten van de missie.
+              </h2>
+              <p className="mt-3 max-w-xl" style={{ color: "var(--stone)" }}>
+                Onze ambassadeurs zijn mensen met een sterke reputatie of specifiek
+                netwerk in de sport- of zakenwereld. Zij zetten zich belangeloos in
+                voor de zichtbaarheid en impact van Football is Life.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-5">
+              {ambassadors.map((amb, i) => (
+                <motion.div
+                  key={amb.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease }}
+                  className="rounded-2xl overflow-hidden card-hover"
+                  style={{
+                    background: "var(--white)",
+                    border: "1px solid rgba(33,77,58,0.12)",
+                    boxShadow: "var(--shadow-card)",
+                  }}
+                >
+                  <ImagePlaceholder
+                    label={amb.photoLabel}
+                    description={amb.photoDesc}
+                    aspect="4/3"
+                    className="rounded-none"
+                    dark={false}
+                  />
+                  <div className="p-6">
+                    <p className="font-display font-bold text-lg" style={{ color: "var(--charcoal)" }}>
+                      {amb.name}
+                    </p>
+                    <p
+                      className="text-xs font-semibold tracking-wide uppercase mt-1 mb-3"
+                      style={{ color: "var(--orange)" }}
+                    >
+                      {amb.title}
+                    </p>
+                    <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--stone)" }}>
+                      {amb.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {amb.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs px-2.5 py-1 rounded-full"
+                          style={{
+                            background: "var(--orange-pale)",
+                            color: "var(--orange)",
+                            border: "1px solid rgba(201,107,44,0.15)",
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="mt-8 text-sm text-center"
+              style={{ color: "var(--stone)" }}
+            >
+              Word jij onze volgende ambassadeur?{" "}
+              <a
+                href="mailto:info@footballislife.nl"
+                className="font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity"
+                style={{ color: "var(--orange)" }}
+              >
+                Neem contact op
+              </a>
+            </motion.p>
           </div>
         </section>
 
         {/* ── Hoe we werken ── */}
         <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease }}
+            >
               <Label>Werkwijze</Label>
               <h2
                 className="font-display font-extrabold leading-tight tracking-tight"
@@ -319,7 +545,7 @@ export default function OverOnsPage() {
                 Kleinschalig, persoonlijk,
                 transparant.
               </h2>
-            </div>
+            </motion.div>
             <div className="space-y-5">
               {[
                 {
@@ -338,9 +564,13 @@ export default function OverOnsPage() {
                   title: "Schaalbaar model",
                   desc: "We beginnen met Soweto als blauwdruk. Daarna groeien we naar Mzuzu, Rumphi en Nkhata Bay.",
                 },
-              ].map((item) => (
-                <div
+              ].map((item, i) => (
+                <motion.div
                   key={item.title}
+                  initial={{ opacity: 0, x: 12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.4, delay: i * 0.08, ease }}
                   className="flex gap-4 py-4 border-b last:border-0"
                   style={{ borderColor: "var(--border)" }}
                 >
@@ -356,14 +586,14 @@ export default function OverOnsPage() {
                       {item.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
         {/* ── Financiering ── */}
-        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
+        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
               <Label>Financiering</Label>
@@ -414,7 +644,6 @@ export default function OverOnsPage() {
         {/* ── ANBI & Contact ── */}
         <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-            {/* ANBI */}
             <div>
               <Label>Transparantie & ANBI</Label>
               <div className="space-y-0">
@@ -435,12 +664,11 @@ export default function OverOnsPage() {
               </div>
               <p className="mt-5 text-xs leading-relaxed" style={{ color: "var(--stone)", opacity: 0.75 }}>
                 Als ANBI-erkende instelling zijn donaties aan Football is Life
-                fiscaal aftrekbaar. Alle financiële informatie is beschikbaar op
+                fiscaal aftrekbaar. Alle financiele informatie is beschikbaar op
                 verzoek via het bestuur.
               </p>
             </div>
 
-            {/* Contact */}
             <div>
               <Label>Contact</Label>
               <address className="not-italic space-y-3">
@@ -477,22 +705,6 @@ export default function OverOnsPage() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ── Ambassadeurs ── */}
-        <section
-          className="py-14 px-6 border-t"
-          style={{ borderColor: "var(--border)", background: "var(--sand-light)" }}
-        >
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--stone)" }}>
-              De stichting werkt met{" "}
-              <strong style={{ color: "var(--charcoal)" }}>ambassadeurs</strong>
-              : mensen met een sterke reputatie of specifiek netwerk in de sport- of
-              zakenwereld, die zich belangeloos inzetten voor de zichtbaarheid en
-              impact van de stichting. Elke ambassadeur heeft een specifieke taak.
-            </p>
           </div>
         </section>
       </main>

@@ -676,35 +676,51 @@ function ImpactMeting() {
   );
 }
 
-/* ── Groeipad ────────────────────────────────────────── */
-const growth = [
+/* ── Roadmap / Groeipad ────────────────────────────── */
+const roadmap = [
   {
-    loc: "Soweto",
-    city: "Mzuzu, Malawi",
+    phase: "Fase 1",
+    period: "2025–2026",
+    loc: "Soweto, Mzuzu",
     status: "In uitvoering",
     statusColor: "var(--orange)",
-    desc: "Ons eerste project. Dit wordt de blauwdruk voor wat volgt.",
+    desc: "Eerste communityproject: coaches opleiden, life skills programma starten, veld verbeteren. Dit wordt de blauwdruk.",
+    milestones: ["4–6 coaches opgeleid", "60–80 jongeren bereikt", "Wekelijkse life skills"],
     active: true,
   },
   {
-    loc: "Mzuzu",
-    city: "Malawi",
-    status: "Groeiplan",
-    statusColor: "var(--blue-grey)",
-    desc: "Uitbreiding binnen Mzuzu met het bewezen model en lokale coaches.",
+    phase: "Fase 2",
+    period: "2026–2027",
+    loc: "Mzuzu breed",
+    status: "Gepland",
+    statusColor: "var(--green)",
+    desc: "Uitbreiding naar andere wijken in Mzuzu met het bewezen model en opgeleide coaches uit fase 1.",
+    milestones: ["2e locatie operationeel", "Lokale coaches leiden zelf op", "Impactreizen starten"],
     active: false,
   },
   {
+    phase: "Fase 3",
+    period: "2027–2028",
     loc: "Rumphi & Nkhata Bay",
-    city: "Malawi",
     status: "Toekomst",
     statusColor: "var(--blue-grey)",
-    desc: "Verdere doorgroei naar andere regio's in Malawi.",
+    desc: "Doorgroei naar andere regio's in noordelijk Malawi. Het model is bewezen, de coaches staan klaar.",
+    milestones: ["Regionale uitbreiding", "Partnerschappen met scholen", "Zelfstandig lokaal bestuur"],
+    active: false,
+  },
+  {
+    phase: "Fase 4",
+    period: "2028+",
+    loc: "Landelijk & regionaal",
+    status: "Visie",
+    statusColor: "var(--blue-grey)",
+    desc: "Football is Life als model dat door lokale teams zelfstandig wordt uitgerold in Malawi en daarbuiten.",
+    milestones: ["Landelijke dekking", "Kennisdeling met andere organisaties", "Zelfdragend model"],
     active: false,
   },
 ];
 
-function Groeipad() {
+function Roadmap() {
   return (
     <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
       <div className="max-w-6xl mx-auto">
@@ -713,9 +729,9 @@ function Groeipad() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, ease }}
-          className="mb-10"
+          className="mb-12"
         >
-          <Label>Groeipad</Label>
+          <Label>Roadmap</Label>
           <h2
             className="font-display font-extrabold leading-tight tracking-tight"
             style={{
@@ -724,67 +740,383 @@ function Groeipad() {
               letterSpacing: "-0.02em",
             }}
           >
-            Stap voor stap verder.
+            Van blauwdruk naar beweging.
           </h2>
-          <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
-            We beginnen klein, grondig en lokaal verankerd. Daarna groeien we.
+          <p className="mt-3 max-w-xl" style={{ color: "var(--stone)" }}>
+            We beginnen klein, grondig en lokaal verankerd. Elk project levert kennis
+            en coaches op die de basis vormen voor de volgende stap.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {growth.map((g, i) => (
-            <motion.div
-              key={g.loc}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease }}
-              className={`rounded-2xl p-6 relative ${g.active ? "card-hover" : ""}`}
+        {/* Timeline connector */}
+        <div className="relative">
+          {/* Vertical line for desktop */}
+          <div
+            className="hidden md:block absolute left-[calc(50%-1px)] top-0 bottom-0 w-0.5"
+            style={{ background: "rgba(33,77,58,0.12)" }}
+          />
+
+          <div className="space-y-6 md:space-y-0">
+            {roadmap.map((item, i) => {
+              const isLeft = i % 2 === 0;
+              return (
+                <motion.div
+                  key={item.phase}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease }}
+                  className={`relative md:grid md:grid-cols-2 md:gap-10 ${i > 0 ? "md:mt-8" : ""}`}
+                >
+                  {/* Timeline dot */}
+                  <div
+                    className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 z-10 w-4 h-4 rounded-full items-center justify-center"
+                    style={{
+                      background: item.active ? "var(--orange)" : "var(--sand-light)",
+                      border: `2px solid ${item.active ? "var(--orange)" : "rgba(33,77,58,0.20)"}`,
+                      boxShadow: item.active ? "var(--glow-orange)" : "none",
+                    }}
+                  >
+                    {item.active && (
+                      <div
+                        className="w-1.5 h-1.5 rounded-full"
+                        style={{ background: "white" }}
+                      />
+                    )}
+                  </div>
+
+                  {/* Card - alternating sides on desktop */}
+                  <div className={`${isLeft ? "md:pr-12" : "md:col-start-2 md:pl-12"}`}>
+                    <div
+                      className={`rounded-2xl p-6 ${item.active ? "card-hover" : ""}`}
+                      style={{
+                        background: item.active ? "var(--white)" : "rgba(246,241,232,0.6)",
+                        border: item.active
+                          ? "1px solid rgba(33,77,58,0.18)"
+                          : "1px solid var(--border)",
+                        boxShadow: item.active ? "var(--shadow-md)" : "none",
+                      }}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <span
+                            className="font-display font-bold text-xs tracking-wider uppercase"
+                            style={{ color: item.active ? "var(--green)" : "var(--stone)" }}
+                          >
+                            {item.phase}
+                          </span>
+                          <span
+                            className="text-xs ml-2"
+                            style={{ color: "var(--stone)", opacity: 0.6 }}
+                          >
+                            {item.period}
+                          </span>
+                        </div>
+                        <span
+                          className="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
+                          style={{
+                            background: item.active
+                              ? "rgba(201,107,44,0.10)"
+                              : "rgba(102,112,106,0.08)",
+                            color: item.statusColor,
+                          }}
+                        >
+                          {item.status}
+                        </span>
+                      </div>
+
+                      <h3
+                        className="font-display font-bold text-lg leading-snug mb-1"
+                        style={{ color: item.active ? "var(--green)" : "var(--stone)" }}
+                      >
+                        {item.loc}
+                      </h3>
+                      <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--stone)" }}>
+                        {item.desc}
+                      </p>
+
+                      {/* Milestones */}
+                      <div className="space-y-1.5">
+                        {item.milestones.map((ms) => (
+                          <div key={ms} className="flex items-center gap-2">
+                            <div
+                              className="w-1 h-1 rounded-full flex-shrink-0"
+                              style={{
+                                background: item.active ? "var(--orange)" : "var(--blue-grey)",
+                              }}
+                            />
+                            <span
+                              className="text-xs"
+                              style={{
+                                color: item.active ? "var(--charcoal)" : "var(--stone)",
+                              }}
+                            >
+                              {ms}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Social Media Feed ──────────────────────────────── */
+const instagramPosts = [
+  {
+    label: "(IG Post 1)",
+    desc: "Trainingsdag in Soweto",
+    date: "2 weken geleden",
+  },
+  {
+    label: "(IG Post 2)",
+    desc: "Coaches in opleiding",
+    date: "3 weken geleden",
+  },
+  {
+    label: "(IG Post 3)",
+    desc: "Life skills sessie met jongeren",
+    date: "1 maand geleden",
+  },
+  {
+    label: "(IG Post 4)",
+    desc: "Community dag in Mzuzu",
+    date: "1 maand geleden",
+  },
+];
+
+const linkedInPosts = [
+  {
+    title: "Eerste coaches afgestudeerd",
+    excerpt: "Trots op onze eerste lichting coaches die het Trainer Coach 1 certificaat hebben behaald in Soweto...",
+    date: "Maart 2026",
+    author: "Paul van Zwam",
+  },
+  {
+    title: "Samenwerking UNGWERU versterkt",
+    excerpt: "Vandaag hebben we de samenwerking met UNGWERU formeel bekrachtigd. Samen bouwen we aan structureel...",
+    date: "Februari 2026",
+    author: "Football is Life",
+  },
+  {
+    title: "Football Shirt Challenge",
+    excerpt: "Doneer je oude voetbalshirt en geef het een tweede leven in Malawi. Elk shirt vindt een nieuw thuis...",
+    date: "Januari 2026",
+    author: "Ivo Spanjersberg",
+  },
+];
+
+function SocialFeed() {
+  return (
+    <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease }}
+          className="mb-12"
+        >
+          <Label>Volg ons</Label>
+          <h2
+            className="font-display font-extrabold leading-tight tracking-tight"
+            style={{
+              fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)",
+              color: "var(--green)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Direct vanuit het veld.
+          </h2>
+          <p className="mt-3 max-w-lg" style={{ color: "var(--stone)" }}>
+            Volg onze reis op Instagram en LinkedIn voor updates, verhalen
+            en beelden uit Soweto.
+          </p>
+        </motion.div>
+
+        {/* Instagram Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease }}
+          className="mb-10"
+        >
+          <div className="flex items-center gap-3 mb-5">
+            {/* Instagram icon */}
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center"
               style={{
-                background: g.active ? "var(--white)" : "rgba(246,241,232,0.6)",
-                border: g.active
-                  ? "1px solid rgba(33,77,58,0.18)"
-                  : "1px solid var(--border)",
-                boxShadow: g.active ? "var(--shadow-md)" : "none",
+                background: "linear-gradient(135deg, #F58529, #DD2A7B, #8134AF)",
               }}
             >
-              <div className="flex items-start justify-between mb-4">
-                <span
-                  className="font-display font-bold text-3xl leading-none"
-                  style={{ color: g.active ? "var(--green)" : "var(--stone)", opacity: 0.22 }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span
-                  className="text-xs font-semibold px-2.5 py-1 rounded-full"
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="white" stroke="none" />
+              </svg>
+            </div>
+            <div>
+              <p className="font-display font-bold text-sm" style={{ color: "var(--charcoal)" }}>
+                @footballislife.nl
+              </p>
+              <p className="text-xs" style={{ color: "var(--stone)" }}>Instagram</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {instagramPosts.map((post, i) => (
+              <motion.div
+                key={post.label}
+                initial={{ opacity: 0, scale: 0.96 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.06, ease }}
+                className="group relative rounded-xl overflow-hidden cursor-pointer"
+              >
+                <ImagePlaceholder
+                  label={post.label}
+                  description={post.desc}
+                  aspect="1/1"
+                  className="rounded-xl"
+                />
+                {/* Hover overlay */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-xl"
                   style={{
-                    background: g.active
-                      ? "rgba(201,107,44,0.10)"
-                      : "rgba(102,112,106,0.10)",
-                    color: g.statusColor,
+                    background: "linear-gradient(to top, rgba(31,36,33,0.75) 0%, transparent 60%)",
                   }}
                 >
-                  {g.status}
-                </span>
-              </div>
-              <h3
-                className="font-display font-bold text-lg leading-snug mb-1"
-                style={{ color: g.active ? "var(--green)" : "var(--stone)" }}
-              >
-                {g.loc}
-              </h3>
-              <p
-                className="text-xs font-semibold mb-3"
-                style={{ color: "var(--orange)", opacity: g.active ? 1 : 0.5 }}
-              >
-                {g.city}
+                  <div>
+                    <p className="text-xs font-semibold" style={{ color: "rgba(246,241,232,0.90)" }}>
+                      {post.desc}
+                    </p>
+                    <p className="text-xs mt-0.5" style={{ color: "rgba(246,241,232,0.50)" }}>
+                      {post.date}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* LinkedIn Posts */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.1, ease }}
+        >
+          <div className="flex items-center gap-3 mb-5">
+            {/* LinkedIn icon */}
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center"
+              style={{ background: "#0A66C2" }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </div>
+            <div>
+              <p className="font-display font-bold text-sm" style={{ color: "var(--charcoal)" }}>
+                Football is Life
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
-                {g.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+              <p className="text-xs" style={{ color: "var(--stone)" }}>LinkedIn</p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {linkedInPosts.map((post, i) => (
+              <motion.div
+                key={post.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.08, ease }}
+                className="rounded-xl p-5 card-hover group cursor-pointer"
+                style={{
+                  background: "var(--white)",
+                  border: "1px solid var(--border)",
+                  boxShadow: "var(--shadow-sm)",
+                }}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <div
+                    className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+                    style={{
+                      background: "var(--green-pale)",
+                      color: "var(--green)",
+                    }}
+                  >
+                    {post.author[0]}
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold" style={{ color: "var(--charcoal)" }}>
+                      {post.author}
+                    </p>
+                    <p className="text-xs" style={{ color: "var(--stone)", opacity: 0.6 }}>
+                      {post.date}
+                    </p>
+                  </div>
+                </div>
+                <h4
+                  className="font-display font-bold text-sm leading-snug mb-2 group-hover:underline underline-offset-2"
+                  style={{ color: "var(--green)" }}
+                >
+                  {post.title}
+                </h4>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--stone)" }}>
+                  {post.excerpt}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Social CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="mt-10 flex flex-wrap justify-center gap-4"
+        >
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-[1.02]"
+            style={{
+              background: "linear-gradient(135deg, #F58529, #DD2A7B)",
+              color: "white",
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="5" />
+            </svg>
+            Volg op Instagram
+          </a>
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-[1.02]"
+            style={{
+              background: "#0A66C2",
+              color: "white",
+            }}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            Volg op LinkedIn
+          </a>
+        </motion.div>
       </div>
     </section>
   );
@@ -950,7 +1282,8 @@ export default function Home() {
         <ProjectSoweto />
         <LokalePartners />
         <ImpactMeting />
-        <Groeipad />
+        <Roadmap />
+        <SocialFeed />
         <DoneerSectie />
       </main>
       <Footer />
