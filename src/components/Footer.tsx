@@ -91,6 +91,9 @@ export function Footer() {
             <div className="flex flex-col gap-2 text-sm">
               {[
                 { href: "/over-ons", label: "Over ons" },
+                { href: "/ambassadeurs", label: "Ambassadeurs" },
+                { href: "/ons-verhaal", label: "Ons verhaal" },
+                { href: "/in-de-media", label: "In de media" },
                 { href: "/transparantie", label: "Transparantie & ANBI" },
                 { href: "/meedoen", label: "Meedoen" },
                 { href: "/doneren", label: "Doneren" },

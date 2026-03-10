@@ -8,9 +8,12 @@ const navLinks = [
   { href: "/over-ons", label: "Over ons" },
   { href: "/project", label: "Project" },
   { href: "/opleiding", label: "Opleiding" },
+  { href: "/ambassadeurs", label: "Ambassadeurs" },
   { href: "/partners", label: "Partners" },
   { href: "/malawi", label: "Malawi" },
   { href: "/meedoen", label: "Meedoen" },
+  { href: "/ons-verhaal", label: "Ons verhaal" },
+  { href: "/in-de-media", label: "In de media" },
   { href: "/transparantie", label: "Transparantie" },
 ];
 
@@ -30,7 +33,7 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const primaryLinks = navLinks.slice(0, 3);
+  const primaryLinks = navLinks.slice(0, 4);
   const moreLinks = navLinks.slice(3);
 
   return (
