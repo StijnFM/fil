@@ -15,8 +15,8 @@ const board = [
     name: "Paul van Zwam",
     role: "Voorzitter",
     initials: "PZ",
-    desc: "Paul voert naast zijn bestuursrol ook operationele taken uit. Hij is het gezicht van Football is Life in het veld en in het netwerk.",
-    expertise: ["Operationele leiding", "Netwerk professionele sport", "Veldwerk"],
+    desc: "Sportpsycholoog sinds 1998 met ervaring bij sc Heerenveen, Feyenoord, Ajax, PSV, Chelsea FC, Leeds United en de KNVB. Expert in teamontwikkeling en mentale coaching. Werkzaam bij Libre Foundation, een organisatie die gratis leiderschapstrainingen verzorgt voor lokale organisaties in ontwikkelingslanden.",
+    expertise: ["Sportpsychologie", "Teamontwikkeling", "Libre Foundation", "Operationele leiding"],
     photoLabel: "(Foto: Paul)",
     photoDesc: "Paul van Zwam — voorzitter Football is Life",
   },
@@ -24,8 +24,8 @@ const board = [
     name: "Ivo Spanjersberg",
     role: "Secretaris",
     initials: "IS",
-    desc: "Ivo verzorgt de interne communicatie, documentatie en coördinatie. Samen met Paul draagt hij operationele verantwoordelijkheid.",
-    expertise: ["Communicatie", "Documentatie", "Coördinatie"],
+    desc: "Senior sport- en prestatiepsycholoog. Specialist in communicatie, effectief gedrag en omgang met agressie. Werkzaam bij Libre Foundation als trainer en coach. Samen met Paul verantwoordelijk voor de methodiek achter de Trainer Coach 1-opleiding.",
+    expertise: ["Prestatiepsychologie", "Communicatie", "Libre Foundation", "Coordinatie"],
     photoLabel: "(Foto: Ivo)",
     photoDesc: "Ivo Spanjersberg — secretaris",
   },
@@ -77,31 +77,22 @@ const malawiTeam = [
 
 const ambassadors = [
   {
-    name: "Ambassadeur 1",
-    title: "Sport & netwerk",
-    initials: "A1",
-    desc: "Zet zich in voor de zichtbaarheid van Football is Life binnen de professionele sportwereld en opent deuren bij sportclubs en organisaties.",
-    photoLabel: "(Foto: Ambassadeur)",
-    photoDesc: "Ambassadeur — sport & netwerk",
-    tags: ["Professionele sport", "Netwerk"],
+    name: "Peter Bosz",
+    title: "Voetbalambassadeur",
+    initials: "PB",
+    desc: "Toptrainer met internationale ervaring bij Ajax, Borussia Dortmund, Bayer Leverkusen en PSV. Tweevoudig Eredivisiekampioen.",
+    photoLabel: "(Foto: Peter Bosz)",
+    photoDesc: "Peter Bosz, voetbalambassadeur",
+    tags: ["Topvoetbal", "Internationaal netwerk"],
   },
   {
-    name: "Ambassadeur 2",
-    title: "Bedrijfsleven",
-    initials: "A2",
-    desc: "Verbindt bedrijven aan de missie van Football is Life en helpt bij het werven van structurele sponsoring en partnerschappen.",
-    photoLabel: "(Foto: Ambassadeur)",
-    photoDesc: "Ambassadeur — bedrijfsleven",
-    tags: ["Sponsoring", "Partnerschappen"],
-  },
-  {
-    name: "Ambassadeur 3",
-    title: "Community & media",
-    initials: "A3",
-    desc: "Vergroot het bereik van de stichting via media, evenementen en persoonlijke inzet. Deelt het verhaal van Football is Life met een breed publiek.",
-    photoLabel: "(Foto: Ambassadeur)",
-    photoDesc: "Ambassadeur — community & media",
-    tags: ["Media", "Evenementen", "Zichtbaarheid"],
+    name: "Bryan Linssen",
+    title: "Voetbalambassadeur",
+    initials: "BL",
+    desc: "Profvoetballer met ruime Eredivisie-ervaring. Speelde onder meer voor Vitesse, Feyenoord en Urawa Red Diamonds. Momenteel actief bij NEC.",
+    photoLabel: "(Foto: Bryan Linssen)",
+    photoDesc: "Bryan Linssen, voetbalambassadeur",
+    tags: ["Profvoetbal", "Zichtbaarheid"],
   },
 ];
 
@@ -441,16 +432,14 @@ export default function OverOnsPage() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Gezichten van de missie.
+                Onze ambassadeurs.
               </h2>
               <p className="mt-3 max-w-xl" style={{ color: "var(--stone)" }}>
-                Onze ambassadeurs zijn mensen met een sterke reputatie of specifiek
-                netwerk in de sport- of zakenwereld. Zij zetten zich belangeloos in
-                voor de zichtbaarheid en impact van Football is Life.
+                Peter Bosz en Bryan Linssen zetten hun naam en netwerk in voor de zichtbaarheid en impact van Football is Life.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-5">
+            <div className="grid md:grid-cols-2 max-w-3xl mx-auto gap-5">
               {ambassadors.map((amb, i) => (
                 <motion.div
                   key={amb.name}
@@ -505,23 +494,21 @@ export default function OverOnsPage() {
               ))}
             </div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.3 }}
-              className="mt-8 text-sm text-center"
-              style={{ color: "var(--stone)" }}
+              className="mt-8 text-center"
             >
-              Word jij onze volgende ambassadeur?{" "}
-              <a
-                href="mailto:info@footballislife.nl"
-                className="font-semibold underline underline-offset-2 hover:opacity-70 transition-opacity"
-                style={{ color: "var(--orange)" }}
+              <Link
+                href="/ambassadeurs"
+                className="inline-flex items-center px-6 py-3 rounded-full font-semibold text-sm transition-opacity hover:opacity-85"
+                style={{ background: "var(--white)", color: "var(--green)", border: "1px solid rgba(33,77,58,0.15)", boxShadow: "var(--shadow-sm)" }}
               >
-                Neem contact op
-              </a>
-            </motion.p>
+                Bekijk alle ambassadeurs →
+              </Link>
+            </motion.div>
           </div>
         </section>
 
