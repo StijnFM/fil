@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { DoneerForm } from "./DoneerForm";
 
 export const metadata: Metadata = {
@@ -42,6 +43,14 @@ export default function DonerenPage() {
               skills voor jongeren in Soweto. Elke euro wordt verantwoord besteed
               — het bestuur werkt onbezoldigd.
             </p>
+            <div className="mt-8">
+              <ImagePlaceholder
+                label="(Afb F)"
+                description="Jongeren op het veld in Soweto"
+                aspect="16/9"
+                className="rounded-xl"
+              />
+            </div>
           </div>
         </section>
 
@@ -95,12 +104,44 @@ export default function DonerenPage() {
           <div className="max-w-lg mx-auto">
             <div className="grid grid-cols-3 gap-6 text-center mb-8">
               {[
-                { icon: "🔒", label: "Veilig betalen", sub: "iDEAL, creditcard, overschrijving" },
-                { icon: "📄", label: "ANBI-erkend", sub: "Fiscaal aftrekbaar" },
-                { icon: "🌍", label: "100% naar het project", sub: "Onbezoldigd bestuur" },
+                {
+                  label: "Veilig betalen",
+                  sub: "iDEAL, creditcard, overschrijving",
+                  icon: (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0110 0v4" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "ANBI-erkend",
+                  sub: "Fiscaal aftrekbaar",
+                  icon: (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <path d="M9 12l2 2 4-4" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: "100% naar het project",
+                  sub: "Onbezoldigd bestuur",
+                  icon: (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 6v6l4 2" />
+                    </svg>
+                  ),
+                },
               ].map((item) => (
-                <div key={item.label}>
-                  <p className="text-2xl mb-2">{item.icon}</p>
+                <div key={item.label} className="flex flex-col items-center">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mb-3"
+                    style={{ background: "var(--green-pale)", color: "var(--green)" }}
+                  >
+                    {item.icon}
+                  </div>
                   <p className="text-xs font-semibold" style={{ color: "var(--charcoal)" }}>
                     {item.label}
                   </p>

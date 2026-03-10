@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -163,90 +164,64 @@ function Hero() {
           </motion.p>
         </div>
 
-        {/* Photo placeholder column */}
+        {/* Photo column */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.15, ease }}
-          className=""
         >
-          <div
-            className="relative rounded-2xl md:rounded-3xl overflow-hidden"
-            style={{
-              background: "var(--green)",
-              aspectRatio: "3/2",
-              boxShadow: "var(--shadow-lg)",
-            }}
-          >
-            <PitchDecor opacity={0.28} stroke="white" />
-
-            {/* Ambient gradient */}
-            <div
-              className="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(24,56,40,0.85) 0%, transparent 100%)",
-              }}
+          <div className="relative">
+            <ImagePlaceholder
+              label="(Afb A)"
+              description="Jongeren voetballen in Soweto"
+              aspect="4/5"
+              className="md:rounded-3xl"
             />
 
-            {/* Content overlay */}
-            <div className="absolute inset-0 flex flex-col justify-between p-6">
-              {/* Top: location */}
-              <div>
-                <span
-                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold"
-                  style={{
-                    background: "rgba(246,241,232,0.12)",
-                    border: "1px solid rgba(246,241,232,0.20)",
-                    color: "rgba(246,241,232,0.80)",
-                  }}
-                >
-                  <span>📍</span>
-                  Soweto, Mzuzu — Malawi
-                </span>
+            {/* Floating info card */}
+            <div
+              className="absolute -bottom-4 -left-4 md:-left-6 rounded-2xl p-4 pr-6"
+              style={{
+                background: "var(--white)",
+                boxShadow: "var(--shadow-lg)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              <p
+                className="font-display font-bold text-2xl leading-none"
+                style={{ color: "var(--green)" }}
+              >
+                € 15.000
+              </p>
+              <p className="text-xs mt-1" style={{ color: "var(--stone)" }}>
+                projectdoel fase 1
+              </p>
+              <div className="flex gap-1.5 mt-3">
+                {["UNGWERU", "St. Patrick"].map((p) => (
+                  <span
+                    key={p}
+                    className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold"
+                    style={{
+                      background: "var(--green-pale)",
+                      color: "var(--green)",
+                      border: "1px solid rgba(33,77,58,0.12)",
+                    }}
+                  >
+                    {p}
+                  </span>
+                ))}
               </div>
+            </div>
 
-              {/* Bottom: project info */}
-              <div>
-                <p
-                  className="text-xs font-semibold tracking-widest uppercase mb-2"
-                  style={{ color: "rgba(246,241,232,0.45)" }}
-                >
-                  Partners ter plaatse
-                </p>
-                <div className="flex gap-2">
-                  {["UNGWERU", "St. Patrick"].map((p) => (
-                    <span
-                      key={p}
-                      className="rounded-full px-3 py-1 text-xs font-semibold"
-                      style={{
-                        background: "rgba(201,107,44,0.25)",
-                        border: "1px solid rgba(201,107,44,0.40)",
-                        color: "rgba(246,241,232,0.85)",
-                      }}
-                    >
-                      {p}
-                    </span>
-                  ))}
-                </div>
-                <div
-                  className="mt-4 pt-4 border-t"
-                  style={{ borderColor: "rgba(246,241,232,0.12)" }}
-                >
-                  <p
-                    className="text-2xl font-bold"
-                    style={{ color: "rgba(246,241,232,0.90)" }}
-                  >
-                    € 15.000
-                  </p>
-                  <p
-                    className="text-xs mt-0.5"
-                    style={{ color: "rgba(246,241,232,0.45)" }}
-                  >
-                    doelstelling fase 1
-                  </p>
-                </div>
-              </div>
+            {/* Location badge */}
+            <div
+              className="absolute top-4 left-4 rounded-full px-3 py-1.5 text-xs font-semibold backdrop-blur-sm"
+              style={{
+                background: "rgba(31,36,33,0.70)",
+                color: "rgba(246,241,232,0.85)",
+              }}
+            >
+              Soweto, Mzuzu — Malawi
             </div>
           </div>
         </motion.div>
@@ -288,6 +263,86 @@ function Marquee() {
         ))}
       </div>
     </div>
+  );
+}
+
+/* ── Verhaal — full-width visual storytelling ──────── */
+function Verhaal() {
+  return (
+    <section className="py-16 md:py-24 px-4 sm:px-6 bg-background">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease }}
+        >
+          <ImagePlaceholder
+            label="(Afb B)"
+            description="Panorama: het voetbalveld en de community in Soweto"
+            aspect="21/9"
+            className="mb-12"
+          />
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease }}
+          >
+            <Label>Ons verhaal</Label>
+            <h2
+              className="font-display font-extrabold leading-tight tracking-tight"
+              style={{
+                fontSize: "clamp(1.9rem, 3.5vw, 3rem)",
+                color: "var(--green)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              De kracht
+              <br />
+              van voetbal.
+            </h2>
+            <div
+              className="w-12 h-1 mt-5 rounded-full"
+              style={{ background: "var(--orange)" }}
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.1, ease }}
+            className="space-y-4 leading-relaxed"
+            style={{ color: "var(--stone)" }}
+          >
+            <p>
+              Stel je voor: tientallen jongeren — allemaal op een veld dat
+              eigenlijk geen veld mag heten. Ze lachen, ze spelen, ze genieten.
+            </p>
+            <p>
+              Die kracht is zó groot, dat we besloten hebben er iets blijvends
+              mee te doen. Zo is{" "}
+              <strong style={{ color: "var(--charcoal)" }}>
+                Football is Life
+              </strong>{" "}
+              ontstaan.
+            </p>
+            <p>
+              Met deze stichting gebruiken we voetbal als middel om{" "}
+              <strong style={{ color: "var(--green)" }}>
+                communities te bouwen
+              </strong>
+              . Om mensen te verbinden. Om hoop, structuur en toekomst te
+              brengen op plekken waar dat niet vanzelfsprekend is.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -439,81 +494,49 @@ function ProjectSoweto() {
           </div>
         </motion.div>
 
-        {/* Visual card */}
+        {/* Visual */}
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.1, ease }}
+          className="space-y-4"
         >
-          <div
-            className="rounded-3xl overflow-hidden relative"
-            style={{
-              background: "var(--green-dark)",
-              aspectRatio: "4/3",
-              boxShadow: "var(--shadow-lg)",
-            }}
-          >
-            <PitchDecor opacity={0.09} stroke="white" />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(24,56,40,0.6) 0%, rgba(33,77,58,0.3) 100%)",
-              }}
-            />
-            <div className="absolute inset-0 p-7 flex flex-col justify-between">
-              <div>
-                <span
-                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold"
-                  style={{
-                    background: "rgba(246,241,232,0.10)",
-                    border: "1px solid rgba(246,241,232,0.18)",
-                    color: "rgba(246,241,232,0.75)",
-                  }}
-                >
-                  📍 Soweto, Mzuzu — Malawi
-                </span>
-              </div>
+          <ImagePlaceholder
+            label="(Afb C)"
+            description="Coaches trainen jongeren op het veld"
+            aspect="4/3"
+          />
 
-              <div>
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  {[
-                    { v: "€ 15.000", l: "Projectdoel" },
-                    { v: "2 jaar", l: "Begeleiding" },
-                    { v: "60–80", l: "Jongeren (doel)" },
-                  ].map((s) => (
-                    <div
-                      key={s.l}
-                      className="rounded-xl p-3 text-center"
-                      style={{
-                        background: "rgba(246,241,232,0.08)",
-                        border: "1px solid rgba(246,241,232,0.10)",
-                      }}
-                    >
-                      <p
-                        className="font-bold text-base leading-none"
-                        style={{ color: "rgba(246,241,232,0.92)" }}
-                      >
-                        {s.v}
-                      </p>
-                      <p
-                        className="text-xs mt-1 leading-tight"
-                        style={{ color: "rgba(246,241,232,0.45)" }}
-                      >
-                        {s.l}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+          {/* Quick stats below image */}
+          <div className="grid grid-cols-3 gap-3">
+            {[
+              { v: "€ 15.000", l: "Projectdoel" },
+              { v: "2 jaar", l: "Begeleiding" },
+              { v: "60–80", l: "Jongeren" },
+            ].map((s) => (
+              <div
+                key={s.l}
+                className="rounded-xl p-3 text-center"
+                style={{
+                  background: "var(--green-pale)",
+                  border: "1px solid rgba(33,77,58,0.10)",
+                }}
+              >
                 <p
-                  className="text-xs"
-                  style={{ color: "rgba(246,241,232,0.38)" }}
+                  className="font-bold text-sm leading-none"
+                  style={{ color: "var(--green)" }}
                 >
-                  Doelstellingen fase 1 · In uitvoering
+                  {s.v}
+                </p>
+                <p
+                  className="text-xs mt-1 leading-tight"
+                  style={{ color: "var(--stone)" }}
+                >
+                  {s.l}
                 </p>
               </div>
-            </div>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -597,6 +620,22 @@ function LokalePartners() {
             </motion.div>
           ))}
         </div>
+
+        {/* Partner image */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.2, ease }}
+          className="mt-8"
+        >
+          <ImagePlaceholder
+            label="(Afb E)"
+            description="Lokale samenwerking: UNGWERU en St. Patrick in actie"
+            aspect="21/9"
+            dark={false}
+          />
+        </motion.div>
       </div>
     </section>
   );
@@ -850,6 +889,15 @@ function DoneerSectie() {
           >
             Ga naar de donatietools →
           </Link>
+
+          <div className="mt-8">
+            <ImagePlaceholder
+              label="(Afb D)"
+              description="Close-up: blije jongeren na een training"
+              aspect="16/9"
+              className="rounded-xl"
+            />
+          </div>
         </motion.div>
 
         {/* Tiles */}
@@ -937,21 +985,41 @@ function DoneerSectie() {
 function Footer() {
   return (
     <footer
-      className="border-t py-14 px-4 sm:px-6"
+      className="border-t pt-14 pb-8 px-4 sm:px-6"
       style={{ background: "var(--charcoal)", borderColor: "rgba(246,241,232,0.08)" }}
     >
-      <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
-        {/* Brand */}
+      <div className="max-w-6xl mx-auto">
+        {/* Top: brand + CTA */}
+        <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center pb-10 mb-10 border-b" style={{ borderColor: "rgba(246,241,232,0.08)" }}>
+          <div>
+            <p
+              className="font-display font-extrabold text-2xl tracking-tight"
+              style={{ color: "rgba(246,241,232,0.90)" }}
+            >
+              Football is Life
+            </p>
+            <p
+              className="text-sm italic mt-1"
+              style={{ color: "rgba(201,107,44,0.65)" }}
+            >
+              Pass it on.
+            </p>
+          </div>
+          <Link
+            href="/doneren"
+            className="px-7 py-3 rounded-full font-semibold text-sm text-white transition-opacity hover:opacity-85"
+            style={{ background: "var(--orange)" }}
+          >
+            Steun het project →
+          </Link>
+        </div>
+
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+        {/* Info */}
         <div className="md:col-span-2">
           <p
-            className="font-display font-bold text-base tracking-tight mb-3"
-            style={{ color: "rgba(246,241,232,0.85)" }}
-          >
-            Football is Life
-          </p>
-          <p
             className="text-sm leading-relaxed max-w-xs"
-            style={{ color: "rgba(246,241,232,0.38)" }}
+            style={{ color: "rgba(246,241,232,0.40)" }}
           >
             Stichting Football is Life gebruikt voetbal als ingang naar
             coaching, life skills en ontwikkeling voor jongeren in Malawi.
@@ -1036,12 +1104,16 @@ function Footer() {
       </div>
 
       <div
-        className="max-w-6xl mx-auto mt-12 pt-8 border-t"
+        className="mt-12 pt-6 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
         style={{ borderColor: "rgba(246,241,232,0.07)" }}
       >
         <p className="text-xs" style={{ color: "rgba(246,241,232,0.18)" }}>
-          © Football is Life · Alle inkomsten gaan naar het project
+          © {new Date().getFullYear()} Football is Life
         </p>
+        <p className="text-xs" style={{ color: "rgba(246,241,232,0.14)" }}>
+          Alle inkomsten gaan naar het project
+        </p>
+      </div>
       </div>
     </footer>
   );
@@ -1055,6 +1127,7 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee />
+        <Verhaal />
         <HoeHetWerkt />
         <ProjectSoweto />
         <LokalePartners />

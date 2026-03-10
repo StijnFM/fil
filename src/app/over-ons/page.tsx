@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 
 export const metadata: Metadata = {
   title: "Over ons — Football is Life",
@@ -123,6 +124,14 @@ export default function OverOnsPage() {
               Een jonge stichting met serieuze uitvoeringskracht. Kleinschalig,
               persoonlijk en volledig transparant.
             </p>
+            <div className="mt-10">
+              <ImagePlaceholder
+                label="(Afb L)"
+                description="Het bestuur van Football is Life"
+                aspect="21/9"
+                className="rounded-xl"
+              />
+            </div>
           </div>
         </section>
 
@@ -168,6 +177,15 @@ export default function OverOnsPage() {
                 Mzuzu — dat als blauwdruk dient voor verdere uitbreiding.
               </p>
             </div>
+            {/* Mission image spanning both columns */}
+            <div className="md:col-span-2 mt-6">
+              <ImagePlaceholder
+                label="(Afb M)"
+                description="Voetbal verbindt: jongeren en coaches samen"
+                aspect="2.5/1"
+                dark={false}
+              />
+            </div>
           </div>
         </section>
 
@@ -203,16 +221,19 @@ export default function OverOnsPage() {
                     boxShadow: "var(--shadow-card)",
                   }}
                 >
-                  {/* Avatar */}
+                  {/* Photo placeholder */}
                   <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-base mb-5"
+                    className="w-16 h-16 rounded-full overflow-hidden mb-5 flex items-center justify-center"
                     style={{
-                      background: "var(--green-pale)",
-                      border: "2px solid rgba(33,77,58,0.18)",
-                      color: "var(--green)",
+                      background: "linear-gradient(135deg, #2D6B52, #183828)",
                     }}
                   >
-                    {member.initials}
+                    <span
+                      className="font-display font-bold text-lg"
+                      style={{ color: "rgba(246,241,232,0.50)" }}
+                    >
+                      {member.initials}
+                    </span>
                   </div>
                   <p className="font-bold text-base" style={{ color: "var(--charcoal)" }}>
                     {member.name}

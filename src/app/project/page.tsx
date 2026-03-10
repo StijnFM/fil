@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
+import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 
 export const metadata: Metadata = {
   title: "Project Soweto — Football is Life",
@@ -169,6 +170,14 @@ export default function ProjectPage() {
                 Over de stichting
               </Link>
             </div>
+          <div className="mt-10">
+            <ImagePlaceholder
+              label="(Afb G)"
+              description="Luchtfoto: Soweto, de armste wijk van Mzuzu"
+              aspect="21/9"
+              className="rounded-xl"
+            />
+          </div>
           </div>
         </section>
 
@@ -210,6 +219,16 @@ export default function ProjectPage() {
                 — twee organisaties met diepe wortels in de community — bouwen
                 we iets wat blijft.
               </p>
+            </div>
+
+            {/* Full-width image spanning both columns */}
+            <div className="md:col-span-2 mt-8">
+              <ImagePlaceholder
+                label="(Afb H)"
+                description="De community van Soweto: kinderen spelen"
+                aspect="2/1"
+                dark={false}
+              />
             </div>
           </div>
         </section>
@@ -321,6 +340,18 @@ export default function ProjectPage() {
                 </div>
               ))}
             </div>
+        <div className="mt-10 grid grid-cols-2 gap-4">
+          <ImagePlaceholder
+            label="(Afb I)"
+            description="Voetbalveld aanleg in Soweto"
+            aspect="3/2"
+          />
+          <ImagePlaceholder
+            label="(Afb J)"
+            description="Coaches tijdens opleiding"
+            aspect="3/2"
+          />
+        </div>
           </div>
         </section>
 
@@ -546,6 +577,14 @@ export default function ProjectPage() {
             >
               Doneer nu →
             </Link>
+            <div className="mt-8">
+              <ImagePlaceholder
+                label="(Afb K)"
+                description="Jongeren vieren een doelpunt"
+                aspect="16/9"
+                className="rounded-xl max-w-md mx-auto"
+              />
+            </div>
           </div>
         </section>
       </main>
