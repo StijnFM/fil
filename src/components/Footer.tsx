@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NewsletterSignup } from "./NewsletterSignup";
 
 export function Footer() {
   return (
@@ -163,8 +164,32 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Newsletter */}
         <div
-          className="mt-12 pt-6 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+          className="mt-12 pt-8 border-t"
+          style={{ borderColor: "rgba(246,241,232,0.08)" }}
+        >
+          <div className="grid md:grid-cols-[1fr_1.2fr] gap-6 items-center">
+            <div>
+              <p
+                className="text-xs font-semibold tracking-widest uppercase mb-2"
+                style={{ color: "rgba(246,241,232,0.28)" }}
+              >
+                Nieuwsbrief
+              </p>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "rgba(246,241,232,0.50)" }}
+              >
+                Blijf op de hoogte van het project in Malawi.
+              </p>
+            </div>
+            <NewsletterSignup />
+          </div>
+        </div>
+
+        <div
+          className="mt-8 pt-6 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
           style={{ borderColor: "rgba(246,241,232,0.07)" }}
         >
           <p className="text-xs" style={{ color: "rgba(246,241,232,0.18)" }}>

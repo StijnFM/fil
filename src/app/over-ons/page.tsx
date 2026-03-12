@@ -33,8 +33,9 @@ const board = [
     name: "Mano Radema",
     role: "Penningmeester",
     initials: "MR",
-    desc: "Mano bewaakt de financiën en zorgt dat elke gedoneerde euro transparant en verantwoord wordt besteed conform ANBI-voorwaarden.",
-    expertise: ["Financiën", "ANBI-verantwoording", "Transparantie"],
+    desc: "Ondernemer en adviseur op het snijvlak van technologie, mensontwikkeling en topsport. Actief als AI-specialist en trainer voor organisaties en overheden. Daarnaast al jaren betrokken bij mentale ontwikkeling, teamontwikkeling en performance in het betaald voetbal, onder andere bij Feyenoord, NEC en Heracles. Was tien jaar betrokken bij de opbouw van S.V. GIO, het sport- en ontwikkelprogramma van de Giovanni van Bronckhorst Foundation. Lid van de Raad van Toezicht van SKVR.",
+    website: "https://www.manoradema.com/",
+    expertise: ["Financiën", "ANBI-verantwoording", "AI & Technologie", "Topsport"],
     photoLabel: "(Foto: Mano)",
     photoDesc: "Mano Radema — penningmeester",
   },
@@ -323,6 +324,18 @@ export default function OverOnsPage() {
                         </span>
                       ))}
                     </div>
+                    {"website" in member && member.website && (
+                      <a
+                        href={member.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
+                        style={{ color: "var(--orange)" }}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Website
+                      </a>
+                    )}
                   </div>
                 </motion.div>
               ))}

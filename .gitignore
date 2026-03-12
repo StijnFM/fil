@@ -37,3 +37,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .superpowers/
+
+# Instagram tokens (sensitive)
+content/instagram/.tokens.json

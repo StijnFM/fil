@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { saveDonation } from "@/lib/content";
+import type { Donation } from "@/lib/content-types";
 
 const DonateSchema = z.object({
   amount: z.number().min(1, "Minimaal € 1").max(10000, "Maximaal € 10.000"),
@@ -49,6 +51,20 @@ export async function POST(req: NextRequest) {
         newsletter: String(newsletter),
       },
     });
+
+    // Save pending donation
+    const donation: Donation = {
+      id: payment.id,
+      amount: amount.toFixed(2),
+      currency: "EUR",
+      status: "pending",
+      name,
+      email,
+      newsletter,
+      paidAt: null,
+      createdAt: new Date().toISOString(),
+    };
+    await saveDonation(donation);
 
     const checkoutUrl = payment._links.checkout?.href;
     if (!checkoutUrl) {
