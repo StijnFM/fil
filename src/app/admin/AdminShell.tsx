@@ -47,6 +47,16 @@ const navItems = [
       </svg>
     ),
   },
+  {
+    href: "/admin/linkedin",
+    label: "LinkedIn",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <rect x="2" y="2" width="14" height="14" rx="3" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M6.5 8V12.5M9.5 12.5V9.75C9.5 8.78 10.28 8 11.25 8C12.22 8 13 8.78 13 9.75V12.5M6.5 5.75V5.76" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
 ];
 
 export function AdminShell({ children }: { children: React.ReactNode }) {

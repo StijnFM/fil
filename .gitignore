@@ -40,3 +40,5 @@ next-env.d.ts
 
 # Instagram tokens (sensitive)
 content/instagram/.tokens.json
+*.png
+pnpm-lock.yaml

@@ -2,6 +2,8 @@ import { isAdmin } from "@/lib/admin-auth";
 import { AdminShell } from "./AdminShell";
 import { LoginForm } from "./LoginForm";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Admin - Football is Life",
 };

@@ -7,6 +7,7 @@ import type {
   InstagramPost,
   InstagramTokens,
 } from "./content-types";
+import type { LinkedInPost } from "./linkedin-types";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
@@ -87,4 +88,15 @@ export async function getInstagramTokens(): Promise<InstagramTokens | null> {
 
 export async function saveInstagramTokens(tokens: InstagramTokens): Promise<void> {
   await writeJSON(TOKENS_FILE, tokens);
+}
+
+// ── LinkedIn posts ──
+const LINKEDIN_FILE = path.join(CONTENT_DIR, "linkedin/posts.json");
+
+export async function getLinkedInPosts(): Promise<LinkedInPost[]> {
+  return readJSON<LinkedInPost[]>(LINKEDIN_FILE);
+}
+
+export async function saveLinkedInPosts(posts: LinkedInPost[]): Promise<void> {
+  await writeJSON(LINKEDIN_FILE, posts);
 }
