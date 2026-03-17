@@ -19,14 +19,14 @@ const stats = [
     sub: "Een van de jongste bevolkingen ter wereld",
   },
   {
-    value: "21,6 mln",
+    value: "~21 mln",
     label: "Inwoners",
-    sub: "Bevolking Malawi (2024)",
+    sub: "Bevolking Malawi (schatting 2024)",
   },
   {
     value: "46%",
     label: "Onder 15 jaar",
-    sub: "70% van de bevolking is jonger dan 30",
+    sub: "Ruim de helft is jonger dan 18 jaar",
   },
   {
     value: ">50%",
@@ -38,11 +38,11 @@ const stats = [
 const youthChallenges = [
   {
     title: "Onderwijs onder druk",
-    desc: "De jeugdgeletterdheid steeg van 68% in 2000 naar 75% in 2015 — maar er is nog een lange weg te gaan. Veel jongeren verlaten school voortijdig door gebrek aan middelen of begeleiding.",
+    desc: "De jeugdgeletterdheid steeg naar circa 73% in 2015, maar er is nog een lange weg te gaan. Veel jongeren verlaten school voortijdig door gebrek aan middelen of begeleiding.",
   },
   {
     title: "Werkloosheid en structuur",
-    desc: "Met 81% van de bevolking afhankelijk van landbouw zijn de economische mogelijkheden voor jongeren beperkt. Weinigen vinden werk buiten de informele sector.",
+    desc: "Circa 80% van de bevolking werkt in de landbouw. De economische mogelijkheden voor jongeren zijn daardoor beperkt. Weinigen vinden werk buiten de informele sector.",
   },
   {
     title: "Gebrek aan faciliteiten",
@@ -65,7 +65,7 @@ const sportDevPoints = [
   },
   {
     title: "Gezondheid en welzijn",
-    desc: "Een actieve leefstijl verbetert fysieke en mentale gezondheid — juist in omgevingen waar gezondheidszorg beperkt is.",
+    desc: "Een actieve leefstijl verbetert fysieke en mentale gezondheid, juist in omgevingen waar gezondheidszorg beperkt is.",
   },
   {
     title: "Bewezen in Mzuzu",
@@ -74,8 +74,16 @@ const sportDevPoints = [
 ];
 
 const mzuzuFacts = [
-  { value: "221.272+", label: "Inwoners", sub: "Plus ca. 20.000 universitaire forenzen" },
-  { value: "3e", label: "Grootste stad", sub: "Hoofdstad van de Northern Region" },
+  {
+    value: "221.272+",
+    label: "Inwoners",
+    sub: "Plus ca. 20.000 universitaire forenzen",
+  },
+  {
+    value: "3e",
+    label: "Grootste stad",
+    sub: "Hoofdstad van de Northern Region",
+  },
   { value: "15.000", label: "Stadioncapaciteit", sub: "Mzuzu Stadium" },
   { value: "263", label: "Basisscholen", sub: "Onder het Bisdom Mzuzu" },
 ];
@@ -85,7 +93,6 @@ export default function MalawiPage() {
     <>
       <Navbar />
       <main className="bg-background">
-
         {/* ── Hero ── */}
         <section
           className="relative pt-16 overflow-hidden"
@@ -130,15 +137,18 @@ export default function MalawiPage() {
               className="mt-5 max-w-xl text-lg leading-relaxed"
               style={{ color: "rgba(246,241,232,0.60)" }}
             >
-              Een land met een van de jongste bevolkingen ter wereld. Meer dan de
-              helft leeft onder de armoedegrens. Toch is er warmte, veerkracht en
-              een enorme honger naar perspectief.
+              Een land met een van de jongste bevolkingen ter wereld. Meer dan
+              de helft leeft onder de armoedegrens. Toch is er warmte,
+              veerkracht en een enorme honger naar perspectief.
             </p>
           </div>
         </section>
 
         {/* ── Key Statistics Grid ── */}
-        <section style={{ background: "var(--ivory)" }} className="py-16 md:py-24 px-4 sm:px-6">
+        <section
+          style={{ background: "var(--ivory)" }}
+          className="py-16 md:py-24 px-4 sm:px-6"
+        >
           <div className="max-w-6xl mx-auto">
             <div className="mb-10">
               <Label>Kerncijfers</Label>
@@ -153,10 +163,10 @@ export default function MalawiPage() {
                 Een land van jongeren.
               </h2>
               <p className="mt-3 max-w-xl" style={{ color: "var(--stone)" }}>
-                Malawi telt 21,6 miljoen inwoners. De mediane leeftijd is 17,8 jaar
-                — bijna de helft van de bevolking is jonger dan 15. Deze cijfers
-                vertellen het verhaal van een land waar investeren in jongeren geen
-                luxe is, maar noodzaak.
+                Malawi telt circa 21 miljoen inwoners. De mediane leeftijd is
+                17,8 jaar en bijna de helft van de bevolking is jonger dan 15.
+                Deze cijfers vertellen het verhaal van een land waar investeren
+                in jongeren geen luxe is, maar noodzaak.
               </p>
             </div>
 
@@ -180,10 +190,16 @@ export default function MalawiPage() {
                   >
                     {s.value}
                   </p>
-                  <p className="text-sm font-semibold mb-0.5" style={{ color: "var(--charcoal)" }}>
+                  <p
+                    className="text-sm font-semibold mb-0.5"
+                    style={{ color: "var(--charcoal)" }}
+                  >
                     {s.label}
                   </p>
-                  <p className="text-xs leading-snug" style={{ color: "var(--stone)" }}>
+                  <p
+                    className="text-xs leading-snug"
+                    style={{ color: "var(--stone)" }}
+                  >
                     {s.sub}
                   </p>
                 </div>
@@ -198,11 +214,14 @@ export default function MalawiPage() {
                   border: "1px solid rgba(33,77,58,0.08)",
                 }}
               >
-                <p className="font-display font-bold text-lg mb-1" style={{ color: "var(--green)" }}>
-                  81%
+                <p
+                  className="font-display font-bold text-lg mb-1"
+                  style={{ color: "var(--green)" }}
+                >
+                  ~80%
                 </p>
                 <p className="text-sm" style={{ color: "var(--stone)" }}>
-                  van de bevolking verdient de kost in de landbouw
+                  van de bevolking werkt in de landbouw
                 </p>
               </div>
               <div
@@ -212,11 +231,14 @@ export default function MalawiPage() {
                   border: "1px solid rgba(33,77,58,0.08)",
                 }}
               >
-                <p className="font-display font-bold text-lg mb-1" style={{ color: "var(--green)" }}>
-                  68% naar 75%
+                <p
+                  className="font-display font-bold text-lg mb-1"
+                  style={{ color: "var(--green)" }}
+                >
+                  ~73%
                 </p>
                 <p className="text-sm" style={{ color: "var(--stone)" }}>
-                  jeugdgeletterdheid gestegen tussen 2000 en 2015
+                  jeugdgeletterdheid in 2015 (15-24 jaar)
                 </p>
               </div>
               <div
@@ -226,11 +248,14 @@ export default function MalawiPage() {
                   border: "1px solid rgba(33,77,58,0.08)",
                 }}
               >
-                <p className="font-display font-bold text-lg mb-1" style={{ color: "var(--green)" }}>
-                  70%
+                <p
+                  className="font-display font-bold text-lg mb-1"
+                  style={{ color: "var(--green)" }}
+                >
+                  51%
                 </p>
                 <p className="text-sm" style={{ color: "var(--stone)" }}>
-                  van de bevolking is jonger dan 30 jaar
+                  van de bevolking is jonger dan 18 jaar
                 </p>
               </div>
             </div>
@@ -238,7 +263,10 @@ export default function MalawiPage() {
         </section>
 
         {/* ── About Mzuzu ── */}
-        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
+        <section
+          className="py-16 md:py-24 px-4 sm:px-6"
+          style={{ background: "var(--green-pale)" }}
+        >
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
               <Label>De stad</Label>
@@ -252,13 +280,20 @@ export default function MalawiPage() {
               >
                 Mzuzu. Hoofdstad van het noorden.
               </h2>
-              <div className="w-12 h-1 mt-5 rounded-full" style={{ background: "var(--orange)" }} />
+              <div
+                className="w-12 h-1 mt-5 rounded-full"
+                style={{ background: "var(--orange)" }}
+              />
             </div>
-            <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--stone)" }}>
+            <div
+              className="space-y-4 text-base leading-relaxed"
+              style={{ color: "var(--stone)" }}
+            >
               <p>
-                Mzuzu is de derde stad van Malawi en de hoofdstad van de Northern
-                Region. Met ruim 221.000 inwoners — aangevuld met zo&apos;n 20.000
-                universitaire forenzen — is het een levendig regionaal centrum.
+                Mzuzu is de derde stad van Malawi en de hoofdstad van de
+                Northern Region. Met ruim 221.000 inwoners, aangevuld met
+                zo&apos;n 20.000 universitaire forenzen, is het een levendig
+                regionaal centrum.
               </p>
               <p>
                 De stad is thuisbasis van Mzuzu University en het Mzuzu Stadium
@@ -267,14 +302,16 @@ export default function MalawiPage() {
               </p>
               <p>
                 Het Bisdom Mzuzu speelt een grote rol in onderwijs en
-                gemeenschapsopbouw, met 263 basisscholen en 5 middelbare scholen.
-                De grootste religieuze denominatie is de Church of Central Africa
-                Presbyterian (28%), gevolgd door de katholieke kerk (17%).
+                gemeenschapsopbouw, met 263 basisscholen en 5 middelbare
+                scholen. De grootste religieuze denominatie is de Church of
+                Central Africa Presbyterian (28%), gevolgd door de katholieke
+                kerk (17%).
               </p>
               <p>
-                Mzuzu groeit snel en trekt steeds meer jongeren aan. Maar de
-                voorzieningen — onderwijs, gezondheidszorg, sport — houden die groei
-                niet bij. Vooral in de armere wijken is de nood het grootst.
+                Mzuzu groeit snel en trekt steeds meer jongeren aan. Maar
+                voorzieningen als onderwijs, gezondheidszorg en sport houden die
+                groei niet bij. Vooral in de armere wijken is de nood het
+                grootst.
               </p>
             </div>
 
@@ -296,7 +333,10 @@ export default function MalawiPage() {
                     >
                       {f.value}
                     </p>
-                    <p className="text-xs font-semibold mb-0.5" style={{ color: "var(--charcoal)" }}>
+                    <p
+                      className="text-xs font-semibold mb-0.5"
+                      style={{ color: "var(--charcoal)" }}
+                    >
                       {f.label}
                     </p>
                     <p className="text-xs" style={{ color: "var(--stone)" }}>
@@ -320,7 +360,10 @@ export default function MalawiPage() {
         </section>
 
         {/* ── About Soweto ── */}
-        <section style={{ background: "var(--sand-light)" }} className="py-16 md:py-24 px-4 sm:px-6">
+        <section
+          style={{ background: "var(--sand-light)" }}
+          className="py-16 md:py-24 px-4 sm:px-6"
+        >
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-start">
             <div>
               <Label>De wijk</Label>
@@ -334,25 +377,38 @@ export default function MalawiPage() {
               >
                 Soweto. Waarom juist hier.
               </h2>
-              <div className="w-12 h-1 mt-5 rounded-full" style={{ background: "var(--orange)" }} />
-              <p className="mt-6 leading-relaxed" style={{ color: "var(--stone)" }}>
-                Soweto is de armste wijk van Mzuzu. Jongeren groeien hier op zonder
-                faciliteiten, zonder begeleiding en zonder zichtbare rolmodellen.
-                Er zijn geen sportaccommodaties, geen buurthuizen, geen
-                georganiseerde activiteiten.
+              <div
+                className="w-12 h-1 mt-5 rounded-full"
+                style={{ background: "var(--orange)" }}
+              />
+              <p
+                className="mt-6 leading-relaxed"
+                style={{ color: "var(--stone)" }}
+              >
+                Soweto is de armste wijk van Mzuzu. Jongeren groeien hier op
+                zonder faciliteiten, zonder begeleiding en zonder zichtbare
+                rolmodellen. Er zijn geen sportaccommodaties, geen buurthuizen,
+                geen georganiseerde activiteiten.
               </p>
-              <p className="mt-4 leading-relaxed" style={{ color: "var(--stone)" }}>
-                Football is Life kiest bewust voor Soweto — omdat dit de plek is
-                waar de nood het grootst is. Niet als eenmalige actie, maar als een{" "}
+              <p
+                className="mt-4 leading-relaxed"
+                style={{ color: "var(--stone)" }}
+              >
+                Football is Life kiest bewust voor Soweto, omdat dit de plek is
+                waar de nood het grootst is. Niet als eenmalige actie, maar als
+                een{" "}
                 <strong style={{ color: "var(--charcoal)" }}>
                   duurzaam programma dat lokaal geworteld is
                 </strong>{" "}
                 en lokaal wordt gedragen.
               </p>
-              <p className="mt-4 leading-relaxed" style={{ color: "var(--stone)" }}>
-                In samenwerking met lokale partners UNGWERU en St. Patrick bouwen we
-                aan iets wat blijft: een voetbalveld, opgeleide coaches en een
-                structuur die jongeren houvast biedt.
+              <p
+                className="mt-4 leading-relaxed"
+                style={{ color: "var(--stone)" }}
+              >
+                In samenwerking met lokale partners UNGWERU en St. Patrick
+                bouwen we aan iets wat blijft: een voetbalveld, opgeleide
+                coaches en een structuur die jongeren houvast biedt.
               </p>
             </div>
             <div className="space-y-4">
@@ -374,7 +430,10 @@ export default function MalawiPage() {
         </section>
 
         {/* ── Historische context ── */}
-        <section style={{ background: "var(--sand-light)" }} className="py-16 md:py-24 px-4 sm:px-6">
+        <section
+          style={{ background: "var(--sand-light)" }}
+          className="py-16 md:py-24 px-4 sm:px-6"
+        >
           <div className="max-w-6xl mx-auto">
             <div className="mb-10">
               <Label>Historische context</Label>
@@ -392,27 +451,31 @@ export default function MalawiPage() {
 
             <div className="grid md:grid-cols-2 gap-14 items-start">
               {/* Left column: narrative text */}
-              <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--stone)" }}>
+              <div
+                className="space-y-4 text-base leading-relaxed"
+                style={{ color: "var(--stone)" }}
+              >
                 <p>
-                  De eerste katholieke missie in het noorden van Malawi werd in 1938
-                  gevestigd door de White Fathers, later bekend als Missionaries of
-                  Africa. Zij legden de basis voor het onderwijsnetwerk dat het
-                  diocees vandaag kenmerkt.
+                  De eerste katholieke missie in het noorden van Malawi werd in
+                  1938 gevestigd door de White Fathers, later bekend als
+                  Missionaries of Africa. Zij legden de basis voor het
+                  onderwijsnetwerk dat het diocees vandaag kenmerkt.
                 </p>
                 <p>
                   In 1970 arriveerden de eerste priesters van St. Patrick&apos;s
-                  Missionary Society: Fathers Alfie Byrne, Frank Morris, Padraig O
-                  Maille en Pat McGivern. Sindsdien heeft het diocees een uitgebreid
-                  netwerk opgebouwd van 263 basisscholen, 5 middelbare scholen en 3
-                  colleges.
+                  Missionary Society: Fathers Alfie Byrne, Frank Morris, Padraig
+                  O Maille en Pat McGivern. Sindsdien heeft het diocees een
+                  uitgebreid netwerk opgebouwd van 263 basisscholen, 5
+                  middelbare scholen en 3 colleges.
                 </p>
                 <p>
-                  Bishop John Ryan, lid van St. Patrick&apos;s Missionary Society,
-                  speelt een bijzondere rol in dit verhaal. Naast zijn pastorale werk
-                  doceert hij wiskunde aan Mzuzu University. In 2004 richtte hij
-                  UNGWERU op als community-based organisatie. Vandaag is UNGWERU een
-                  geregistreerde NGO en een van de belangrijkste partners van Football
-                  is Life.
+                  Bishop John Ryan, lid van St. Patrick&apos;s Missionary
+                  Society, speelt een bijzondere rol in dit verhaal. Naast zijn
+                  pastorale werk doceert hij wiskunde aan Mzuzu University. In
+                  2004 richtte hij UNGWERU op als community-based organisatie,
+                  die in 2009 officieel werd geregistreerd als NGO. Vandaag is
+                  UNGWERU een van de belangrijkste partners van Football is
+                  Life.
                 </p>
               </div>
 
@@ -439,7 +502,10 @@ export default function MalawiPage() {
                           className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5"
                           style={{ background: "var(--orange)" }}
                         />
-                        <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                        <p
+                          className="text-sm leading-relaxed"
+                          style={{ color: "var(--stone)" }}
+                        >
                           {fact}
                         </p>
                       </div>
@@ -464,8 +530,8 @@ export default function MalawiPage() {
             >
               Deze combinatie van onderwijs, gemeenschapswerk en sport vormt het
               fundament waarop het Football is Life-project is gebouwd. De
-              infrastructuur en het vertrouwen dat in decennia is opgebouwd, maakt
-              ons werk mogelijk.
+              infrastructuur en het vertrouwen dat in decennia is opgebouwd,
+              maakt ons werk mogelijk.
             </p>
           </div>
         </section>
@@ -486,17 +552,28 @@ export default function MalawiPage() {
                 >
                   Waarom voetbal werkt als instrument.
                 </h2>
-                <div className="w-12 h-1 mt-5 rounded-full" style={{ background: "var(--orange)" }} />
-                <p className="mt-6 leading-relaxed" style={{ color: "var(--stone)" }}>
-                  Voetbal is de populairste sport in Malawi. Het is laagdrempelig,
-                  verbindend en overal speelbaar. Maar voetbal is meer dan een spel
-                  — het is een bewezen instrument voor sociale ontwikkeling.
+                <div
+                  className="w-12 h-1 mt-5 rounded-full"
+                  style={{ background: "var(--orange)" }}
+                />
+                <p
+                  className="mt-6 leading-relaxed"
+                  style={{ color: "var(--stone)" }}
+                >
+                  Voetbal is de populairste sport in Malawi. Het is
+                  laagdrempelig, verbindend en overal speelbaar. Maar voetbal is
+                  meer dan een spel: het is een bewezen instrument voor sociale
+                  ontwikkeling.
                 </p>
-                <p className="mt-4 leading-relaxed" style={{ color: "var(--stone)" }}>
-                  Sport-for-development programma&apos;s gebruiken sport als middel om
-                  jongeren te bereiken die via traditionele kanalen onbereikbaar
-                  zijn. Het veld wordt een klaslokaal, de coach wordt een mentor,
-                  en de training wordt een moment van persoonlijke groei.
+                <p
+                  className="mt-4 leading-relaxed"
+                  style={{ color: "var(--stone)" }}
+                >
+                  Sport-for-development programma&apos;s gebruiken sport als
+                  middel om jongeren te bereiken die via traditionele kanalen
+                  onbereikbaar zijn. Het veld wordt een klaslokaal, de coach
+                  wordt een mentor, en de training wordt een moment van
+                  persoonlijke groei.
                 </p>
               </div>
 
@@ -512,10 +589,16 @@ export default function MalawiPage() {
                       style={{ background: "var(--orange)" }}
                     />
                     <div>
-                      <p className="font-semibold text-sm mb-1" style={{ color: "var(--charcoal)" }}>
+                      <p
+                        className="font-semibold text-sm mb-1"
+                        style={{ color: "var(--charcoal)" }}
+                      >
                         {item.title}
                       </p>
-                      <p className="text-sm leading-relaxed" style={{ color: "var(--stone)" }}>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: "var(--stone)" }}
+                      >
                         {item.desc}
                       </p>
                     </div>
@@ -536,7 +619,10 @@ export default function MalawiPage() {
         </section>
 
         {/* ── Youth Challenges ── */}
-        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--ivory)" }}>
+        <section
+          className="py-16 md:py-24 px-4 sm:px-6"
+          style={{ background: "var(--ivory)" }}
+        >
           <div className="max-w-6xl mx-auto">
             <div className="mb-12">
               <Label>Uitdagingen</Label>
@@ -551,8 +637,9 @@ export default function MalawiPage() {
                 Waar jongeren in Malawi tegenaan lopen.
               </h2>
               <p className="mt-3 max-w-xl" style={{ color: "var(--stone)" }}>
-                De jonge bevolking van Malawi staat voor structurele uitdagingen.
-                Zonder gerichte interventie blijven miljoenen jongeren achter.
+                De jonge bevolking van Malawi staat voor structurele
+                uitdagingen. Zonder gerichte interventie blijven miljoenen
+                jongeren achter.
               </p>
             </div>
 
@@ -563,14 +650,19 @@ export default function MalawiPage() {
                   className="rounded-2xl p-7 card-hover"
                   style={{
                     background: i === 0 ? "var(--green)" : "var(--white)",
-                    border: i === 0 ? "1px solid var(--green-dark)" : "1px solid var(--border)",
-                    boxShadow: i === 0 ? "var(--shadow-md)" : "var(--shadow-card)",
+                    border:
+                      i === 0
+                        ? "1px solid var(--green-dark)"
+                        : "1px solid var(--border)",
+                    boxShadow:
+                      i === 0 ? "var(--shadow-md)" : "var(--shadow-card)",
                   }}
                 >
                   <p
                     className="font-display font-bold text-5xl leading-none mb-4"
                     style={{
-                      color: i === 0 ? "rgba(246,241,232,0.20)" : "var(--green)",
+                      color:
+                        i === 0 ? "rgba(246,241,232,0.20)" : "var(--green)",
                       opacity: i === 0 ? 1 : 0.15,
                     }}
                   >
@@ -578,13 +670,19 @@ export default function MalawiPage() {
                   </p>
                   <h3
                     className="font-display font-bold text-lg mb-3"
-                    style={{ color: i === 0 ? "rgba(246,241,232,0.95)" : "var(--charcoal)" }}
+                    style={{
+                      color:
+                        i === 0 ? "rgba(246,241,232,0.95)" : "var(--charcoal)",
+                    }}
                   >
                     {challenge.title}
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
-                    style={{ color: i === 0 ? "rgba(246,241,232,0.60)" : "var(--stone)" }}
+                    style={{
+                      color:
+                        i === 0 ? "rgba(246,241,232,0.60)" : "var(--stone)",
+                    }}
                   >
                     {challenge.desc}
                   </p>
@@ -595,7 +693,10 @@ export default function MalawiPage() {
         </section>
 
         {/* ── Map / Location Context ── */}
-        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--green-pale)" }}>
+        <section
+          className="py-16 md:py-24 px-4 sm:px-6"
+          style={{ background: "var(--green-pale)" }}
+        >
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-14 items-start mb-10">
               <div>
@@ -611,11 +712,14 @@ export default function MalawiPage() {
                   Midden in het hart van Zuidoost-Afrika.
                 </h2>
               </div>
-              <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--stone)" }}>
+              <div
+                className="space-y-4 text-base leading-relaxed"
+                style={{ color: "var(--stone)" }}
+              >
                 <p>
-                  Malawi is een langgerekt binnenland in Zuidoost-Afrika, grenzend
-                  aan Mozambique, Tanzania en Zambia. Het Malawieer — een van de
-                  grootste meren van Afrika — domineert de oostgrens.
+                  Malawi is een langgerekt binnenland in Zuidoost-Afrika,
+                  grenzend aan Mozambique, Tanzania en Zambia. Het Malawimeer,
+                  een van de grootste meren van Afrika, domineert de oostgrens.
                 </p>
                 <p>
                   Mzuzu ligt in het noorden, op zo&apos;n 370 kilometer van de
@@ -635,7 +739,10 @@ export default function MalawiPage() {
         </section>
 
         {/* ── Photo Gallery ── */}
-        <section className="py-16 md:py-24 px-4 sm:px-6" style={{ background: "var(--sand-light)" }}>
+        <section
+          className="py-16 md:py-24 px-4 sm:px-6"
+          style={{ background: "var(--sand-light)" }}
+        >
           <div className="max-w-6xl mx-auto">
             <div className="mb-10">
               <Label>Beelden</Label>
@@ -732,14 +839,20 @@ export default function MalawiPage() {
               <Link
                 href="/project"
                 className="px-7 py-3.5 rounded-full font-semibold text-base border btn-secondary"
-                style={{ color: "rgba(246,241,232,0.75)", borderColor: "rgba(246,241,232,0.18)" }}
+                style={{
+                  color: "rgba(246,241,232,0.75)",
+                  borderColor: "rgba(246,241,232,0.18)",
+                }}
               >
                 Bekijk het project
               </Link>
               <Link
                 href="/doneren"
                 className="px-9 py-3.5 rounded-full font-semibold text-base text-white btn-primary"
-                style={{ background: "var(--orange)", boxShadow: "var(--glow-orange)" }}
+                style={{
+                  background: "var(--orange)",
+                  boxShadow: "var(--glow-orange)",
+                }}
               >
                 Doneer nu
               </Link>
