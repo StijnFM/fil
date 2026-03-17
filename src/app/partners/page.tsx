@@ -19,6 +19,7 @@ const localTeam = [
     desc: "Crief coordineert de dagelijkse activiteiten in Soweto en is het eerste aanspreekpunt voor de community. Hij bewaakt de voortgang en zorgt voor verbinding tussen alle betrokkenen.",
     photoLabel: "(Foto: Crief)",
     photoDesc: "Crief — coordinator in Mzuzu",
+    photoSrc: "/images/photos/foto-crief.jpg",
   },
   {
     name: "Isaac",
@@ -26,6 +27,7 @@ const localTeam = [
     desc: "Isaac leidt de voetbaltrainingen en combineert sport met persoonlijke begeleiding van jongeren. Als coach is hij het dagelijkse rolmodel op het veld.",
     photoLabel: "(Foto: Isaac)",
     photoDesc: "Isaac — coach op het veld",
+    photoSrc: "/images/photos/foto-isaac.jpg",
   },
   {
     name: "Sam",
@@ -33,6 +35,7 @@ const localTeam = [
     desc: "Sam begeleidt jongeren individueel en organiseert de wekelijkse life skills sessies. Hij kent de thuissituatie van de deelnemers en signaleert waar extra aandacht nodig is.",
     photoLabel: "(Foto: Sam)",
     photoDesc: "Sam — begeleider jongeren",
+    photoSrc: "/images/photos/foto-sam.jpg",
   },
   {
     name: "Leo",
@@ -40,6 +43,7 @@ const localTeam = [
     desc: "Leo adviseert het team over lokale context en helpt bij de verbinding met scholen en organisaties. Zijn ervaring en netwerk zijn onmisbaar voor de verankering van het programma.",
     photoLabel: "(Foto: Leo)",
     photoDesc: "Leo — lokaal adviseur",
+    photoSrc: "/images/photos/foto-leo.jpg",
   },
 ];
 
@@ -152,6 +156,7 @@ export default function PartnersPage() {
                 description="UNGWERU en Football is Life — partnerschap in Mzuzu"
                 aspect="21/9"
                 className="rounded-xl"
+                src="/images/photos/afb-p1.jpg"
               />
             </div>
           </div>
@@ -203,6 +208,7 @@ export default function PartnersPage() {
                 description="Overleg tussen Football is Life en lokale partners in Mzuzu"
                 aspect="2.5/1"
                 dark={false}
+                src="/images/photos/afb-p2.jpg"
               />
             </div>
           </div>
@@ -286,6 +292,7 @@ export default function PartnersPage() {
                   label="(Afb P3)"
                   description="UNGWERU teamleden in Mzuzu"
                   aspect="4/3"
+                  src="/images/photos/afb-p3.jpg"
                 />
               </div>
             </div>
@@ -378,6 +385,7 @@ export default function PartnersPage() {
                   label="(Afb P4)"
                   description="St. Patrick's Missionary Society — community in Northern Malawi"
                   aspect="4/3"
+                  src="/images/photos/afb-p4.jpg"
                 />
               </div>
 
@@ -548,6 +556,7 @@ export default function PartnersPage() {
                   description="VVCS trainingsmateriaal voor het project"
                   aspect="16/9"
                   dark={false}
+                  src="/images/photos/afb-vvcs.jpg"
                 />
               </div>
             </div>
@@ -586,6 +595,7 @@ export default function PartnersPage() {
                   label="(Afb: Libre Foundation)"
                   description="Leiderschapstraining Libre Foundation"
                   aspect="16/9"
+                  src="/images/photos/afb-libre.jpg"
                 />
               </div>
 
@@ -741,6 +751,7 @@ export default function PartnersPage() {
                 description="Gezamenlijk overleg: UNGWERU, St. Patrick en Football is Life"
                 aspect="21/9"
                 dark={false}
+                src="/images/photos/afb-p5.jpg"
               />
             </div>
           </div>
@@ -774,6 +785,7 @@ export default function PartnersPage() {
                 label="(Afb P6)"
                 description="Het lokale team samen op het veld in Soweto"
                 aspect="21/9"
+                src="/images/photos/afb-p6.jpg"
               />
             </div>
 
@@ -793,6 +805,7 @@ export default function PartnersPage() {
                     description={person.photoDesc}
                     aspect="1/1"
                     className="rounded-none"
+                    src={person.photoSrc}
                   />
                   <div className="p-4 text-center">
                     <p className="font-bold text-base" style={{ color: "var(--charcoal)" }}>
@@ -873,12 +886,14 @@ export default function PartnersPage() {
                 label="(Afb P7)"
                 description="Lokale coaches leiden de training"
                 aspect="3/2"
+                src="/images/photos/afb-p7.jpg"
               />
               <ImagePlaceholder
                 label="(Afb P8)"
                 description="Jongeren in Soweto tijdens empowermentsessie"
                 aspect="3/2"
                 dark={false}
+                src="/images/photos/afb-p8.jpg"
               />
             </div>
           </div>
@@ -932,6 +947,7 @@ export default function PartnersPage() {
                 description="Partners samen op het veld — de toekomst van het programma"
                 aspect="16/9"
                 className="rounded-xl max-w-md mx-auto"
+                src="/images/photos/afb-p9.jpg"
               />
             </div>
           </div>

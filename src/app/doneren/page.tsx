@@ -50,6 +50,7 @@ export default function DonerenPage() {
                 description="Jongeren op het veld in Soweto"
                 aspect="16/9"
                 className="rounded-xl"
+                src="/images/photos/afb-f.jpg"
               />
             </div>
           </div>

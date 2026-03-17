@@ -131,6 +131,7 @@ export default function ProjectPage() {
               description="Luchtfoto: Soweto, de armste wijk van Mzuzu"
               aspect="21/9"
               className="rounded-xl"
+              src="/images/photos/afb-g.jpg"
             />
           </div>
           </div>
@@ -206,6 +207,7 @@ export default function ProjectPage() {
                 description="De community van Soweto: kinderen spelen"
                 aspect="2/1"
                 dark={false}
+                src="/images/photos/afb-h.jpg"
               />
             </div>
           </div>
@@ -396,11 +398,13 @@ export default function ProjectPage() {
             label="(Afb I)"
             description="Voetbalveld aanleg in Soweto"
             aspect="3/2"
+            src="/images/photos/afb-i.jpg"
           />
           <ImagePlaceholder
             label="(Afb J)"
             description="Coaches tijdens opleiding"
             aspect="3/2"
+            src="/images/photos/afb-j.jpg"
           />
         </div>
           </div>
@@ -904,6 +908,7 @@ export default function ProjectPage() {
                 description="Jongeren vieren een doelpunt"
                 aspect="16/9"
                 className="rounded-xl max-w-md mx-auto"
+                src="/images/photos/afb-k.jpg"
               />
             </div>
           </div>

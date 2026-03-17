@@ -105,6 +105,7 @@ export default function AmbassadeursPage() {
               className="mt-10"
             >
               <ImagePlaceholder
+                src="/images/photos/afb-v1.jpg"
                 label="(Afb V1)"
                 description="Peter Bosz en Bryan Linssen, ambassadeurs Football is Life"
                 aspect="21/9"
@@ -126,6 +127,7 @@ export default function AmbassadeursPage() {
               transition={{ duration: 0.5, ease }}
             >
               <ImagePlaceholder
+                src="/images/photos/foto-peter.jpeg"
                 label="(Foto: Peter Bosz)"
                 description="Peter Bosz, voetbalambassadeur Football is Life"
                 aspect="3/4"
@@ -375,6 +377,7 @@ export default function AmbassadeursPage() {
               transition={{ duration: 0.5, delay: 0.1, ease }}
             >
               <ImagePlaceholder
+                src="/images/photos/afb-vvcs.jpg"
                 label="(Afb: VVCS materiaal)"
                 description="Trainingskleding en materiaal van de VVCS"
                 aspect="16/9"

@@ -144,6 +144,7 @@ export default function MeedoenPage() {
                 description="Community in actie — jongeren en vrijwilligers samen"
                 aspect="21/9"
                 className="rounded-xl"
+                src="/images/photos/afb-o.jpg"
               />
             </div>
           </div>
@@ -519,6 +520,7 @@ export default function MeedoenPage() {
               aspect="4/3"
               className="rounded-xl"
               dark={false}
+              src="/images/photos/afb-q-meedoen.jpg"
             />
             <div>
               <Label>Toekomstig</Label>

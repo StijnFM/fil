@@ -1,9 +1,12 @@
+import Image from "next/image";
+
 interface ImagePlaceholderProps {
   label: string;
   description?: string;
   aspect?: string;
   className?: string;
   dark?: boolean;
+  src?: string;
 }
 
 export function ImagePlaceholder({
@@ -12,7 +15,25 @@ export function ImagePlaceholder({
   aspect = "3/2",
   className = "",
   dark = true,
+  src,
 }: ImagePlaceholderProps) {
+  if (src) {
+    return (
+      <div
+        className={`relative overflow-hidden rounded-2xl ${className}`}
+        style={{ aspectRatio: aspect }}
+      >
+        <Image
+          src={src}
+          alt={description || label}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={`relative overflow-hidden rounded-2xl ${className}`}

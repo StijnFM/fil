@@ -114,6 +114,7 @@ function Hero() {
               description="Jongeren voetballen in Soweto"
               aspect="4/5"
               className="md:rounded-3xl"
+              src="/images/photos/afb-a.jpg"
             />
 
             {/* Floating info card */}
@@ -221,6 +222,7 @@ function Verhaal() {
             description="Panorama: het voetbalveld en de community in Soweto"
             aspect="21/9"
             className="mb-12"
+            src="/images/photos/afb-b.jpg"
           />
         </motion.div>
 
@@ -458,6 +460,7 @@ function ProjectSoweto() {
             label="(Afb C)"
             description="Coaches trainen jongeren op het veld"
             aspect="4/3"
+            src="/images/photos/afb-c.jpeg"
           />
 
           {/* Quick stats below image */}
@@ -586,6 +589,7 @@ function LokalePartners() {
             description="Lokale samenwerking: UNGWERU en St. Patrick in actie"
             aspect="21/9"
             dark={false}
+            src="/images/photos/afb-e.jpg"
           />
         </motion.div>
       </div>
@@ -1283,6 +1287,7 @@ function DoneerSectie() {
               description="Close-up: blije jongeren na een training"
               aspect="16/9"
               className="rounded-xl"
+              src="/images/photos/afb-d.jpeg"
             />
           </div>
         </motion.div>

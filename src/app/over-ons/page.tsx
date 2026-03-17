@@ -19,6 +19,7 @@ const board = [
     expertise: ["Sportpsychologie", "Teamontwikkeling", "Libre Foundation", "Operationele leiding"],
     photoLabel: "(Foto: Paul)",
     photoDesc: "Paul van Zwam — voorzitter Football is Life",
+    photoSrc: "/images/photos/foto-paul.jpeg",
   },
   {
     name: "Ivo Spanjersberg",
@@ -28,6 +29,7 @@ const board = [
     expertise: ["Prestatiepsychologie", "Communicatie", "Libre Foundation", "Coordinatie"],
     photoLabel: "(Foto: Ivo)",
     photoDesc: "Ivo Spanjersberg — secretaris",
+    photoSrc: "/images/photos/foto-ivo.jpg",
   },
   {
     name: "Mano Radema",
@@ -38,6 +40,7 @@ const board = [
     expertise: ["Financiën", "ANBI-verantwoording", "AI & Technologie", "Topsport"],
     photoLabel: "(Foto: Mano)",
     photoDesc: "Mano Radema — penningmeester",
+    photoSrc: "/images/photos/foto-mano.jpg",
   },
 ];
 
@@ -49,6 +52,7 @@ const malawiTeam = [
     desc: "Crief coördineert de dagelijkse activiteiten in Soweto en is het eerste aanspreekpunt voor de community.",
     photoLabel: "(Foto: Crief)",
     photoDesc: "Crief — coördinator in Mzuzu",
+    photoSrc: "/images/photos/foto-crief.jpg",
   },
   {
     name: "Isaac",
@@ -57,6 +61,7 @@ const malawiTeam = [
     desc: "Isaac leidt de voetbaltrainingen en combineert sport met persoonlijke begeleiding van jongeren.",
     photoLabel: "(Foto: Isaac)",
     photoDesc: "Isaac — coach op het veld",
+    photoSrc: "/images/photos/foto-isaac.jpg",
   },
   {
     name: "Sam",
@@ -65,6 +70,7 @@ const malawiTeam = [
     desc: "Sam begeleidt jongeren individueel en organiseert de wekelijkse life skills sessies.",
     photoLabel: "(Foto: Sam)",
     photoDesc: "Sam — begeleider jongeren",
+    photoSrc: "/images/photos/foto-sam.jpg",
   },
   {
     name: "Leo",
@@ -73,6 +79,7 @@ const malawiTeam = [
     desc: "Leo adviseert het team over lokale context en helpt bij de verbinding met scholen en organisaties.",
     photoLabel: "(Foto: Leo)",
     photoDesc: "Leo — lokaal adviseur",
+    photoSrc: "/images/photos/foto-leo.jpg",
   },
 ];
 
@@ -84,6 +91,7 @@ const ambassadors = [
     desc: "Toptrainer met internationale ervaring bij Ajax, Borussia Dortmund, Bayer Leverkusen en PSV. Tweevoudig Eredivisiekampioen.",
     photoLabel: "(Foto: Peter Bosz)",
     photoDesc: "Peter Bosz, voetbalambassadeur",
+    photoSrc: "/images/photos/foto-peter.jpeg",
     tags: ["Topvoetbal", "Internationaal netwerk"],
   },
   {
@@ -172,6 +180,7 @@ export default function OverOnsPage() {
                 description="Het bestuur van Football is Life"
                 aspect="21/9"
                 className="rounded-xl"
+                src="/images/photos/afb-l.jpg"
               />
             </motion.div>
           </div>
@@ -242,6 +251,7 @@ export default function OverOnsPage() {
                 description="Voetbal verbindt: jongeren en coaches samen"
                 aspect="2.5/1"
                 dark={false}
+                src="/images/photos/afb-m.jpg"
               />
             </div>
           </div>
@@ -295,6 +305,7 @@ export default function OverOnsPage() {
                     description={member.photoDesc}
                     aspect="4/3"
                     className="rounded-none"
+                    src={member.photoSrc}
                   />
                   <div className="p-6">
                     <p className="font-display font-bold text-lg" style={{ color: "var(--charcoal)" }}>
@@ -382,6 +393,7 @@ export default function OverOnsPage() {
                 label="(Afb N)"
                 description="Het team in Malawi samen op het veld in Soweto"
                 aspect="21/9"
+                src="/images/photos/afb-n.jpeg"
               />
             </motion.div>
 
@@ -405,6 +417,7 @@ export default function OverOnsPage() {
                     description={person.photoDesc}
                     aspect="1/1"
                     className="rounded-none"
+                    src={person.photoSrc}
                   />
                   <div className="p-4 text-center">
                     <p className="font-bold text-base" style={{ color: "var(--charcoal)" }}>
@@ -473,6 +486,7 @@ export default function OverOnsPage() {
                     aspect="4/3"
                     className="rounded-none"
                     dark={false}
+                    src={amb.photoSrc}
                   />
                   <div className="p-6">
                     <p className="font-display font-bold text-lg" style={{ color: "var(--charcoal)" }}>

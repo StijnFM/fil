@@ -207,6 +207,7 @@ export default function OpleidingPage() {
 
             <div className="mt-10">
               <ImagePlaceholder
+                src="/images/photos/coaches-tijdens-opleiding.jpg"
                 label="(Foto: Coaches tijdens opleiding)"
                 description="Lokale coaches oefenen op het veld in Mzuzu"
                 aspect="21/9"
@@ -309,6 +310,7 @@ export default function OpleidingPage() {
 
             <div className="md:col-span-2 mt-4">
               <ImagePlaceholder
+                src="/images/photos/jongeren-op-het-veld-in-mzuzu.jpg"
                 label="(Foto: Jongeren op het veld in Mzuzu)"
                 description="Trainingsmoment met lokale coaches en jongeren"
                 aspect="2/1"
@@ -398,6 +400,7 @@ export default function OpleidingPage() {
 
             <div className="mt-10 grid grid-cols-3 gap-4">
               <ImagePlaceholder
+                src="/images/photos/foto-samenwerken.jpg"
                 label="(Foto: Samenwerken)"
                 description="Oefenvorm teamwork op het veld"
                 aspect="4/3"
@@ -406,11 +409,13 @@ export default function OpleidingPage() {
                 label="(Foto: Leiderschap)"
                 description="Coach geeft instructie aan groep"
                 aspect="4/3"
+                src="/images/photos/foto-leiderschap.jpg"
               />
               <ImagePlaceholder
                 label="(Foto: Verantwoordelijkheid)"
                 description="Jongeren ruimen samen materiaal op"
                 aspect="4/3"
+                src="/images/photos/foto-verantwoordelijkheid.jpg"
               />
             </div>
           </div>
@@ -512,6 +517,7 @@ export default function OpleidingPage() {
                 label="(Foto: Werkboek in gebruik)"
                 description="Coach bereidt oefenvorm voor met werkboek"
                 aspect="21/9"
+                src="/images/photos/foto-werkboek.jpg"
                 dark={false}
               />
             </div>
@@ -625,11 +631,13 @@ export default function OpleidingPage() {
                 label="(Foto: Praktijkblok)"
                 description="Coaches oefenen met kleine groepen"
                 aspect="3/2"
+                src="/images/photos/foto-praktijkblok.jpg"
               />
               <ImagePlaceholder
                 label="(Foto: Feedbackronde)"
                 description="Coaches bespreken de oefenvorm na"
                 aspect="3/2"
+                src="/images/photos/foto-feedbackronde.jpg"
               />
             </div>
           </div>
@@ -695,6 +703,7 @@ export default function OpleidingPage() {
                 label="(Foto: Certificaatuitreiking)"
                 description="Coaches ontvangen hun Trainer Coach 1-certificaat"
                 aspect="21/9"
+                src="/images/photos/foto-certificaat.jpg"
                 dark={false}
               />
             </div>
@@ -765,11 +774,13 @@ export default function OpleidingPage() {
                 label="(Foto: Coach in actie)"
                 description="Gecertificeerde coach leidt een training"
                 aspect="3/2"
+                src="/images/photos/foto-coach-actie.jpg"
               />
               <ImagePlaceholder
                 label="(Foto: Follow-up sessie)"
                 description="Coaches delen ervaringen na 6 weken"
                 aspect="3/2"
+                src="/images/photos/foto-followup.jpg"
               />
             </div>
           </div>
@@ -948,6 +959,7 @@ export default function OpleidingPage() {
                 label="(Afb: Methodiek)"
                 description="Trainers tijdens een oefenvorm op het veld"
                 aspect="21/9"
+                src="/images/photos/afb-methodiek.jpg"
               />
             </div>
           </div>
@@ -999,6 +1011,7 @@ export default function OpleidingPage() {
                 label="(Foto: Coaches en jongeren samen)"
                 description="Het resultaat: gemotiveerde coaches en betrokken jongeren"
                 aspect="16/9"
+                src="/images/photos/foto-coaches-jongeren.jpg"
                 className="rounded-xl max-w-md mx-auto"
               />
             </div>

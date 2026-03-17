@@ -313,6 +313,7 @@ export default function MalawiPage() {
                 description="Panorama van Mzuzu: de derde stad van Malawi"
                 aspect="21/9"
                 dark={false}
+                src="/images/photos/afb-p-malawi.jpg"
               />
             </div>
           </div>
@@ -359,12 +360,14 @@ export default function MalawiPage() {
                 label="(Afb Q)"
                 description="Het dagelijks leven in Soweto, Mzuzu"
                 aspect="4/3"
+                src="/images/photos/afb-q.jpg"
               />
               <ImagePlaceholder
                 label="(Afb R)"
                 description="Jongeren in Soweto — de wijk zonder faciliteiten"
                 aspect="4/3"
                 dark={false}
+                src="/images/photos/afb-r.jpg"
               />
             </div>
           </div>
@@ -449,6 +452,7 @@ export default function MalawiPage() {
                   description="Onderwijsnetwerk en gemeenschapswerk in Mzuzu Diocese"
                   aspect="3/2"
                   dark={false}
+                  src="/images/photos/afb-diocese.jpg"
                 />
               </div>
             </div>
@@ -525,6 +529,7 @@ export default function MalawiPage() {
                 label="(Afb S)"
                 description="Voetbal als verbindend middel: training in Mzuzu"
                 aspect="21/9"
+                src="/images/photos/afb-s.jpg"
               />
             </div>
           </div>
@@ -651,34 +656,40 @@ export default function MalawiPage() {
                 label="(Afb U1)"
                 description="Straatbeeld Mzuzu centrum"
                 aspect="4/3"
+                src="/images/photos/afb-u1.jpg"
               />
               <ImagePlaceholder
                 label="(Afb U2)"
                 description="Kinderen op weg naar school in Soweto"
                 aspect="4/3"
                 dark={false}
+                src="/images/photos/afb-u2.jpg"
               />
               <ImagePlaceholder
                 label="(Afb U3)"
                 description="De markt van Mzuzu"
                 aspect="4/3"
+                src="/images/photos/afb-u3.jpg"
               />
               <ImagePlaceholder
                 label="(Afb U4)"
                 description="Voetballende jongeren op een onverhard veld"
                 aspect="4/3"
                 dark={false}
+                src="/images/photos/afb-u4.jpg"
               />
               <ImagePlaceholder
                 label="(Afb U5)"
                 description="Mzuzu University campus"
                 aspect="4/3"
+                src="/images/photos/afb-u5.jpg"
               />
               <ImagePlaceholder
                 label="(Afb U6)"
                 description="Gemeenschapsleven in Soweto"
                 aspect="4/3"
                 dark={false}
+                src="/images/photos/afb-u6.jpg"
               />
             </div>
 
@@ -687,6 +698,7 @@ export default function MalawiPage() {
                 label="(Afb U7)"
                 description="Panorama: de heuvels rondom Mzuzu bij zonsondergang"
                 aspect="21/9"
+                src="/images/photos/afb-u7.jpg"
               />
             </div>
           </div>
